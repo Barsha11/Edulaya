@@ -1,0 +1,95 @@
+{% load static %}
+<!-- Sign In Pop Up -->
+<div class="modal fade" id="signInModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-pop">
+        <div class="modal-header">
+          <h5 class="modal-title">Sign Up</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="#" method="POST">
+                {% csrf_token %}
+                <div class="form-group mb-4">
+                    <label for="singin-email">Email Address</label>
+                    <input type="email" class="custom-field log-input" placeholder="Enter Email Address" name="" id="singin-email">
+                </div>
+                <div class="form-group mb-4">
+                    <label for="singin-password">Password</label>
+                    <input type="password" class="custom-field log-input" name="" id="singin-password" placeholder="Enter Password">
+                </div>
+                <div class="form-group mb-4">
+                    <p>Did you forgot your password? <a href="#" class="brand-color">Click Here</a></p>
+                </div>
+                <div class="form-group mb-4">
+                    <button type="submit" id="login" class="apply-submitBtn">Sign In</button>
+                </div>
+                <div class="form-group text-center">
+                    <p>Don't have an account? <a href="#" class="brand-color">Sign Up</a></p>
+                </div>
+            </form>
+            <hr>
+            <p class="text-center">or login with</p>
+            <ul class="social-login">
+                <li><a href="#" title="Facebook"><img src="{% static 'assets/images/facebook.svg' %}" class="img-fluid" alt=""></a></li>
+                <li><a href="#" title="Google"><img src="{% static 'assets/images/google.svg' %}" class="img-fluid" alt=""></a></li>
+            </ul>
+        </div>
+        
+      </div>
+    </div>
+</div>
+
+<!-- Sign Up Pop Up -->
+<div class="modal fade" id="signUpModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-pop">
+        <div class="modal-header">
+          <h5 class="modal-title">Sign Up</h5>
+          {% include 'alerts.html' %}
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="register_form" action="#" method="post">
+                {% csrf_token %}
+                <div class="form-group mb-4">
+                    <label for="register-full_name">Full Name</label>
+                    <input type="text" class="custom-field log-input" placeholder="Enter Full Name" name="register-full_name" id="register-full_name">
+                </div>
+                <div class="form-group mb-4">
+                    <label for="register-email">Email Address</label>
+                    <input type="email" class="custom-field log-input" placeholder="Enter Email Address" name="register-email" id="register-email">
+                </div>
+                <div class="form-group mb-4">
+                    <label for="register-role">Registration For</label>
+                    <select name="register-role" id="register-role" class="custom-field log-input">
+                        <option value="">Select Registration For</option>
+                        <option value="student">Student</option>
+                        <option value="Instructor">Instructor</option>
+                    </select>
+                </div>
+                <div class="form-group mb-4">
+                    <label for ="register-phone">Phone Number</label>
+                    <input type="text" class="custom-field log-input" placeholder="Enter Phone Number" name="register-phone" id="register-phone">
+                </div>
+                <div class="form-group mb-4">
+                    <label for ="register-password">Password</label>
+                    <input type="password" class="custom-field log-input" name="register-password" id="register-password" placeholder="Enter Password">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for ="register-confirm_password">Confirm Password</label>
+                    <input type="password" class="custom-field log-input" name="register-confirm_password" id="register-confirm_password" placeholder="Confirm Password">
+                </div>
+                <div class="form-group mb-4">
+                    <button type="submit" id="signup" class="apply-submitBtn">Sign Up</button>
+                </div>
+                <div class="form-group text-center">
+                    <p>Already have an account? <a href="#" class="brand-color">Sign In</a></p>
+                </div>
+            </form>
+        </div>
+        
+      </div>
+    </div>
+</div>

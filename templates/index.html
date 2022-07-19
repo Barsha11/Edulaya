@@ -53,10 +53,16 @@
         <li><a href="#intro">Introduction</a></li>
         <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Courses</a></li>
         <li><a href="#contact">Contact</a></li>
+        {% if user.id is None %}
         <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signInModal"><i class="fas fa-user"></i> Sign In</a></li>
         <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signUpModal"><i class="fas fa-clipboard-list"></i> Sign Up</a></li>
+        {% else %}
+        Welcome  <a href="#"> <span>{{user.full_name}}</span> <i class="fas fa-chevron-circle-down"></i></a>
+        {% endif %}
     </ul>
 </div>
+{% include 'alerts.html' %}
+
 
 <!-- Site Overlay -->
 <div class="site-overlay"></div>
@@ -82,8 +88,17 @@
             <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-8 col-sm-7 col-6 mob-bar v-center">
                 <div class="nav-action text-end">
                     <ul>
+                        {% if user.id is None %}
                         <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signInModal"><i class="fas fa-user"></i> Sign In</a></li>
                         <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signUpModal"><i class="fas fa-clipboard-list"></i> Sign Up</a></li>
+                        {% else %}
+                        <li><a href="#">Welcome {{user.full_name}}</a></li>
+                        <div class="dropdown">
+                            <div class="dropdown-content">
+                              <li><a href="{% url 'authentication:logout' %}">Logout</a></li>
+                            </div>
+                          </div>
+                        {% endif %}
                     </ul>
                 </div>
                 <div class="hamMenu mobile-nav menu-icon">
@@ -424,168 +439,9 @@
 </section>
 <!-- End of contact -->
 
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="footer-widget">
-                    <div class="foot-logo mb-4">
-                        <img src="{% static 'assets/images/colorlogo.png' %}" class="img-fluid" alt="">
-                    </div>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                    </p>
-                </div>
-            </div>
-            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-sm-6">
-                <div class="footer-widget">
-                    <h2>Courses</h2>
-                    <ul>
-                        <li><a href="#">Mobile App Development</a></li>
-                        <li><a href="#">SEO</a></li>
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">UI UX & Web Design</a></li>
-                        <li><a href="#">DevOps</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-sm-6">
-                <div class="footer-widget">
-                    <h2>Quick Links</h2>
-                    <ul>
-                        <li><a href="#intro">Introduction</a></li>
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Register</a></li>
-                        <li><a href="#course">Courses</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                <div class="footer-widget">
-                    <h2>Contact</h2>
-                    <ul>
-                        <li><a href="mailto:email@domainname.com">email@domainname.com</a></li>
-                        <li><a href="tel:+977-98123456789">+977-9808312485</a> <a href="tel:+977-98123456789">+977-9808312485</a></li>
-                    </ul>
-                    <br>
-                    <br>
-                    <h2>Payment Method</h2>
-                    <div class="payment-logo">
-                        <ul>
-                            <li><img src="{% static 'assets/images/esewa.png' %}" alt=""></li>
-                            <li><img src="{% static 'assets/images/khalti.png' %}" alt=""></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- End of footer -->
+{% include 'footer.html' %}
 
-<div class="copyright">
-    <div class="container">
-        <div class="row">
-            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
-                <ul>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
-                <p>Copyright &copy; 2021 | <span class="brand-color">Edulaya : Learning Management System</span></p>
-                
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End of copyright -->
-
-<!-- Sign In Pop Up -->
-<div class="modal fade" id="signInModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content custom-pop">
-        <div class="modal-header">
-          <h5 class="modal-title">Sign Up</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form action="">
-                <div class="form-group mb-4">
-                    <label>Email Address</label>
-                    <input type="email" class="custom-field log-input" placeholder="Enter Email Address" name="" id="">
-                </div>
-                <div class="form-group mb-4">
-                    <label>Password</label>
-                    <input type="password" class="custom-field log-input" name="" id="" placeholder="Enter Password">
-                </div>
-                <div class="form-group mb-4">
-                    <p>Did you forgot your password? <a href="#" class="brand-color">Click Here</a></p>
-                </div>
-                <div class="form-group mb-4">
-                    <button type="submit" class="apply-submitBtn">Sign In</button>
-                </div>
-                <div class="form-group text-center">
-                    <p>Don't have an account? <a href="#" class="brand-color">Sign Up</a></p>
-                </div>
-            </form>
-            <hr>
-            <p class="text-center">or login with</p>
-            <ul class="social-login">
-                <li><a href="#" title="Facebook"><img src="{% static 'assets/images/facebook.svg' %}" class="img-fluid" alt=""></a></li>
-                <li><a href="#" title="Google"><img src="{% static 'assets/images/google.svg' %}" class="img-fluid" alt=""></a></li>
-            </ul>
-        </div>
-        
-      </div>
-    </div>
-</div>
-
-<!-- Sign Up Pop Up -->
-<div class="modal fade" id="signUpModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content custom-pop">
-        <div class="modal-header">
-          <h5 class="modal-title">Sign Up</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form action="">
-                <div class="form-group mb-4">
-                    <label>Full Name</label>
-                    <input type="text" class="custom-field log-input" placeholder="Enter Full Name" name="" id="">
-                </div>
-                <div class="form-group mb-4">
-                    <label>Email Address</label>
-                    <input type="email" class="custom-field log-input" placeholder="Enter Email Address" name="" id="">
-                </div>
-                <div class="form-group mb-4">
-                    <label>Registration For</label>
-                    <select name="" class="custom-field log-input">
-                        <option value="">Select Registration For</option>
-                        <option value="">Student</option>
-                        <option value="">Instructor</option>
-                    </select>
-                </div>
-                <div class="form-group mb-4">
-                    <label>Phone Number</label>
-                    <input type="text" class="custom-field log-input" placeholder="Enter Phone Number" name="" id="">
-                </div>
-                <div class="form-group mb-4">
-                    <label>Password</label>
-                    <input type="password" class="custom-field log-input" name="" id="" placeholder="Enter Password">
-                </div>
-                <div class="form-group mb-4">
-                    <button type="submit" class="apply-submitBtn">Sign Up</button>
-                </div>
-                <div class="form-group text-center">
-                    <p>Already have an account? <a href="#" class="brand-color">Sign In</a></p>
-                </div>
-            </form>
-        </div>
-        
-      </div>
-    </div>
-</div>
+{% include 'modal.html' %}
 
 <!-- Course Apply popup -->
 <div class="modal fade" id="applyModal" tabindex="-1" aria-hidden="true">
@@ -657,5 +513,83 @@
 
     <script type="text/javascript" src="{% static 'assets/js/custom.js' %}"></script>
     <!-- Custom Js -->
+    <script>
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+
+        $('#login').click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var email = $.trim($('#singin-email').val());
+            var password = $.trim($('#singin-password').val());
+            const csrftoken = getCookie('csrftoken');
+    
+            $.ajax({
+                type: "POST",
+                url: "{% url 'authentication:login' %}",
+                data: {
+                    'csrfmiddlewaretoken': csrftoken,
+                    'email': email,
+                    'password': password,
+                },
+                success:function(response){
+                    location.href = "{% url 'authentication:homepage' %}";
+                    location.reload();
+                }
+    
+            });
+    
+        });
+
+        $('#register_form').submit(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var spinner='<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div> Please Wait ...'
+            $('#signup').html(spinner);
+            var full_name = $.trim($('#register-full_name').val());
+            var email = $.trim($('#register-email').val());
+            var role = $.trim($('#register-role').val());
+            var phone = $.trim($('#register-phone').val());
+            var password = $.trim($('#register-password').val());
+            var confirm_password = $.trim($('#register-confirm_password').val());
+            const csrftoken = getCookie('csrftoken');
+    
+            $.ajax({
+                type: "POST",
+                url: "{% url 'authentication:register' %}",
+                data: {
+                    'csrfmiddlewaretoken': csrftoken,
+                    'full_name': full_name,
+                    'email': email,
+                    'role': role,
+                    'phone': phone,
+                    'password': password,
+                    'confirm_password': confirm_password,
+    
+                },
+                success:function(message){  
+                    alert(message.message);
+                    location.reload();
+                },
+                
+    
+            });
+    
+        });
+    </script>
 </body>
 </html>

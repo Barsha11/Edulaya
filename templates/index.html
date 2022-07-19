@@ -1,0 +1,661 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edulaya</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- <link rel="icon" href="assets/images/favicon.png" type="image"> -->
+
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+	<!-- Bootstrap Css -->
+
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}">
+	<!-- Main Css -->
+
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/responsive.css' %}">
+	<!-- Responsive css -->
+
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/aos.css' %}">
+	<!-- Animation Css -->
+
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/magnific-popup.css' %}">
+	<!-- Magnific Popup -->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/owl.carousel.css' %}">
+    <!-- Banner carousel -->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/pushy.css' %}">
+    <!-- Mobile Side Bar -->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/magnific-popup.css' %}">
+    <!-- Magnific pop up -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body id="nav">
+
+<div class="mobile-menu pushy pushy-left" data-menu-btn-class=".menu-icon" id="mobile-nav">
+    <div class="mobile-logo text-start mb-4">
+        <img src="{% static 'assets/images/whitelogo.png' %}" class="img-fluid">
+    </div>
+    
+    <ul>
+        <li><a href="#banner">Home</a></li>
+        <li><a href="#course">Courses</a></li>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Courses</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signInModal"><i class="fas fa-user"></i> Sign In</a></li>
+        <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signUpModal"><i class="fas fa-clipboard-list"></i> Sign Up</a></li>
+    </ul>
+</div>
+
+<!-- Site Overlay -->
+<div class="site-overlay"></div>
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-5 col-6">
+                <div class="logo">
+                    <img src="{% static 'assets/images/whitelogo.png' %}" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="col-xxl-7 col-xl-7 col-lg-7 mob-hide v-center">
+                <div class="nav-menu text-center" >
+                    <ul>
+                        <li><a href="#banner">Home</a></li>
+                        <li><a href="#course">Courses</a></li>
+                        <li><a href="#intro">Introduction</a></li>
+                        <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Courses</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-8 col-sm-7 col-6 mob-bar v-center">
+                <div class="nav-action text-end">
+                    <ul>
+                        <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signInModal"><i class="fas fa-user"></i> Sign In</a></li>
+                        <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signUpModal"><i class="fas fa-clipboard-list"></i> Sign Up</a></li>
+                    </ul>
+                </div>
+                <div class="hamMenu mobile-nav menu-icon">
+                    <span class="burger"></span>
+                    <span class="burger"></span>
+                    <span class="burger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- End of Header -->
+
+<section class="banner" id="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-6 col-xl-6 col-lg-6">
+                <div class="banner-text owl-carousel">
+                    <div class="item">
+                        <h2 class="mb-4">Use of SEO and Social Media <br>
+                            Strategies for Online Business</h2>
+                        <p class="mb-4">It can be challenging to enter the digital market and boost your business. 
+                           However, Search Engine Optimization (SEO) and Social Media Marketing are powerful strategies when done correctly.</p>
+                           <a href="#" class="banner-btn">Start A Course</a>
+                    </div>
+
+                    <div class="item">
+                        <h2 class="mb-4">Website<br>
+                            Design & Development</h2>
+                        <p class="mb-4">It can be challenging to enter the digital market and boost your business. 
+                           However, Search Engine Optimization (SEO) and Social Media Marketing are powerful strategies when done correctly.</p>
+                           <a href="#" class="banner-btn">Start A Course</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="{% static 'assets/images/heroimg.png' %}" alt="">
+    </div>
+    <div class="banner-shape">
+        <img src="{% static 'assets/images/shape.png' %}" class="img-fluid" alt="">
+    </div>
+    <div class="shape2">
+        <img src="{% static 'assets/images/shape2.png' %}" alt="">
+    </div>
+</section>
+<!-- End of Banner -->
+
+<section class="courses-wrap" id="course">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <span class="title-icon icon-yellow mb-5">
+                        <i class="fas fa-book-open"></i>
+                    </span>
+                    <h2>Featured Courses</h2>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="courses-slider owl-carousel">
+                    <div class="item">
+                        <div class="course-img">
+                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
+                        </div>
+                        <h3>SEO and Social Media....</h3>
+                        <p>Brolly off his nut A bit of how’s your father chancer in my flat.......</p>
+                        <ul>
+                            <li>2 Months Course</li>
+                            <li>10am - 11am Classes</li>
+                        </ul>
+                        <div class="courseApply">
+                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Course</a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="course-img">
+                            <img src="{% static 'assets/images/c2.jpg' %}" class="img-fluid" alt="course image">
+                        </div>
+                        <h3>DevOps</h3>
+                        <p>Brolly off his nut A bit of how’s your father chancer in my flat.......</p>
+                        <ul>
+                            <li>2 Months Course</li>
+                            <li>10am - 11am Classes</li>
+                        </ul>
+                        <div class="courseApply">
+                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Course</a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="course-img">
+                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
+                        </div>
+                        <h3>Cloud Computing</h3>
+                        <p>Brolly off his nut A bit of how’s your father chancer in my flat.......</p>
+                        <ul>
+                            <li>2 Months Course</li>
+                            <li>10am - 11am Classes</li>
+                        </ul>
+                        <div class="courseApply">
+                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Course</a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="course-img">
+                            <img src="{% static 'assets/images/c2.jpg' %}" class="img-fluid" alt="course image">
+                        </div>
+                        <h3>UI UX Development</h3>
+                        <p>Brolly off his nut A bit of how’s your father chancer in my flat.......</p>
+                        <ul>
+                            <li>2 Months Course</li>
+                            <li>10am - 11am Classes</li>
+                        </ul>
+                        <div class="courseApply">
+                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Course</a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="course-img">
+                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
+                        </div>
+                        <h3>UI UX Development</h3>
+                        <p>Brolly off his nut A bit of how’s your father chancer in my flat.......</p>
+                        <ul>
+                            <li>2 Months Course</li>
+                            <li>10am - 11am Classes</li>
+                        </ul>
+                        <div class="courseApply">
+                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Course</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-12">
+                <div class="apply-btn">
+                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Courses</a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</section>
+<!-- End of Courses -->
+
+<section class="intro-wrap" id="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="quote mb-5">
+                    <i class="fas fa-quote-left"></i>
+                    <figure>"Secure your future with us."</figure>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-between">            
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-12 mt-5">
+                <div class="intro-ing">
+                    <img src="{% static 'assets/images/intro.svg' %}" class="img-fluid" alt="">
+                </div>
+            </div>
+            <div class="col-xxl-7 col-xl-7 col-lg-7 col-12 mt-5">
+                <div class="intro-text">
+                    <div class="section-title mb-4">
+                        <span class="title-icon icon-blue mb-4">
+                            <i class="far fa-lightbulb"></i>
+                        </span>
+                        <h2>About the Us</h2>
+                    </div>
+                    <p>Edulaya is a collaboration between learning institute and learners in order to provide the interested students with a platform to build a suitable career in the field of Information Technology. <br>
+                    Most importantly, the students that participate in the Coding Bootcamp and complete it will be certified and also guaranteed a job. Hence, it is a great opportunity for aspiring students interested in Information Technology.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-12 mt-4">
+                <div class="intro-card job-guranteed">
+                    <div class="split mb-4">
+                        <h3>Job Guranteed</h3>
+                        <span class="title-icon icon-yellow">
+                            <i class="fas fa-briefcase"></i>
+                        </span>
+                    </div>
+                    <p>Brolly off his nut A bit of how’s your father chancer in my flat chinwag bog skive. 
+                         your father chancer in my flat chinwag bog skive.</p>
+                </div>
+            </div>
+
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-12 mt-4">
+                <div class="intro-card lecturers">
+                    <div class="split mb-4">
+                        <h3>Skilled Lecturers</h3>
+                        <span class="title-icon icon-blue">
+                            <i class="fas fa-graduation-cap"></i>
+                        </span>
+                    </div>
+                    <p>Brolly off his nut A bit of how’s your father chancer in my flat chinwag bog skive. 
+                         your father chancer in my flat chinwag bog skive.</p>
+                </div>
+            </div>
+
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-12 mt-4">
+                <div class="intro-card money-back">
+                    <div class="split mb-4">
+                        <h3>Money Back</h3>
+                        <span class="title-icon icon-red">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </span>
+                    </div>
+                    <p>Brolly off his nut A bit of how’s your father chancer in my flat chinwag bog skive. 
+                         your father chancer in my flat chinwag bog skive.</p>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</section>
+<!-- End of intro wrap -->
+
+<section class="focal-point-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <span class="title-icon icon-yellow mb-5">
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <h2>Lock your successful future</h2>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-12">
+                <div class="point-block pt-5">
+                    <img src="{% static 'assets/images/class.svg' %}" alt="">
+                    <h3>In-Class Learning and Live Sharing</h3>
+                    <p>The students have the opportunity to learn both in physical presence as well as online through the Coding Bootcamp. 
+                    There will be classes held for 3 days in a week and live sharing sessions will also be conducted during this period. </p>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-12">
+                <div class="point-block pt-5">
+                    <img src="{% static 'assets/images/interview.svg' %}" alt="">
+                    <h3>Mock Interviews</h3>
+                    <p>To give a proper understanding of how to face an Interview for your dream job, the students will have multiple mock interviews. 
+                    During these mock interviews the students will go through a series of situations and questions that are exact depiction of the real-world Tech Interviews. </p>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-12">
+                <div class="point-block pt-5">
+                    <img src="{% static 'assets/images/resume.svg' %}" alt="">
+                    <h3>Resume Critique</h3>
+                    <p>The students will be taught, in this Coding Bootcamp, to make a proper resume. Their respective resumes will be critiqued by experts 
+                    and changes will be suggested if necessary, so that the participated students will have exemplary resumes at the end of the bootcamp.</p>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-12">
+                <div class="point-block pt-5">
+                    <img src="{% static 'assets/images/job-fair.svg' %}" alt="">
+                    <h3>Job Fair</h3>
+                    <p>At the end of the Coding Bootcamp, there will be a job fair held where numerous prestigious IT companies will participate and 
+                    recruit the students from the bootcamp. The job fair is a great occasion for the students to find the perfect job in tech that they have always wanted.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of focal point -->
+
+<section class="instructor-RepWrap">
+    <div class="container">
+        <div class="row justify-content-evenly">
+            <div class="col-xxl-4">
+                <!-- <div class="instructor-img">
+                    <img src="{% static 'assets/images/instructor.png" class="img-fluid" alt="">
+                </div> -->
+            </div>
+            <div class="col-xxl-6">
+                <div class="instructor-text">
+                    <h2>Want to become <br> a tutor for bootcamp? Apply here.</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                      Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+                    <div class="apply-btn instructorApply">
+                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signUpModal">Apply for Instructor</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="contact-wrap" id="contact">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xxl-8">
+                <div class="text-center">
+                    <h2>Need Professional <br> Skills-Kickstart your IT Career?</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="contact-formWrap">
+    <div class="container">        
+        <div class="row">
+            <div class="col-12">
+                <div class="contact-form">
+                    <form action="">
+                        <div class="form-group row">
+                            <div class="col-xxl-6 mb-4">
+                                <label>First Name</label>
+                                <input type="text" class="custom-field" placeholder="Enter First Name">
+                            </div>
+                            <div class="col-xxl-6 mb-4">
+                                <label>Last Name</label>
+                                <input type="text" class="custom-field" placeholder="Enter Last Name">
+                            </div>
+                        </div>                        
+                        <div class="form-group mb-4">
+                            <label>Email Address</label>
+                            <input type="text" class="custom-field" placeholder="Enter Email Address">                        
+                        </div>     
+                        <div class="form-group mb-4">
+                            <label>Message</label>
+                            <textarea name="" class="custom-field"  rows="6"></textarea>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label>Upload your CV</label>
+                            <input type="file" class="custom-file-input ">
+                        </div>
+                        <div class="form-group row justify-content-center">
+                            <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of contact -->
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                <div class="footer-widget">
+                    <div class="foot-logo mb-4">
+                        <img src="{% static 'assets/images/colorlogo.png' %}" class="img-fluid" alt="">
+                    </div>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                    </p>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-sm-6">
+                <div class="footer-widget">
+                    <h2>Courses</h2>
+                    <ul>
+                        <li><a href="#">Mobile App Development</a></li>
+                        <li><a href="#">SEO</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">UI UX & Web Design</a></li>
+                        <li><a href="#">DevOps</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-sm-6">
+                <div class="footer-widget">
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a href="#intro">Introduction</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Register</a></li>
+                        <li><a href="#course">Courses</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                <div class="footer-widget">
+                    <h2>Contact</h2>
+                    <ul>
+                        <li><a href="mailto:email@domainname.com">email@domainname.com</a></li>
+                        <li><a href="tel:+977-98123456789">+977-9808312485</a> <a href="tel:+977-98123456789">+977-9808312485</a></li>
+                    </ul>
+                    <br>
+                    <br>
+                    <h2>Payment Method</h2>
+                    <div class="payment-logo">
+                        <ul>
+                            <li><img src="{% static 'assets/images/esewa.png' %}" alt=""></li>
+                            <li><img src="{% static 'assets/images/khalti.png' %}" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End of footer -->
+
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+                <p>Copyright &copy; 2021 | <span class="brand-color">Edulaya : Learning Management System</span></p>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of copyright -->
+
+<!-- Sign In Pop Up -->
+<div class="modal fade" id="signInModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-pop">
+        <div class="modal-header">
+          <h5 class="modal-title">Sign Up</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="">
+                <div class="form-group mb-4">
+                    <label>Email Address</label>
+                    <input type="email" class="custom-field log-input" placeholder="Enter Email Address" name="" id="">
+                </div>
+                <div class="form-group mb-4">
+                    <label>Password</label>
+                    <input type="password" class="custom-field log-input" name="" id="" placeholder="Enter Password">
+                </div>
+                <div class="form-group mb-4">
+                    <p>Did you forgot your password? <a href="#" class="brand-color">Click Here</a></p>
+                </div>
+                <div class="form-group mb-4">
+                    <button type="submit" class="apply-submitBtn">Sign In</button>
+                </div>
+                <div class="form-group text-center">
+                    <p>Don't have an account? <a href="#" class="brand-color">Sign Up</a></p>
+                </div>
+            </form>
+            <hr>
+            <p class="text-center">or login with</p>
+            <ul class="social-login">
+                <li><a href="#" title="Facebook"><img src="{% static 'assets/images/facebook.svg' %}" class="img-fluid" alt=""></a></li>
+                <li><a href="#" title="Google"><img src="{% static 'assets/images/google.svg' %}" class="img-fluid" alt=""></a></li>
+            </ul>
+        </div>
+        
+      </div>
+    </div>
+</div>
+
+<!-- Sign Up Pop Up -->
+<div class="modal fade" id="signUpModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-pop">
+        <div class="modal-header">
+          <h5 class="modal-title">Sign Up</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="">
+                <div class="form-group mb-4">
+                    <label>Full Name</label>
+                    <input type="text" class="custom-field log-input" placeholder="Enter Full Name" name="" id="">
+                </div>
+                <div class="form-group mb-4">
+                    <label>Email Address</label>
+                    <input type="email" class="custom-field log-input" placeholder="Enter Email Address" name="" id="">
+                </div>
+                <div class="form-group mb-4">
+                    <label>Registration For</label>
+                    <select name="" class="custom-field log-input">
+                        <option value="">Select Registration For</option>
+                        <option value="">Student</option>
+                        <option value="">Instructor</option>
+                    </select>
+                </div>
+                <div class="form-group mb-4">
+                    <label>Phone Number</label>
+                    <input type="text" class="custom-field log-input" placeholder="Enter Phone Number" name="" id="">
+                </div>
+                <div class="form-group mb-4">
+                    <label>Password</label>
+                    <input type="password" class="custom-field log-input" name="" id="" placeholder="Enter Password">
+                </div>
+                <div class="form-group mb-4">
+                    <button type="submit" class="apply-submitBtn">Sign Up</button>
+                </div>
+                <div class="form-group text-center">
+                    <p>Already have an account? <a href="#" class="brand-color">Sign In</a></p>
+                </div>
+            </form>
+        </div>
+        
+      </div>
+    </div>
+</div>
+
+<!-- Course Apply popup -->
+<div class="modal fade" id="applyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-pop">
+        <div class="modal-header">
+          <h5 class="modal-title">Fill Form to apply course</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group mb-4">
+            <label>Full Name</label>
+            <input type="text" class="custom-field" placeholder="Enter Full Name" name="" id="">
+          </div>
+          <div class="form-group mb-4">
+            <label>Email Address</label>
+            <input type="text" class="custom-field" name="" id="" placeholder="Enter Email Address">
+          </div>
+          <div class="form-group mb-4">
+            <label>Phone Number</label>
+            <input type="text" class="custom-field" name="" id="" placeholder="Enter Phone Number">
+          </div>
+          <div class="form-group mb-4">
+            <label>Select Course</label>
+            <select name="" id="" class="custom-field">
+                <option value="">Select Course to Apply</option>
+                <option value="">Mobile App Development</option>
+                <option value="">SEO</option>
+                <option value="">Web Development</option>
+                <option value="">UI UX & Web Design</option>
+                <option value="">DevOps</option>
+            </select>
+          </div>
+          <div class="form-group">
+              <button type="submit" class="apply-submitBtn">Apply</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+</div>
+
+    <script type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <!-- jQuery -->
+    
+    <script type="text/javascript" src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Bootstrap Js -->
+
+    <script type="text/javascript" src="{% static 'assets/js/plugins.js' %}"></script>
+    <!-- Banner Carousel -->
+
+    <script type="text/javascript" src="{% static 'assets/js/popper.min.js' %}"></script>
+    <!-- Popper JS -->    
+
+    <script type="text/javascript" src="{% static 'assets/js/aos.js' %}"></script>
+    <!-- Animation Js -->
+
+    <script type="text/javascript" src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <!-- Magnific Popup -->
+
+    <script type="text/javascript" src="{% static 'assets/js/jquery.nav.js' %}"></script>
+    <!-- One page scroll -->
+    
+    <script type="text/javascript" src="{% static 'assets/js/pushy.min.js' %}"></script>
+    <!-- Mobile Side bar -->
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+    <!-- Font Awesome Icon -->  
+
+    <script type="text/javascript" src="{% static 'assets/js/custom.js' %}"></script>
+    <!-- Custom Js -->
+</body>
+</html>

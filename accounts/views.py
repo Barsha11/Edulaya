@@ -1,11 +1,11 @@
 from django.shortcuts import  render, redirect
-from .forms import NewUserForm
+from .forms import NewUserForm, CustomAuthForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
 def homepage(request):
-	return render(request=request, template_name="home.html")
+	return render(request=request, template_name="index.html")
 
 def register(request):
 	if request.method == "POST":
@@ -21,7 +21,7 @@ def register(request):
 
 def login_request(request):
 	if request.method == "POST":
-		form = AuthenticationForm(request, data=request.POST)
+		form = CustomAuthForm(request, data=request.POST)
 		if form.is_valid():
 			username = form.cleaned_data.get('username')
 			password = form.cleaned_data.get('password')
@@ -34,7 +34,7 @@ def login_request(request):
 				messages.error(request,"Invalid username or password.")
 		else:
 			messages.error(request,"Invalid username or password.")
-	form = AuthenticationForm()
+	form = CustomAuthForm()
 	return render(request=request, template_name="login.html", context={"login_form":form})
 
 def logout_request(request):

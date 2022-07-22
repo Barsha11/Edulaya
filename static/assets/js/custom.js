@@ -54,7 +54,7 @@ $(function() {
 $('.courses-slider').owlCarousel({
     items:4,
     margin:15,
-    loop:true,
+    // loop:true,
     dots:false,
     autoHeight:true,
     autoplay:true,

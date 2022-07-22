@@ -8,9 +8,11 @@ from django.contrib import messages
 from django.http.response import JsonResponse
 from rest_framework import status
 import requests
+from courses.models import *
 
 def homepage(request):
-    return render(request=request, template_name="index.html")
+    courses = Courses.objects.all()
+    return render(request, template_name="index.html", context={'courses':courses})
 
 
 def register(request):
@@ -57,6 +59,7 @@ def login_request(request):
             context['message'] = 'Successfully authenticated.'
             context['status'] = 'Success!'
             context['code'] = status.HTTP_200_OK
+            context['role'] = user.role
             messages.success(request, 'You are now logged in.')
             url = request.META.get('HTTP_REFERER')
             try:

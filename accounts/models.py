@@ -5,7 +5,7 @@ from django.dispatch import receiver
 # Create your models here.
 
 class MyAccountManager(BaseUserManager):
-    def create_user(self, full_name, email, password=None,is_active=False, **extra_fields):
+    def create_user(self, full_name, email, password=None, is_active=False, **extra_fields):
         if not email:
             raise ValueError('User must have an email address')
 
@@ -13,10 +13,13 @@ class MyAccountManager(BaseUserManager):
         user = self.model(
             email = self.normalize_email(email),
             full_name = full_name,
-            is_active=is_active
+            is_active=is_active,
+            role = extra_fields.get('role'),
+            phone_number = extra_fields.get('phone')
         )
 
         user.set_password(password)
+        user.is_active = True
         #set password in built for password
         user.save(using=self._db)
         return user
@@ -70,33 +73,3 @@ class Account(AbstractBaseUser):
     def has_module_perms(self, add_label):
         return True
 
-# @receiver(post_save, sender= Account)
-# def createusername(sender, instance, created,*args, **kwargs):
-#     if created:
-#         instance.username = instance.email.split("@")[0].lower()
-#         instance.save()
-
-# class UserProfile(models.Model):
-#     provinces = (
-#         ('Province 1', 'Province 1'), 
-#         ('Province 2', 'Province 2'), 
-#         ('Province 3', 'Province 3'),
-#         ('Province 4', 'Province 4'), 
-#         ('Province 5', 'Province 5'), 
-#         ('Province 6', 'Province 6'),
-#         ('Province 7', 'Province 7'),
-        
-#     )
-#     user = models.OneToOneField(Account, on_delete=models.CASCADE)
-#     contact_no = models.CharField(max_length=20, null=True, blank=True)
-#     address_line = models.CharField(max_length=300, null=True, blank=True)
-#     province = models.CharField(max_length=50, choices=provinces, null=True, blank=True)
-#     city = models.CharField(max_length=60, null=True, blank=True)
-#     district = models.CharField(max_length=30, null=True, blank=True)
-#     profile_picture = models.ImageField(upload_to = 'userprofile/', null = True, blank=True)
-
-#     def __str__(self):
-#         return self.user.full_name
-
-#     def full_address(self):
-#         return f'{self.address_line}'

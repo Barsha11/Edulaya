@@ -161,76 +161,21 @@
             </div>
             <div class="col-12">
                 <div class="courses-slider owl-carousel">
+                    {% for course in courses %}
                     <div class="item">
                         <div class="course-img">
-                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
+                            <img src="{{course.image.url}}" class="img-fluid" alt="course image">
                         </div>
-                        <h3>SEO and Social Media....</h3>
-                        <p>Brolly off his nut A bit of how’s your father chancer in my flat.......</p>
+                        <h3>{{course.name}}</h3>
+                        <p>{{course.description}}</p>
                         <ul>
-                            <li>2 Months Course</li>
-                            <li>10am - 11am Classes</li>
+                            <li>{{course.time_to_complete}} Months Course</li>
                         </ul>
                         <div class="courseApply">
                             <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Course</a>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="course-img">
-                            <img src="{% static 'assets/images/c2.jpg' %}" class="img-fluid" alt="course image">
-                        </div>
-                        <h3>DevOps</h3>
-                        <p>Brolly off his nut A bit of how’s your father chancer in my flat.......</p>
-                        <ul>
-                            <li>2 Months Course</li>
-                            <li>10am - 11am Classes</li>
-                        </ul>
-                        <div class="courseApply">
-                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Course</a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="course-img">
-                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
-                        </div>
-                        <h3>Cloud Computing</h3>
-                        <p>Brolly off his nut A bit of how’s your father chancer in my flat.......</p>
-                        <ul>
-                            <li>2 Months Course</li>
-                            <li>10am - 11am Classes</li>
-                        </ul>
-                        <div class="courseApply">
-                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Course</a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="course-img">
-                            <img src="{% static 'assets/images/c2.jpg' %}" class="img-fluid" alt="course image">
-                        </div>
-                        <h3>UI UX Development</h3>
-                        <p>Brolly off his nut A bit of how’s your father chancer in my flat.......</p>
-                        <ul>
-                            <li>2 Months Course</li>
-                            <li>10am - 11am Classes</li>
-                        </ul>
-                        <div class="courseApply">
-                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Course</a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="course-img">
-                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
-                        </div>
-                        <h3>UI UX Development</h3>
-                        <p>Brolly off his nut A bit of how’s your father chancer in my flat.......</p>
-                        <ul>
-                            <li>2 Months Course</li>
-                            <li>10am - 11am Classes</li>
-                        </ul>
-                        <div class="courseApply">
-                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Course</a>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <!-- <div class="col-12">
@@ -546,9 +491,10 @@
                     'email': email,
                     'password': password,
                 },
-                success:function(response){
-                    location.href = "{% url 'authentication:homepage' %}";
-                    location.reload();
+                success:function(response){   
+                    if(response.role == 'Student') location.href = "{% url 'students:student_index' %}";
+                else location.href = "{% url 'authentication:homepage' %}";
+                    {% comment %} location.reload(); {% endcomment %}
                 }
     
             });
@@ -590,6 +536,33 @@
             });
     
         });
+
+        {% comment %} $(document).ready(function(){
+            $.ajax({ url: "{% url 'courses:courses_list' %}",
+                type: "GET",
+                success: function(data){
+                    $.each(data, function (key, value) {
+                        console.log(value);
+                        $('.courses12').append(
+                            `<div class="item">
+                                <div class="course-img">
+                                    <img src="{% static '`+value.image+`' %}" class="img-fluid" alt="course image">
+                                </div>
+                                <h3>`+value.name+`</h3>
+                                <p>`+value.description+`</p>
+                                <ul>
+                                    <li>`+value.time_to_complete+` Months Course</li>
+                                </ul>
+                                <div class="courseApply">
+                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Course</a>
+                                </div>
+                            </div>`
+                        )
+                    })
+                    
+                }
+            });
+        }); {% endcomment %}
     </script>
 </body>
 </html>

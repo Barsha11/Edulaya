@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -9,34 +10,31 @@
   <meta name="author" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- <link rel="icon" href="assets/images/favicon.png" type="image"> -->
+  <!-- <link rel="icon" href="{% static 'assets/images/favicon.png' %}" type="image"> -->
 
-  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
-  <!-- Bootstrap Css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+	<!-- Bootstrap Css -->
 
-  <link rel="stylesheet" type="text/css" href="assets/css/main.css" />
-  <!-- Main Css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}">
+	<!-- Main Css -->
 
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-  <!-- Overview Page Css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/responsive.css' %}">
+	<!-- Responsive css -->
 
-  <link rel="stylesheet" type="text/css" href="assets/css/responsive.css" />
-  <!-- Responsive css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/aos.css' %}">
+	<!-- Animation Css -->
 
-  <link rel="stylesheet" type="text/css" href="assets/css/aos.css" />
-  <!-- Animation Css -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/magnific-popup.css' %}">
+	<!-- Magnific Popup -->
 
-  <link rel="stylesheet" type="text/css" href="assets/css/magnific-popup.css" />
-  <!-- Magnific Popup -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/owl.carousel.css' %}">
+    <!-- Banner carousel -->
 
-  <link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.css" />
-  <!-- Banner carousel -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/pushy.css' %}">
+    <!-- Mobile Side Bar -->
 
-  <link rel="stylesheet" type="text/css" href="assets/css/pushy.css" />
-  <!-- Mobile Side Bar -->
-
-  <link rel="stylesheet" type="text/css" href="assets/css/magnific-popup.css" />
-  <!-- Magnific pop up -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/magnific-popup.css' %}">
+    <!-- Magnific pop up -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -50,7 +48,7 @@
       <div class="row">
         <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-5 col-6">
           <div class="logo">
-            <img src="assets/images/whitelogo.png" class="img-fluid" alt="" />
+            <img src="{% static 'assets/images/whitelogo.png' %}" class="img-fluid" alt="" />
           </div>
         </div>
         <div class="col-xxl-7 col-xl-7 col-lg-7 mob-hide v-center"></div>
@@ -147,7 +145,7 @@
                         <h5>4</h5>
                       </div>
                       <div class="col-auto">
-                        <img src="assets/images/enroll.png" alt="icon" />
+                        <img src="{% static 'assets/images/enroll.png' %}" alt="icon" />
                       </div>
                     </div>
                   </div>
@@ -164,7 +162,7 @@
                         <div class="h5 mb-0 font-weight-bold">2</div>
                       </div>
                       <div class="col-auto">
-                        <img src="assets/images/completed.png" alt="icon" />
+                        <img src="{% static 'assets/images/completed.png' %}" alt="icon" />
                       </div>
                     </div>
                   </div>
@@ -181,7 +179,7 @@
                         <div class="h5 mb-0 font-weight-bold">12</div>
                       </div>
                       <div class="col-auto">
-                        <img src="assets/images/assgn (1).png" alt="icon" />
+                        <img src="{% static 'assets/images/assgn (1).png' %}" alt="icon" />
                       </div>
                     </div>
                   </div>
@@ -198,7 +196,7 @@
                         <div class="h5 mb-0 font-weight-bold">8</div>
                       </div>
                       <div class="col-auto">
-                        <img src="assets/images/e-book.png" alt="icon" />
+                        <img src="{% static 'assets/images/e-book.png' %}" alt="icon" />
                       </div>
                     </div>
                   </div>
@@ -468,7 +466,7 @@
                       <div class="courses-slider owl-carousel">
                         <div class="item dash-card">
                           <div class="course-img">
-                            <img src="assets/images/c1.jpg" class="img-fluid" alt="course image">
+                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
                           </div>
                           <h3>SEO and Social Media....</h3>
                           <div class="courseApply">
@@ -478,7 +476,7 @@
                         </div>
                         <div class="item dash-card">
                           <div class="course-img">
-                            <img src="assets/images/c2.jpg" class="img-fluid" alt="course image">
+                            <img src="{% static 'assets/images/c2.jpg' %}" class="img-fluid" alt="course image">
                           </div>
                           <h3>DevOps</h3>
                           <div class="courseApply">
@@ -488,7 +486,7 @@
                         </div>
                         <div class="item dash-card">
                           <div class="course-img">
-                            <img src="assets/images/c1.jpg" class="img-fluid" alt="course image">
+                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
                           </div>
                           <h3>Cloud Computing</h3>
                           <div class="courseApply">
@@ -498,7 +496,7 @@
                         </div>
                         <div class="item dash-card">
                           <div class="course-img">
-                            <img src="assets/images/c2.jpg" class="img-fluid" alt="course image">
+                            <img src="{% static 'assets/images/c2.jpg' %}" class="img-fluid" alt="course image">
                           </div>
                           <h3>UI UX Development</h3>
                           <div class="courseApply">
@@ -523,7 +521,7 @@
                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
                   <div class="coursesBlock">
                     <div class="course-img">
-                      <img src="assets/images/android.png" class="img-fluid" alt="course image" />
+                      <img src="{% static 'assets/images/android.png' %}" class="img-fluid" alt="course image" />
                     </div>
                     <h3>Android Training</h3>
                     <p>
@@ -539,7 +537,7 @@
                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
                   <div class="coursesBlock">
                     <div class="course-img">
-                      <img src="assets/images/devops.png" class="img-fluid" alt="course image" />
+                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
                     </div>
                     <h3>DevOps Training</h3>
                     <p>
@@ -555,7 +553,7 @@
                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
                   <div class="coursesBlock">
                     <div class="course-img">
-                      <img src="assets/images/android.png" class="img-fluid" alt="course image" />
+                      <img src="{% static 'assets/images/android.png' %}" class="img-fluid" alt="course image" />
                     </div>
                     <h3>Android Training</h3>
                     <p>
@@ -571,7 +569,7 @@
                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
                   <div class="coursesBlock">
                     <div class="course-img">
-                      <img src="assets/images/devops.png" class="img-fluid" alt="course image" />
+                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
                     </div>
                     <h3>DevOps Training</h3>
                     <p>
@@ -587,7 +585,7 @@
                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
                   <div class="coursesBlock">
                     <div class="course-img">
-                      <img src="assets/images/devops.png" class="img-fluid" alt="course image" />
+                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
                     </div>
                     <h3>DevOps Training</h3>
                     <p>
@@ -725,7 +723,7 @@
                         <div class="tab-pane fade" id="assigned" role="tabpanel" aria-labelledby="assigned-tab">
                           <!-- <div class=row>
                                           <div class="assignment-card">
-                                            <img src="assets/images/avatar.png" class="img-fluid">
+                                            <img src="{% static 'assets/images/avatar.png' %}" class="img-fluid">
                                             <div class="assignment-card-title">
                                                 <span class="assignment-title">
                                                     Simple Website Design
@@ -735,7 +733,7 @@
                                               </div>
                                         </div>
                                         <div class="assignment-card">
-                                          <img src="assets/images/avatar.png" class="img-fluid">
+                                          <img src="{% static 'assets/images/avatar.png' %}" class="img-fluid">
                                           <div class="assignment-card-title">
                                               <span class="assignment-title">
                                                 Email Flyer
@@ -784,7 +782,7 @@
                                 <tr>
                                   <td colspan="6" class="hiddenRow">
                                     <div id="assgn1" class="accordian-body collapse assignment-card">
-                                      <img src="assets/images/clip.png" class="img-fluid">
+                                      <img src="{% static 'assets/images/clip.png' %}" class="img-fluid">
                                       <span class="assignment-title">
                                         Dilisha_Maharjan_Assignment1_Email Flyer
                                       </span>
@@ -803,7 +801,7 @@
                                 <tr>
                                   <td colspan="6" class="hiddenRow">
                                     <div id="assgn2" class="accordian-body collapse assignment-card">
-                                      <img src="assets/images/clip.png" class="img-fluid">
+                                      <img src="{% static 'assets/images/clip.png' %}" class="img-fluid">
                                       <span class="assignment-title">
                                         Dilisha_Maharjan_Assignment1_Test_Plan
                                       </span>
@@ -822,7 +820,7 @@
                                 <tr>
                                   <td colspan="6" class="hiddenRow">
                                     <div id="assgn3" class="accordian-body collapse assignment-card">
-                                      <img src="assets/images/clip.png" class="img-fluid">
+                                      <img src="{% static 'assets/images/clip.png' %}" class="img-fluid">
                                       <span class="assignment-title">
                                         Dilisha_Maharjan_Assignment1_Flutter_App
                                       </span>
@@ -978,7 +976,7 @@
                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
                   <div class="coursesBlock">
                     <div class="course-img">
-                      <img src="assets/images/android.png" class="img-fluid" alt="course image" />
+                      <img src="{% static 'assets/images/android.png' %}" class="img-fluid" alt="course image" />
                     </div>
                     <h3>Android Training</h3>
                     <div class="courseApply">
@@ -989,7 +987,7 @@
                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
                   <div class="coursesBlock">
                     <div class="course-img">
-                      <img src="assets/images/devops.png" class="img-fluid" alt="course image" />
+                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
                     </div>
                     <h3>DevOps Training</h3>
                     <div class="courseApply">
@@ -1000,7 +998,7 @@
                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
                   <div class="coursesBlock">
                     <div class="course-img">
-                      <img src="assets/images/android.png" class="img-fluid" alt="course image" />
+                      <img src="{% static 'assets/images/android.png' %}" class="img-fluid" alt="course image" />
                     </div>
                     <h3>Android Training</h3>
                     <div class="courseApply">
@@ -1011,7 +1009,7 @@
                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
                   <div class="coursesBlock">
                     <div class="course-img">
-                      <img src="assets/images/devops.png" class="img-fluid" alt="course image" />
+                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
                     </div>
                     <h3>DevOps Training</h3>
                     <div class="courseApply">
@@ -1022,7 +1020,7 @@
                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
                   <div class="coursesBlock">
                     <div class="course-img">
-                      <img src="assets/images/devops.png" class="img-fluid" alt="course image" />
+                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
                     </div>
                     <h3>DevOps Training</h3>
                     <div class="courseApply">
@@ -1109,7 +1107,7 @@
         <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6">
           <div class="footer-widget">
             <div class="foot-logo mb-5">
-              <img src="assets/images/colorlogo.png" class="img-fluid" alt="" />
+              <img src="{% static 'assets/images/colorlogo.png' %}" class="img-fluid" alt="" />
             </div>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -1157,8 +1155,8 @@
             <h2>Payment Method</h2>
             <div class="payment-logo">
               <ul>
-                <li><img src="assets/images/esewa.png" alt="" /></li>
-                <li><img src="assets/images/khalti.png" alt="" /></li>
+                <li><img src="{% static 'assets/images/esewa.png' %}" alt="" /></li>
+                <li><img src="{% static 'assets/images/khalti.png' %}" alt="" /></li>
               </ul>
             </div>
           </div>
@@ -1293,35 +1291,35 @@
 
   </script>
 
-  <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+  <script type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>
   <!-- jQuery -->
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
   <!-- Bootstrap Js -->
 
-  <script type="text/javascript" src="assets/js/plugins.js"></script>
+  <script type="text/javascript" src="{% static 'assets/js/plugins.js' %}"></script>
   <!-- Banner Carousel -->
 
-  <script type="text/javascript" src="assets/js/popper.min.js"></script>
+  <script type="text/javascript" src="{% static 'assets/js/popper.min.js' %}"></script>
   <!-- Popper JS -->
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
 
-  <script type="text/javascript" src="assets/js/aos.js"></script>
+  <script type="text/javascript" src="{% static 'assets/js/aos.js' %}"></script>
   <!-- Animation Js -->
 
-  <script type="text/javascript" src="assets/js/jquery.magnific-popup.min.js"></script>
+  <script type="text/javascript" src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
   <!-- Magnific Popup -->
 
-  <script type="text/javascript" src="assets/js/jquery.nav.js"></script>
+  <script type="text/javascript" src="{% static 'assets/js/jquery.nav.js' %}"></script>
   <!-- One page scroll -->
 
-  <script type="text/javascript" src="assets/js/pushy.min.js"></script>
+  <script type="text/javascript" src="{% static 'assets/js/pushy.min.js' %}"></script>
   <!-- Mobile Side bar -->
 
   <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
@@ -1329,11 +1327,11 @@
     crossorigin="anonymous"></script>
   <!-- Font Awesome Icon -->
 
-  <script src="assets/chart/chart.js/Chart.min.js"></script>
-  <script src="assets/js/chart-pie.js"></script>
+  <script src="{% static 'assets/chart/chart.js/Chart.min.js' %}"></script>
+  <script src="{% static 'assets/js/chart-pie.js' %}"></script>
   <!-- Chart js -->
 
-  <script type="text/javascript" src="assets/js/custom.js"></script>
+  <script type="text/javascript" src="{% static 'assets/js/custom.js' %}"></script>
   <!-- Custom Js -->
 </body>
 

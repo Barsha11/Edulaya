@@ -25,20 +25,20 @@
                     <button type="submit" id="login" class="apply-submitBtn">Sign In</button>
                 </div>
                 <div class="form-group text-center">
-                    <p>Don't have an account? <a href="#" class="brand-color">Sign Up</a></p>
+                    <p>Don't have an account?
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#signUpModal" class="brand-color">Sign Up</a>
+                    </p>
                 </div>
             </form>
             <hr>
-            <p class="text-center">or login with</p>
-            <ul class="social-login">
-                <li><a href="#" title="Facebook"><img src="{% static 'assets/images/facebook.svg' %}" class="img-fluid" alt=""></a></li>
-                <li><a href="#" title="Google"><img src="{% static 'assets/images/google.svg' %}" class="img-fluid" alt=""></a></li>
-            </ul>
         </div>
         
       </div>
     </div>
 </div>
+
+<li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signInModal"><i class="fas fa-user"></i> Sign In</a></li>
+        
 
 <!-- Sign Up Pop Up -->
 <div class="modal fade" id="signUpModal" tabindex="-1" aria-hidden="true">
@@ -46,7 +46,6 @@
       <div class="modal-content custom-pop">
         <div class="modal-header">
           <h5 class="modal-title">Sign Up</h5>
-          {% include 'alerts.html' %}
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -64,7 +63,7 @@
                     <label for="register-role">Registration For</label>
                     <select name="register-role" id="register-role" class="custom-field log-input">
                         <option value="">Select Registration For</option>
-                        <option value="student">Student</option>
+                        <option value="Student">Student</option>
                         <option value="Instructor">Instructor</option>
                     </select>
                 </div>
@@ -85,7 +84,7 @@
                     <button type="submit" id="signup" class="apply-submitBtn">Sign Up</button>
                 </div>
                 <div class="form-group text-center">
-                    <p>Already have an account? <a href="#" class="brand-color">Sign In</a></p>
+                    <p>Already have an account? <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signInModal" class="brand-color">Sign In</a></p>
                 </div>
             </form>
         </div>
@@ -93,3 +92,4 @@
       </div>
     </div>
 </div>
+

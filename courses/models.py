@@ -1,17 +1,10 @@
-from time import time
 from django.db import models
 
-# Create your models here.
-class Category(models.Model):
-    name = models.CharField(max_length=100, db_index=True)
-    
-    def __str__(self):
-        return self.name
     
 class Courses(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     description=models.TextField(blank=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    tutor = models.ForeignKey('accounts.Account', on_delete=models.CASCADE, related_name='tutor_courses')
     image = models.ImageField(upload_to='courses-images', blank=True)
     time_to_complete=models.FloatField(default=0)
     
@@ -25,4 +18,10 @@ class Course_documents(models.Model):
     
     def __str__(self):
         return f'{self.course.name} - {self.file.name}'
+    
+    
+class CourseEnrollment(models.Model):
+    student = models.ForeignKey('accounts.Account', on_delete=models.CASCADE, related_name='student_courses')
+    course = models.ForeignKey(Courses, on_delete=models.CASCADE)
+    
     

@@ -10,31 +10,34 @@
   <meta name="author" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- <link rel="icon" href="{% static 'assets/images/favicon.png' %}" type="image"> -->
+  <!-- <link rel="icon" href="assets/images/favicon.png' %}" type="image"> -->
 
-  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
-	<!-- Bootstrap Css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}" />
+  <!-- Bootstrap Css -->
 
-	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}">
-	<!-- Main Css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}" />
+  <!-- Main Css -->
 
-	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/responsive.css' %}">
-	<!-- Responsive css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" />
+  <!-- Overview Page Css -->
 
-	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/aos.css' %}">
-	<!-- Animation Css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/responsive.css' %}" />
+  <!-- Responsive css -->
 
-	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/magnific-popup.css' %}">
-	<!-- Magnific Popup -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/aos.css' %}" />
+  <!-- Animation Css -->
 
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/owl.carousel.css' %}">
-    <!-- Banner carousel -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/magnific-popup.css' %}" />
+  <!-- Magnific Popup -->
 
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/pushy.css' %}">
-    <!-- Mobile Side Bar -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/owl.carousel.css' %}" />
+  <!-- Banner carousel -->
 
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/magnific-popup.css' %}">
-    <!-- Magnific pop up -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/pushy.css' %}" />
+  <!-- Mobile Side Bar -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/magnific-popup.css' %}" />
+  <!-- Magnific pop up -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -60,7 +63,7 @@
           <div class="nav-action text-end">
             <ul>
               <li>
-                <a href="javascript:void(0)"><i class="fas fa-user"></i> Students Name</a>
+                <a href="javascript:void(0)"><i class="fas fa-user"></i> {{request.user.full_name}}</a>
               </li>
             </ul>
           </div>
@@ -73,7 +76,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 innerBanner-text">
-          <h1>Welcome {Student Name}</h1>
+          <h1>Welcome {{request.user.full_name}}</h1>
           <p>To your dashboard, you can check your everything at here</p>
         </div>
       </div>
@@ -466,7 +469,7 @@
                       <div class="courses-slider owl-carousel">
                         <div class="item dash-card">
                           <div class="course-img">
-                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
+                            <img src="{% static 'assets/images/c1.jpg" class="img-fluid" alt="course image">
                           </div>
                           <h3>SEO and Social Media....</h3>
                           <div class="courseApply">
@@ -476,7 +479,7 @@
                         </div>
                         <div class="item dash-card">
                           <div class="course-img">
-                            <img src="{% static 'assets/images/c2.jpg' %}" class="img-fluid" alt="course image">
+                            <img src="{% static 'assets/images/c2.jpg" class="img-fluid" alt="course image">
                           </div>
                           <h3>DevOps</h3>
                           <div class="courseApply">
@@ -486,7 +489,7 @@
                         </div>
                         <div class="item dash-card">
                           <div class="course-img">
-                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
+                            <img src="{% static 'assets/images/c1.jpg" class="img-fluid" alt="course image">
                           </div>
                           <h3>Cloud Computing</h3>
                           <div class="courseApply">
@@ -496,7 +499,7 @@
                         </div>
                         <div class="item dash-card">
                           <div class="course-img">
-                            <img src="{% static 'assets/images/c2.jpg' %}" class="img-fluid" alt="course image">
+                            <img src="{% static 'assets/images/c2.jpg" class="img-fluid" alt="course image">
                           </div>
                           <h3>UI UX Development</h3>
                           <div class="courseApply">

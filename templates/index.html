@@ -412,12 +412,10 @@
           <div class="form-group mb-4">
             <label>Select Course</label>
             <select name="" id="" class="custom-field">
+                {% for course in courses %}
                 <option value="">Select Course to Apply</option>
-                <option value="">Mobile App Development</option>
-                <option value="">SEO</option>
-                <option value="">Web Development</option>
-                <option value="">UI UX & Web Design</option>
-                <option value="">DevOps</option>
+                <option value="">{{course}}</option>
+            {% endfor %}
             </select>
           </div>
           <div class="form-group">

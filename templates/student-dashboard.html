@@ -196,7 +196,7 @@
                         <div class="title-text font-weight-bold">
                           Checked Assignment
                         </div>
-                        <div class="h5 mb-0 font-weight-bold">8</div>
+                        <div class="h5 mb-0 font-weight-bold">{{asignment_checked_count}}</div>
                       </div>
                       <div class="col-auto">
                         <img src="{% static 'assets/images/e-book.png' %}" alt="icon" />
@@ -457,46 +457,18 @@
                   <div class="ebook-container">
                     <div class="col-md-12">
                       <div class="courses-slider owl-carousel">
+                        {% for book in ebook_courses %}
                         <div class="item dash-card">
                           <div class="course-img">
-                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
+                            <img src="{{book.image.url}}" class="img-fluid" alt="course image">
                           </div>
-                          <h3>SEO and Social Media....</h3>
+                          <h3>{{book.title}}</h3>
                           <div class="courseApply">
-                            <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link"
+                            <a href="{{book.url}}" class="iframe-link"
                               data-bs-toggle="modal" data-bs-target="#applyModal">View Course</a>
                           </div>
                         </div>
-                        <div class="item dash-card">
-                          <div class="course-img">
-                            <img src="{% static 'assets/images/c2.jpg' %}" class="img-fluid" alt="course image">
-                          </div>
-                          <h3>DevOps</h3>
-                          <div class="courseApply">
-                            <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link"
-                              data-bs-toggle="modal" data-bs-target="#applyModal">View Course</a>
-                          </div>
-                        </div>
-                        <div class="item dash-card">
-                          <div class="course-img">
-                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
-                          </div>
-                          <h3>Cloud Computing</h3>
-                          <div class="courseApply">
-                            <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link"
-                              data-bs-toggle="modal" data-bs-target="#applyModal">View Course</a>
-                          </div>
-                        </div>
-                        <div class="item dash-card">
-                          <div class="course-img">
-                            <img src="{% static 'assets/images/c2.jpg' %}" class="img-fluid" alt="course image">
-                          </div>
-                          <h3>UI UX Development</h3>
-                          <div class="courseApply">
-                            <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link"
-                              data-bs-toggle="modal" data-bs-target="#applyModal">View Course</a>
-                          </div>
-                        </div>
+                        {% endfor %}
                       </div>
                     </div>
                   </div>
@@ -915,61 +887,19 @@
                     <h2>eBook Library</h2>
                   </div>
                 </div>
+                {% for book in ebook_courses %}
                 <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
                   <div class="coursesBlock">
                     <div class="course-img">
-                      <img src="{% static 'assets/images/android.png' %}" class="img-fluid" alt="course image" />
+                      <img src="{{book.image.url}}" class="img-fluid" alt="course image" />
                     </div>
-                    <h3>Android Training</h3>
+                    <h3>{{book.title}}</h3>
                     <div class="courseApply">
-                      <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link">View Course</a>
+                      <a href="{{book.url}}" class="iframe-link">View Course</a>
                     </div>
                   </div>
                 </div>
-                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
-                  <div class="coursesBlock">
-                    <div class="course-img">
-                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
-                    </div>
-                    <h3>DevOps Training</h3>
-                    <div class="courseApply">
-                      <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link">View Course</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
-                  <div class="coursesBlock">
-                    <div class="course-img">
-                      <img src="{% static 'assets/images/android.png' %}" class="img-fluid" alt="course image" />
-                    </div>
-                    <h3>Android Training</h3>
-                    <div class="courseApply">
-                      <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link">View Course</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
-                  <div class="coursesBlock">
-                    <div class="course-img">
-                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
-                    </div>
-                    <h3>DevOps Training</h3>
-                    <div class="courseApply">
-                      <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link">View Course</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
-                  <div class="coursesBlock">
-                    <div class="course-img">
-                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
-                    </div>
-                    <h3>DevOps Training</h3>
-                    <div class="courseApply">
-                      <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link">View Course</a>
-                    </div>
-                  </div>
-                </div>
+                {% endfor %}
               </div>
             </div>
             <div class="tab-pane fade" id="invoice" role="tabpanel" aria-labelledby="invoice-tab">

@@ -1,0 +1,1338 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Edulaya</title>
+  <meta charset="UTF-8" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- <link rel="icon" href="{% static 'assets/images/favicon.png' %}" type="image"> -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}"/>
+	<!-- Bootstrap Css -->
+
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}"/>
+	<!-- Main Css -->
+
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/responsive.css' %}"/>
+	<!-- Responsive css -->
+
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/aos.css' %}"/>
+	<!-- Animation Css -->
+
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/magnific-popup.css' %}"/>
+	<!-- Magnific Popup -->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/owl.carousel.css' %}"/>
+    <!-- Banner carousel -->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/pushy.css' %}"/>
+    <!-- Mobile Side Bar -->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/magnific-popup.css' %}"/>
+    <!-- Magnific pop up -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-5 col-6">
+          <div class="logo">
+            <img src="{% static 'assets/images/whitelogo.png' %}" class="img-fluid" alt="" />
+          </div>
+        </div>
+        <div class="col-xxl-7 col-xl-7 col-lg-7 mob-hide v-center"></div>
+        <div class="
+              col-xxl-3 col-xl-3 col-lg-3 col-md-8 col-sm-7 col-6
+              mob-bar
+              v-center
+            ">
+          <div class="nav-action text-end">
+            <ul>
+              <li>
+                <a href="javascript:void(0)"><i class="fas fa-user"></i> {{request.user.full_name}}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="inner-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 innerBanner-text">
+          <h1>Welcome {{request.user.full_name}}</h1>
+          <p>To your dashboard, you can check your everything at here</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="userportal-tab">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="course-tab" data-bs-toggle="tab" data-bs-target="#overview"
+                  type="button" role="tab" aria-controls="overview" aria-selected="true">
+                  Overview
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="course-tab" data-bs-toggle="tab" data-bs-target="#course-history"
+                  type="button" role="tab" aria-controls="course" aria-selected="true">
+                  Courses History
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="assignment-tab" data-bs-toggle="tab" data-bs-target="#assignment"
+                  type="button" role="tab" aria-controls="assignment" aria-selected="false">
+                  Classroom
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="ebook-tab" data-bs-toggle="tab" data-bs-target="#ebook" type="button"
+                  role="tab" aria-controls="ebook" aria-selected="false">
+                  eBook
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="invoice-tab" data-bs-toggle="tab" data-bs-target="#invoice" type="button"
+                  role="tab" aria-controls="invoice" aria-selected="false">
+                  Invoices
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="tab-content usertab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="course-tab">
+              <div class="row">
+                <div class="col-12">
+                  <div class="dashboard-title split">
+                    <h2>Overview</h2>
+                    <div class="download-btn">
+                      <a href="javscript:void(0)" data-bs-toggle="modal" data-bs-target="#downloadModal">
+                        <i class="fas fa-download fa-sm text-white-50"></i>
+                        Download Certificate</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <!-- Enrolled course-->
+                <div class="col-xl-3 col-md-6 mb-5">
+                  <div class="dash-card border-left-primary">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="title-text font-weight-bold">
+                          Enrolled Courses
+                        </div>
+                        <h5>4</h5>
+                      </div>
+                      <div class="col-auto">
+                        <img src="{% static 'assets/images/enroll.png' %}" alt="icon" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Completed Course -->
+                <div class="col-xl-3 col-md-6 mb-5">
+                  <div class="dash-card border-left-success">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="title-text font-weight-bold">
+                          Completed Course
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold">2</div>
+                      </div>
+                      <div class="col-auto">
+                        <img src="{% static 'assets/images/completed.png' %}" alt="icon" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Total assignment -->
+                <div class="col-xl-3 col-md-6 mb-5">
+                  <div class="dash-card border-left-info">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="title-text font-weight-bold">
+                          Total Assignment
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold">12</div>
+                      </div>
+                      <div class="col-auto">
+                        <img src="{% static 'assets/images/assgn (1).png' %}" alt="icon" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Total Ebooks -->
+                <div class="col-xl-3 col-md-6 mb-5">
+                  <div class="dash-card border-left-warning">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="title-text font-weight-bold">
+                          Checked Assignment
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold">8</div>
+                      </div>
+                      <div class="col-auto">
+                        <img src="{% static 'assets/images/e-book.png' %}" alt="icon" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- row end -->
+
+              <!-- course progress  -->
+              <div class="row">
+                <!-- Content Column -->
+                <div class="col-md-6 mb-5">
+                  <!-- Course progress-->
+                  <div class="col-12">
+                    <div class="dashboard-title split">
+                      <h2>Course Progress</h2>
+                      <a href="#" class="view_link d-none d-sm-inline-block">View All</a>
+                    </div>
+                  </div>
+                  <div class="dash-card">
+                    <div class="course-indicator">
+                      <h4>Cloud Computing <span class="num">20%</span></h4>
+                      <div class="progress mb-3">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+
+                    <div class="course-indicator">
+                      <h4>DevOps <span class="num">40%</span></h4>
+                      <div class="progress mb-3">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="40"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+
+                    <div class="course-indicator">
+                      <h4>
+                        SEO and Social Media <span class="num">60%</span>
+                      </h4>
+                      <div class="progress mb-3">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+
+                    <div class="course-indicator">
+                      <h4>
+                        UI UX Development
+                        <span class="num">Complete!</span>
+                      </h4>
+                      <div class="progress mb-3">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- pie chart  -->
+                <div class="col-md-6 mb-5">
+                  <div class="col-12">
+                    <div class="dashboard-title split">
+                      <h2>Course Overview</h2>
+                    </div>
+                  </div>
+                  <div class="dash-card">
+                    <!-- Card Body -->
+                    <div class="chart-pie pt-4 pb-2">
+                      <canvas id="myPieChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                      <span class="mr-2">
+                        <i class="fas fa-circle text-success"></i> Completed
+                      </span>
+                      <span class="mr-2">
+                        <i class="fas fa-circle text-warning"></i> In Progress
+                      </span>
+                      <span class="mr-2">
+                        <i class="fas fa-circle text-info"></i> Pending
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- invoice  -->
+              <div class="row">
+                <div class="col-md-6 mb-5">
+                  <div class="col-12">
+                    <div class="dashboard-title split">
+                      <h2>Invoice</h2>
+                      <a href="#" class="view_link d-none d-sm-inline-block">View All</a>
+                    </div>
+                  </div>
+                  <div class="dash-card dash-card-body">
+                    <div class="table-responsive portal-table">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <strong>37891</strong>
+                            </td>
+                            <td>December 22nd, 2021</td>
+                            <td>NPR 29,999</td>
+                            <td>Paid</td>
+                            <td>
+                              <div class="action-btn">
+                                <a href="#" title="View Invoice"><i class="fas fa-eye"></i></a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr class="rejected">
+                            <td>
+                              <strong>37891</strong>
+                            </td>
+                            <td>December 22nd, 2021</td>
+                            <td>NPR 29,999</td>
+                            <td>Unpaid</td>
+                            <td>
+                              <div class="action-btn">
+                                <a href="#" title="View Invoice"><i class="fas fa-eye"></i></a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <strong>37891</strong>
+                            </td>
+                            <td>December 22nd, 2021</td>
+                            <td>NPR 29,999</td>
+                            <td>Paid</td>
+                            <td>
+                              <div class="action-btn">
+                                <a href="#" title="View Invoice"><i class="fas fa-eye"></i></a>
+                              </div>
+                            </td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- assignment  -->
+                <div class="col-md-6 mb-5">
+                  <div class="col-12">
+                    <div class="dashboard-title split">
+                      <h2>Assignments</h2>
+                      <a href="#" class="view_link d-none d-sm-inline-block">View All</a>
+                    </div>
+                  </div>
+                  <div class="dash-card dash-card-body">
+                    <div class="table-responsive portal-table">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Assignments</th>
+                            <th>Category</th>
+                            <th>Tutor</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="checked">
+                            <td>
+                              <h3>Flyer Desing</h3>
+                            </td>
+                            <td>UI/UX</td>
+                            <td>Sonu Mittal</td>
+                            <td>
+                              <div class="badge badge-success">Checked</div>
+                            </td>
+                            <td>
+                              <div class="action-btn">
+                                <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h3>Simple App</h3>
+                            </td>
+                            <td>Android</td>
+                            <td>Sanjog Shrestha</td>
+                            <td>
+                              <div class="badge badge-danger">Rejected</div>
+                            </td>
+                            <td>
+                              <div class="action-btn">
+                                <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr class="checked">
+                            <td>
+                              <h3>Mockup Desing</h3>
+                            </td>
+                            <td>UI/UX</td>
+                            <td>Nischal Rajbhandari </td>
+                            <td>
+                              <div class="badge badge-success">Checked</div>
+                            </td>
+                            <td>
+                              <div class="action-btn">
+                                <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h3>Website Desing</h3>
+                            </td>
+                            <td>UI/UX</td>
+                            <td>Sanjog Shrestha</td>
+                            <td>
+                              <div class="badge badge-warning">Pending</div>
+                            </td>
+                            <td>
+                              <div class="action-btn">
+                                <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <h3>Simple App</h3>
+                            </td>
+                            <td>Android</td>
+                            <td>Sanjog Shrestha</td>
+                            <td>
+                              <div class="badge badge-danger">Rejected</div>
+                            </td>
+                            <td>
+                              <div class="action-btn">
+                                <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ebook-lib  -->
+              <div class="row">
+                <div class="col-md-12 mb-5">
+                  <div class="col-12">
+                    <div class="dashboard-title split">
+                      <h2>eBook Library</h2>
+                      <a href="#" class="view_link d-none d-sm-inline-block">View All</a>
+                    </div>
+                  </div>
+                  <div class="ebook-container">
+                    <div class="col-md-12">
+                      <div class="courses-slider owl-carousel">
+                        <div class="item dash-card">
+                          <div class="course-img">
+                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
+                          </div>
+                          <h3>SEO and Social Media....</h3>
+                          <div class="courseApply">
+                            <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link"
+                              data-bs-toggle="modal" data-bs-target="#applyModal">View Course</a>
+                          </div>
+                        </div>
+                        <div class="item dash-card">
+                          <div class="course-img">
+                            <img src="{% static 'assets/images/c2.jpg' %}" class="img-fluid" alt="course image">
+                          </div>
+                          <h3>DevOps</h3>
+                          <div class="courseApply">
+                            <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link"
+                              data-bs-toggle="modal" data-bs-target="#applyModal">View Course</a>
+                          </div>
+                        </div>
+                        <div class="item dash-card">
+                          <div class="course-img">
+                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
+                          </div>
+                          <h3>Cloud Computing</h3>
+                          <div class="courseApply">
+                            <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link"
+                              data-bs-toggle="modal" data-bs-target="#applyModal">View Course</a>
+                          </div>
+                        </div>
+                        <div class="item dash-card">
+                          <div class="course-img">
+                            <img src="{% static 'assets/images/c2.jpg' %}" class="img-fluid" alt="course image">
+                          </div>
+                          <h3>UI UX Development</h3>
+                          <div class="courseApply">
+                            <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link"
+                              data-bs-toggle="modal" data-bs-target="#applyModal">View Course</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="course-history" role="tabpanel" aria-labelledby="course-tab">
+              <div class="row">
+                <div class="col-12">
+                  <div class="tab-title split">
+                    <h2>Courses History</h2>
+                  </div>
+                </div>
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
+                  <div class="coursesBlock">
+                    <div class="course-img">
+                      <img src="{% static 'assets/images/android.png' %}" class="img-fluid" alt="course image" />
+                    </div>
+                    <h3>Android Training</h3>
+                    <p>
+                      <strong>Course Status:</strong>
+                      <span class="running">Running</span>
+                    </p>
+                    <ul>
+                      <li>2 Months Course</li>
+                      <li>10am - 11am Classes</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
+                  <div class="coursesBlock">
+                    <div class="course-img">
+                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
+                    </div>
+                    <h3>DevOps Training</h3>
+                    <p>
+                      <strong>Course Status:</strong>
+                      <span class="completed">Completed</span>
+                    </p>
+                    <ul>
+                      <li>2 Months Course</li>
+                      <li>10am - 11am Classes</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
+                  <div class="coursesBlock">
+                    <div class="course-img">
+                      <img src="{% static 'assets/images/android.png' %}" class="img-fluid" alt="course image" />
+                    </div>
+                    <h3>Android Training</h3>
+                    <p>
+                      <strong>Course Status:</strong>
+                      <span class="completed">Completed</span>
+                    </p>
+                    <ul>
+                      <li>DevOps Training</li>
+                      <li>10am - 11am Classes</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
+                  <div class="coursesBlock">
+                    <div class="course-img">
+                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
+                    </div>
+                    <h3>DevOps Training</h3>
+                    <p>
+                      <strong>Course Status:</strong>
+                      <span class="completed">Completed</span>
+                    </p>
+                    <ul>
+                      <li>2 Months Course</li>
+                      <li>10am - 11am Classes</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
+                  <div class="coursesBlock">
+                    <div class="course-img">
+                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
+                    </div>
+                    <h3>DevOps Training</h3>
+                    <p>
+                      <strong>Course Status:</strong>
+                      <span class="completed">Completed</span>
+                    </p>
+                    <ul>
+                      <li>DevOps Training</li>
+                      <li>10am - 11am Classes</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="assignment" role="tabpanel" aria-labelledby="assignment-tab">
+              <div class="row">
+                <div class="col-12">
+                  <div class="tab-title split">
+                    <h2>Assignment Center</h2>
+                    <div class="upload-btn">
+                      <a href="javscript:void(0)" data-bs-toggle="modal" data-bs-target="#homeworkModal">Upload
+                        Homework</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- classroom tab         -->
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <div class="userportal-tab">
+                        <div class="nav flex-column nav-tabs" id="tab" role="tablist" aria-orientation="vertical">
+                          <a class="nav-link active" id="all-tab" data-toggle="pill" href="#all" role="tab"
+                            aria-controls="all" aria-selected="true">All</a>
+                          <a class="nav-link" id="assigned-tab" data-toggle="pill" href="#assigned" role="tab"
+                            aria-controls="assigned" aria-selected="false">Assigned</a>
+                          <a class="nav-link" id="rejected-tab" data-toggle="pill" href="#rejected" role="tab"
+                            aria-controls="rejected" aria-selected="false">Returned</a>
+                          <a class="nav-link" id="pending-tab" data-toggle="pill" href="#pending" role="tab"
+                            aria-controls="pending" aria-selected="false">Missing</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-10">
+                      <div class="tab-content" id="tabContent">
+                        <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+                          <div class="table-responsive portal-table">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Assignments</th>
+                                  <th>Category</th>
+                                  <th>Assigned Tutor</th>
+                                  <th>Status</th>
+                                  <th>Marks</th>
+                                  <th>Action</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <h3>Simple Mobile App</h3>
+                                    <span class="upload-date">24th Dec, 2021</span>
+                                  </td>
+                                  <td>Android</td>
+                                  <td>Sanjog Shrestha</td>
+                                  <td>
+                                    <div class="badge badge-warning">Pending</div>
+                                  </td>
+                                  <td>0 out of 100</td>
+                                  <td>
+                                    <div class="action-btn">
+                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr class="checked">
+                                  <td>
+                                    <h3>Health Insaurance Website Desing</h3>
+                                    <span class="upload-date">24th Dec, 2021</span>
+                                  </td>
+                                  <td>UI/UX</td>
+                                  <td>Sanjog Shrestha</td>
+                                  <td>
+                                    <div class="badge badge-success">Checked</div>
+                                  </td>
+                                  <td>85 out of 100</td>
+                                  <td>
+                                    <div class="action-btn">
+                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr class="rejected">
+                                  <td>
+                                    <h3>Simple Mobile App</h3>
+                                    <span class="upload-date">24th Dec, 2021</span>
+                                  </td>
+                                  <td>Android</td>
+                                  <td>Sanjog Shrestha</td>
+                                  <td>
+                                    <div class="badge badge-danger">Rejected</div>
+                                  </td>
+                                  <td>0 out of 100</td>
+                                  <td>
+                                    <div class="action-btn">
+                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <h3>Health Insaurance Website Desing</h3>
+                                    <span class="upload-date">24th Dec, 2021</span>
+                                  </td>
+                                  <td>UI/UX</td>
+                                  <td>Sanjog Shrestha</td>
+                                  <td>
+                                    <div class="badge badge-warning">Pending</div>
+                                  </td>
+                                  <td>85 out of 100</td>
+                                  <td>
+                                    <div class="action-btn">
+                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="tab-pane fade" id="assigned" role="tabpanel" aria-labelledby="assigned-tab">
+                          <!-- <div class=row>
+                                          <div class="assignment-card">
+                                            <img src="{% static 'assets/images/avatar.png' %}" class="img-fluid">
+                                            <div class="assignment-card-title">
+                                                <span class="assignment-title">
+                                                    Simple Website Design
+                                                </span>
+                                                <span class="assignment-date">Due date: 24th Dec, 2021</span>
+                                                
+                                              </div>
+                                        </div>
+                                        <div class="assignment-card">
+                                          <img src="{% static 'assets/images/avatar.png' %}" class="img-fluid">
+                                          <div class="assignment-card-title">
+                                              <span class="assignment-title">
+                                                Email Flyer
+                                              </span>
+                                              <span class="assignment-date">Due date: 28th Dec, 2021</span>
+                                            </div>
+                                      </div>
+                                      
+                                     </div> -->
+
+
+                          <div class="table-responsive portal-table">
+
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Assignments</th>
+                                  <th>Category</th>
+                                  <th>Due Date</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <!-- <tr>
+                                              <div>
+
+                                                <td  onclick="toggle_div_fun('show__pdf');">
+                                                  <h3>Simple Mobile App  
+                                                  </h3>                                                 
+                                                </td>
+                                                <td><span class="assignment-detail">Android</span></td>
+                                                <td><span class="assignment-detail">24th Dec, 2021</span></td>
+                                                <td>Assigned</td>       
+                                              </div>
+                                                <td id="show__pdf">
+                                                  <i class="fas fa-paperclip"></i>  Assignment Attachment
+                                                </td>
+                                            </tr> -->
+                                <tr data-toggle="collapse" data-target="#assgn1" class="accordion-toggle">
+                                  <td class="assignment-card-title">
+                                    <h3>Email Flyer</h3>
+                                  </td>
+                                  <td><span class="assignment-detail">UI UX</span></td>
+                                  <td><span class="assignment-detail">24th Dec, 2021</span></td>
+                                  <td>Assigned</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="6" class="hiddenRow">
+                                    <div id="assgn1" class="accordian-body collapse assignment-card">
+                                      <img src="{% static 'assets/images/clip.png' %}" class="img-fluid">
+                                      <span class="assignment-title">
+                                        Dilisha_Maharjan_Assignment1_Email Flyer
+                                      </span>
+                                      <span class="assignment-time">5 min ago</span>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr data-toggle="collapse" data-target="#assgn2" class="accordion-toggle">
+                                  <td class="assignment-card-title">
+                                    <h3>Write the test plan for website</h3>
+                                  </td>
+                                  <td><span class="assignment-detail">QA</span></td>
+                                  <td><span class="assignment-detail">24th Dec, 2021</span></td>
+                                  <td>Assigned</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="6" class="hiddenRow">
+                                    <div id="assgn2" class="accordian-body collapse assignment-card">
+                                      <img src="{% static 'assets/images/clip.png' %}" class="img-fluid">
+                                      <span class="assignment-title">
+                                        Dilisha_Maharjan_Assignment1_Test_Plan
+                                      </span>
+                                      <span class="assignment-time">5 min ago</span>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr data-toggle="collapse" data-target="#assgn3" class="accordion-toggle">
+                                  <td class="assignment-card-title"> 
+                                    <h3>Develop mobile app from Flutter</h3>
+                                  </td>
+                                  <td><span class="assignment-detail">Android</span></td>
+                                  <td><span class="assignment-detail">24th Dec, 2021</span></td>
+                                  <td>Assigned</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="6" class="hiddenRow">
+                                    <div id="assgn3" class="accordian-body collapse assignment-card">
+                                      <img src="{% static 'assets/images/clip.png' %}" class="img-fluid">
+                                      <span class="assignment-title">
+                                        Dilisha_Maharjan_Assignment1_Flutter_App
+                                      </span>
+                                      <span class="assignment-time">5 min ago</span>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="tab-pane fade" id="rejected" role="tabpanel" aria-labelledby="rejected-tab">
+                          <div class="table-responsive portal-table">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Assignments</th>
+                                  <th>Category</th>
+                                  <th>Assigned Tutor</th>
+                                  <th>Status</th>
+                                  <th>Marks</th>
+                                  <th>Action</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr class="rejected">
+                                  <td>
+                                    <h3>Simple Mobile App</h3>
+                                    <span class="upload-date">24th Dec, 2021</span>
+                                  </td>
+                                  <td>Android</td>
+                                  <td>Sanjog Shrestha</td>
+                                  <td>
+                                    <div class="badge badge-danger">Rejected</div>
+                                  </td>
+                                  <td>0 out of 100</td>
+                                  <td>
+                                    <div class="action-btn">
+                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
+                                    </div>
+                                  </td>
+                                </tr>
+
+                                <tr class="checked">
+                                  <td>
+                                    <h3>Health Insaurance Website Desing</h3>
+                                    <span class="upload-date">24th Dec, 2021</span>
+                                  </td>
+                                  <td>UI/UX</td>
+                                  <td>Sanjog Shrestha</td>
+                                  <td>
+                                    <div class="badge badge-success">Checked</div>
+                                  </td>
+                                  <td>85 out of 100</td>
+                                  <td>
+                                    <div class="action-btn">
+                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
+                                    </div>
+                                  </td>
+                                </tr>
+
+                                <tr class="checked">
+                                  <td>
+                                    <h3>Health Insaurance Website Desing</h3>
+                                    <span class="upload-date">24th Dec, 2021</span>
+                                  </td>
+                                  <td>UI/UX</td>
+                                  <td>Sanjog Shrestha</td>
+                                  <td>
+                                    <div class="badge badge-success">Checked</div>
+                                  </td>
+                                  <td>85 out of 100</td>
+                                  <td>
+                                    <div class="action-btn">
+                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+                          <div class="table-responsive portal-table">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Assignments</th>
+                                  <th>Category</th>
+                                  <th>Assigned Tutor</th>
+                                  <th>Status</th>
+                                  <th>Marks</th>
+                                  <th>Action</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <h3>Simple Mobile App</h3>
+                                    <span class="upload-date">24th Dec, 2021</span>
+                                  </td>
+                                  <td>Android</td>
+                                  <td>Sanjog Shrestha</td>
+                                  <td>
+                                    <div class="badge badge-warning">Pending</div>
+                                  </td>
+                                  <td>0 out of 100</td>
+                                  <td>
+                                    <div class="action-btn">
+                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
+                                    </div>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    <h3>Email Flyer Design</h3>
+                                    <span class="upload-date">24th Dec, 2021</span>
+                                  </td>
+                                  <td>UI Design</td>
+                                  <td>Sanjog Shrestha</td>
+                                  <td>
+                                    <div class="badge badge-warning">Pending</div>
+                                  </td>
+                                  <td>0 out of 100</td>
+                                  <td>
+                                    <div class="action-btn">
+                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="ebook" role="tabpanel" aria-labelledby="ebook-tab">
+              <div class="row">
+                <div class="col-12">
+                  <div class="tab-title split">
+                    <h2>eBook Library</h2>
+                  </div>
+                </div>
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
+                  <div class="coursesBlock">
+                    <div class="course-img">
+                      <img src="{% static 'assets/images/android.png' %}" class="img-fluid" alt="course image" />
+                    </div>
+                    <h3>Android Training</h3>
+                    <div class="courseApply">
+                      <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link">View Course</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
+                  <div class="coursesBlock">
+                    <div class="course-img">
+                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
+                    </div>
+                    <h3>DevOps Training</h3>
+                    <div class="courseApply">
+                      <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link">View Course</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
+                  <div class="coursesBlock">
+                    <div class="course-img">
+                      <img src="{% static 'assets/images/android.png' %}" class="img-fluid" alt="course image" />
+                    </div>
+                    <h3>Android Training</h3>
+                    <div class="courseApply">
+                      <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link">View Course</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
+                  <div class="coursesBlock">
+                    <div class="course-img">
+                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
+                    </div>
+                    <h3>DevOps Training</h3>
+                    <div class="courseApply">
+                      <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link">View Course</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
+                  <div class="coursesBlock">
+                    <div class="course-img">
+                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
+                    </div>
+                    <h3>DevOps Training</h3>
+                    <div class="courseApply">
+                      <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link">View Course</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="invoice" role="tabpanel" aria-labelledby="invoice-tab">
+              <div class="row">
+                <div class="col-12">
+                  <div class="tab-title split">
+                    <h2>Invoices</h2>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="table-responsive portal-table">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Invoice ID</th>
+                          <th>Invoice Date</th>
+                          <th>Total</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <strong>37891</strong>
+                          </td>
+                          <td>Wednesday, December 22nd, 2021</td>
+                          <td>NPR 29,999</td>
+                          <td>Paid</td>
+                          <td>
+                            <div class="action-btn">
+                              <a href="#" title="View Invoice"><i class="fas fa-eye"></i></a>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr class="rejected">
+                          <td>
+                            <strong>37891</strong>
+                          </td>
+                          <td>Wednesday, December 22nd, 2021</td>
+                          <td>NPR 29,999</td>
+                          <td>Unpaid</td>
+                          <td>
+                            <div class="action-btn">
+                              <a href="#" title="View Invoice"><i class="fas fa-eye"></i></a>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong>37891</strong>
+                          </td>
+                          <td>Wednesday, December 22nd, 2021</td>
+                          <td>NPR 29,999</td>
+                          <td>Paid</td>
+                          <td>
+                            <div class="action-btn">
+                              <a href="#" title="View Invoice"><i class="fas fa-eye"></i></a>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="inner-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6">
+          <div class="footer-widget">
+            <div class="foot-logo mb-5">
+              <img src="{% static 'assets/images/colorlogo.png' %}" class="img-fluid" alt="" />
+            </div>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been
+            </p>
+          </div>
+        </div>
+        <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-sm-6">
+          <div class="footer-widget">
+            <h2>Courses</h2>
+            <ul>
+              <li><a href="#">Mobile App Development</a></li>
+              <li><a href="#">SEO</a></li>
+              <li><a href="#">Web Development</a></li>
+              <li><a href="#">UI UX & Web Design</a></li>
+              <li><a href="#">DevOps</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-sm-6">
+          <div class="footer-widget">
+            <h2>Quick Links</h2>
+            <ul>
+              <li><a href="#intro">Introduction</a></li>
+              <li><a href="#">Login</a></li>
+              <li><a href="#">Register</a></li>
+              <li><a href="#course">Courses</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6">
+          <div class="footer-widget">
+            <h2>Contact</h2>
+            <ul>
+              <li>
+                <a href="mailto:email@domainname.com">email@domainname.com</a>
+              </li>
+              <li>
+                <a href="tel:+977-98123456789">+977-9808312485</a>
+                <a href="tel:+977-98123456789">+977-9808312485</a>
+              </li>
+            </ul>
+            <br />
+            <br />
+            <h2>Payment Method</h2>
+            <div class="payment-logo">
+              <ul>
+                <li><img src="{% static 'assets/images/esewa.png' %}" alt="" /></li>
+                <li><img src="{% static 'assets/images/khalti.png' %}" alt="" /></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End of footer -->
+
+  <div class="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+          <ul>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+          <p>
+            Copyright &copy; 2021 |
+            <span class="brand-color">Edulaya : Learning Management System</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of copyright -->
+
+  <!-- Homework Upload Pop Up -->
+  <div class="modal fade" id="homeworkModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-pop">
+        <div class="modal-header">
+          <h5 class="modal-title">Upload Your Assignment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+            <div class="form-group mb-5">
+              <label>Assignment Title</label>
+              <input type="text" class="custom-field log-input" placeholder="Enter Assignment Title" name="" id="" />
+            </div>
+            <div class="form-group mb-5">
+              <input type="file" class="custom-file-input upload-work" />
+            </div>
+            <div class="form-group mb-5">
+              <label>Category</label>
+              <select name="" class="custom-field log-input">
+                <option value="null">Select Assignment Category</option>
+                <option value="">Android</option>
+                <option value="">DevOps</option>
+                <option value="">Web Development</option>
+                <option value="">UI/UX</option>
+              </select>
+            </div>
+            <div class="form-group mb-5">
+              <label>Tutor</label>
+              <select name="" class="custom-field log-input">
+                <option value="null">Select Your Tutor</option>
+                <option value="">Tutor 1</option>
+                <option value="">Tutor 2</option>
+                <option value="">Tutor 3</option>
+                <option value="">Tutor 4</option>
+              </select>
+            </div>
+
+            <div class="form-group mb-5">
+              <button type="submit" class="apply-submitBtn">
+                Submit Assignment
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Download Certificates Pop Up -->
+  <div class="modal fade" id="downloadModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-pop">
+        <div class="modal-header">
+          <h5 class="modal-title">Download Your Certificate</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th style="border-bottom-style: none;">Courses</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>UI & UX Development</td>
+                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
+                </tr>
+                <tr>
+                  <td>SEO and Social Media</td>
+                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
+                </tr>
+                <tr>
+                  <td>DevOps</td>
+                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
+                </tr>
+                <tr>
+                  <td>Android Development</td>
+                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
+                </tr>
+                <tr>
+                  <td>Cloud Computing</td>
+                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    function toggle_div_fun(id) {
+      var divelement = document.getElementById(id);
+      if (divelement.style.display == 'none')
+        divelement.style.display = 'block';
+      else
+        divelement.style.display = 'none';
+    }
+
+
+  </script>
+
+  <script type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>
+  <!-- jQuery -->
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- Bootstrap Js -->
+
+  <script type="text/javascript" src="{% static 'assets/js/plugins.js' %}"></script>
+  <!-- Banner Carousel -->
+
+  <script type="text/javascript" src="{% static 'assets/js/popper.min.js' %}"></script>
+  <!-- Popper JS -->
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+  <script type="text/javascript" src="{% static 'assets/js/aos.js' %}"></script>
+  <!-- Animation Js -->
+
+  <script type="text/javascript" src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+  <!-- Magnific Popup -->
+
+  <script type="text/javascript" src="{% static 'assets/js/jquery.nav.js' %}"></script>
+  <!-- One page scroll -->
+
+  <script type="text/javascript" src="{% static 'assets/js/pushy.min.js' %}"></script>
+  <!-- Mobile Side bar -->
+
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+    integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+    crossorigin="anonymous"></script>
+  <!-- Font Awesome Icon -->
+
+  <script src="{% static 'assets/chart/chart.js/Chart.min.js' %}"></script>
+  <script src="{% static 'assets/js/chart-pie.js' %}"></script>
+  <!-- Chart js -->
+
+  <script type="text/javascript" src="{% static 'assets/js/custom.js' %}"></script>
+  <!-- Custom Js -->
+</body>
+
+</html>

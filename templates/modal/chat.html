@@ -1,0 +1,119 @@
+{% load  static %}
+<!-- Content wrapper start -->
+<div class="content-wrapper">
+
+    <!-- Row start -->
+    <div class="row gutters">
+
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+            <div class="card m-0">
+                <input type="hidden" id="logged-in-user" value="{{ user.id }}">
+
+                <!-- Row start -->
+                <div class="row no-gutters chat-section">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
+                        <div class="users-container">
+                            <div class="chat-search-box">
+                                <div class="input-group">
+                                    <input class="form-control" placeholder="Search">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            {% for thread in Threads %}
+
+                            <ul class="users">
+                                <a href="#list-chat-{{thread.id}}" 
+                                class="filterDiscussions all unread single {% if forloop.first %}active{% endif %} contact-li" 
+                                chat-id="chat_{{ thread.id }}" 
+                                style="cursor: pointer" 
+                                id="list-empty-list" 
+                                data-toggle="list" 
+                                role="tab"
+                                >
+                                <li class="person active-user" data-chat="person2">
+                                    <div class="user">
+                                        <img src="https://www.bootdey.com/img/Content/avatar/avatar2.png" alt="Retail Admin">
+                                        <span class="status away"></span>
+                                    </div>
+                                    <p class="name-time">
+                                        <span class="name">
+                                            {% if thread.first_person == user %}
+                                                {{ thread.second_person.full_name }}
+                                            {% else %}
+                                                {{ thread.first_person.full_name }}
+                                            {% endif %}
+                                        </span>
+                                    </p>
+                                </li>
+                            </a>
+                            {% endfor %}
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    {% for thread in Threads %}
+                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9 messages-wrapper {% if forloop.first %}hide is_active{% else %}hide{% endif %}" chat-id="chat_{{ thread.id }}" other-user-id="
+                    {% if thread.first_person == user %}
+                {{ thread.second_person.id }}
+            {% else %}
+                {{ thread.first_person.id }}
+            {% endif %}" id="chat1">
+                        <div class="selected-user">
+                            <span>To: <span class="name">
+                                {% if thread.first_person == user %}
+                                    <a href="#">{{ thread.second_person.full_name }}</a>
+                                    {% else %}
+                                    <a href="#">{{ thread.first_person.full_name }}</a>
+                                    {% endif %}
+                            </span></span>
+                        </div>
+                        
+                        <div class="chat-container">
+                            <ul class="chat-box chatContainerScroll maa">
+                            {% for chat in thread.chatmessage_thread.all %}
+                                {% if chat.user == user %}	
+                                <li class="chat-right">
+                                    <div class="chat-hour">{{chat.timestamp}} <span class="fa fa-check-circle"></span></div>
+                                    <div class="chat-text">{{chat.message}}</div>
+                                    <div class="chat-avatar">
+                                        <img src="https://www.bootdey.com/img/Content/avatar/avatar4.png" alt="Retail Admin">
+                                        <div class="chat-name">{{chat.user.full_name}}</div>
+                                    </div>
+                                </li>
+                                {% else %}
+                                <li class="chat-left">
+                                    <div class="chat-avatar">
+                                        <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+                                        <div class="chat-name">{{chat.user.full_name}}</div>
+                                    </div>
+                                    <div class="chat-text">{{chat.message}}</div>
+                                    <div class="chat-hour">{{chat.timestamp}}<span class="fa fa-check-circle"></span></div>
+                                </li>
+                            {% endif %}
+                            {% endfor %}
+                            </ul>
+                            <div class="form-group mt-3 mb-0">
+                                <form id="send-message-form" class="position-relative w-100" style="display: flex;">
+                                    <textarea id="chat-message-input" class="form-control" placeholder="Start typing for reply..." rows="1"></textarea>
+                                    <button type="submit" id="chat-message-submit" class="btn send"><i class="material-icons">send</i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- Row end -->
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Row end -->
+
+</div>
+<!-- Content wrapper end -->

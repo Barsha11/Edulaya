@@ -23,7 +23,8 @@ urlpatterns = [
     path('', include("accounts.urls")),
     path('courses/', include("courses.urls")),
     path('student/', include("student.urls")),
-    path('assignments/', include("assignments.urls"))
+    path('teacher/', include("teacher.urls")),
+    path('assignments/', include("assignments.urls")),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

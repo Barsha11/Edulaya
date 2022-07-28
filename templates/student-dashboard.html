@@ -10,8 +10,8 @@
   <meta name="author" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- <link rel="icon" href="assets/images/favicon.png' %}" type="image"> -->
-
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Bootstrap Css -->
   <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}" />
   <!-- Bootstrap Css -->
 
@@ -43,6 +43,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
+  <style>
+    .hide{
+      display: none;
+    }
+    .is_active{
+      display: block !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -63,7 +71,10 @@
           <div class="nav-action text-end">
             <ul>
               <li>
-                <a href="javascript:void(0)"><i class="fas fa-user"></i> {{request.user.full_name}}</a>
+              {% if user.is_authenticated %}
+                <a href="javascript:void(0)"><i class="fas fa-user"></i>  {{user.full_name}}</a><br>
+                <a href="{% url 'authentication:logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+              {% endif %}
               </li>
             </ul>
           </div>
@@ -116,7 +127,7 @@
               <li class="nav-item" role="presentation">
                 <button class="nav-link" id="invoice-tab" data-bs-toggle="tab" data-bs-target="#invoice" type="button"
                   role="tab" aria-controls="invoice" aria-selected="false">
-                  Invoices
+                  Chatroom
                 </button>
               </li>
             </ul>
@@ -906,65 +917,11 @@
               <div class="row">
                 <div class="col-12">
                   <div class="tab-title split">
-                    <h2>Invoices</h2>
+                    <h2>Chatroom</h2>
                   </div>
                 </div>
-                <div class="col-12">
-                  <div class="table-responsive portal-table">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Invoice ID</th>
-                          <th>Invoice Date</th>
-                          <th>Total</th>
-                          <th>Status</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <strong>37891</strong>
-                          </td>
-                          <td>Wednesday, December 22nd, 2021</td>
-                          <td>NPR 29,999</td>
-                          <td>Paid</td>
-                          <td>
-                            <div class="action-btn">
-                              <a href="#" title="View Invoice"><i class="fas fa-eye"></i></a>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr class="rejected">
-                          <td>
-                            <strong>37891</strong>
-                          </td>
-                          <td>Wednesday, December 22nd, 2021</td>
-                          <td>NPR 29,999</td>
-                          <td>Unpaid</td>
-                          <td>
-                            <div class="action-btn">
-                              <a href="#" title="View Invoice"><i class="fas fa-eye"></i></a>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <strong>37891</strong>
-                          </td>
-                          <td>Wednesday, December 22nd, 2021</td>
-                          <td>NPR 29,999</td>
-                          <td>Paid</td>
-                          <td>
-                            <div class="action-btn">
-                              <a href="#" title="View Invoice"><i class="fas fa-eye"></i></a>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+    {% include 'modal/chat.html' %}
+</div>
               </div>
             </div>
           </div>
@@ -1160,6 +1117,7 @@
   <!-- Custom Js -->
 
   <script src="{% static 'assets/js/student.js' %}"></script>
+  <script src="{% static 'assets/js/socket.js' %}"></script>
 
   <script>
 

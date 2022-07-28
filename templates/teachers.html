@@ -1,4 +1,4 @@
-{% load static%}
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -10,9 +10,8 @@
   <meta name="author" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- Bootstrap Css -->
-
   <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}" />
   <!-- Bootstrap Css -->
 
@@ -39,6 +38,7 @@
 
   <link rel="stylesheet" type="text/css" href="{% static 'assets/css/magnific-popup.css' %}" />
   <!-- Magnific pop up -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -71,7 +71,10 @@
           <div class="nav-action text-end">
             <ul>
               <li>
-                <a href="javascript:void(0)"><i class="fas fa-user"></i>  Name</a>
+              {% if user.is_authenticated %}
+                <a href="javascript:void(0)"><i class="fas fa-user"></i>  {{user.full_name}}</a><br>
+                <a href="{% url 'authentication:logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+              {% endif %}
               </li>
             </ul>
           </div>
@@ -84,7 +87,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 innerBanner-text">
-          <h1>Welcome {Teacher Name}</h1>
+          <h1>Welcome {{user.full_name}}</h1>
           <p>To your dashboard, you can check your everything at here</p>
         </div>
       </div>
@@ -885,7 +888,6 @@
                     <h2>Chatroom</h2>
                   </div>
                 </div>
-
     {% include 'modal/chat.html' %}
 </div>
               </div>
@@ -982,54 +984,7 @@
   <!-- End of copyright -->
 
   <!-- Homework Upload Pop Up -->
-  <div class="modal fade" id="homeworkModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content custom-pop">
-        <div class="modal-header">
-          <h5 class="modal-title">Upload Assignment</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form action="">
-            <div class="form-group mb-5">
-              <label>Assignment Title</label>
-              <input type="text" class="custom-field log-input" placeholder="Enter Assignment Title" name="" id="" />
-            </div>
-            <div class="form-group mb-5">
-              <input type="file" class="custom-file-input upload-work" />
-            </div>
-            <div class="form-group mb-5">
-              <label>Category</label>
-              <select name="" class="custom-field log-input">
-                <option value="null">Select Assignment Category</option>
-                <option value="">Android</option>
-                <option value="">DevOps</option>
-                <option value="">Web Development</option>
-                <option value="">UI/UX</option>
-              </select>
-            </div>
-            <div class="form-group mb-5">
-              <label>Class</label>
-              <select name="" class="custom-field log-input">
-                <option value="null">Select Class</option>
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
-                <option value="">4</option>
-              </select>
-            </div>
-
-            <div class="form-group mb-5">
-              <button type="submit" class="apply-submitBtn">
-                Assign Assignment
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  {% include 'modal/homework_upload.html'%}
   <!-- Download Certificates Pop Up -->
   <div class="modal fade" id="downloadModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

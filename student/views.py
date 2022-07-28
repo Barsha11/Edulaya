@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from assignments.models import AssignmentSubmission, Assignments
 from django.db.models import Value, CharField, Case, When, F, Subquery, OuterRef
+from chat.models import Thread
 from courses.models import CourseEnrollment
 from library.models import Ebook
 
@@ -25,12 +26,16 @@ def student_index(request):
     assignment_count = assignments.count()
     asignment_checked_count = AssignmentSubmission.objects.filter(submitted_by=request.user, status='Checked').count()
     ebook_courses = Ebook.objects.all()
+    user = request.user
+    threads = Thread.objects.by_user(user=request.user).prefetch_related('chatmessage_thread').order_by('timestamp')
     context = {
         'courses': courses,
         'assignments': assignments,
         'course_count': course_count,
         'assignment_count': assignment_count,
         'asignment_checked_count': asignment_checked_count,
-        'ebook_courses':ebook_courses
+        'ebook_courses':ebook_courses,
+        'Threads': threads,
+        'user':user
     }
     return render(request, 'student-dashboard.html', context)

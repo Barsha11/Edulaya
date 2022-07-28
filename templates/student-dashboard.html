@@ -384,7 +384,7 @@
                         </thead>
                         <tbody>
                           {% for assignment in assignments  %}
-                          <tr>
+                          <tr data-toggle="collapse" data-target="#{{assignment.id}}" class="accordion-toggle">
                             <td>
                               <h3>{{assignment.title}}</h3>
                             </td>
@@ -397,6 +397,20 @@
                             <td>
                               <div class="action-btn">
                                 <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="6" class="hiddenRow">
+                              <div id="{{assignment.id}}" class="accordian-body collapse assignment-card">
+                                <span class="assignment-title">
+                                  {% if assignment.file %}
+                                    <a href="{{assignment.file.url}}"><img src="{% static 'assets/images/clip.png' %}" class="img-fluid"></a>
+                                  {% endif %}
+                                    {{assignment.description}}
+                                  
+                                </span>
+                                <span class="assignment-time">{{assignment.deadline}}</span>
                               </div>
                             </td>
                           </tr>
@@ -456,35 +470,7 @@
                 </div>
               </div>
 
-              <!-- ebook-lib  -->
-              <div class="row">
-                <div class="col-md-12 mb-5">
-                  <div class="col-12">
-                    <div class="dashboard-title split">
-                      <h2>eBook Library</h2>
-                      <a href="#" class="view_link d-none d-sm-inline-block">View All</a>
-                    </div>
-                  </div>
-                  <div class="ebook-container">
-                    <div class="col-md-12">
-                      <div class="courses-slider owl-carousel">
-                        {% for book in ebook_courses %}
-                        <div class="item dash-card">
-                          <div class="course-img">
-                            <img src="{{book.image.url}}" class="img-fluid" alt="course image">
-                          </div>
-                          <h3>{{book.title}}</h3>
-                          <div class="courseApply">
-                            <a href="{{book.url}}" class="iframe-link"
-                              data-bs-toggle="modal" data-bs-target="#applyModal">View Course</a>
-                          </div>
-                        </div>
-                        {% endfor %}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {% include 'modal/ebook.html' %}
             </div>
 
             <div class="tab-pane fade" id="course-history" role="tabpanel" aria-labelledby="course-tab">
@@ -1120,9 +1106,8 @@
   <script src="{% static 'assets/js/socket.js' %}"></script>
 
   <script>
-
-
     $("select.assignment").change(function(){
+      alert("doe");
       window.assignment = $(this).children("option:selected").val();
   });
     $("#assignment-submit").on("click", function (e) {
@@ -1165,7 +1150,7 @@
   });
 
 
-  
+
   </script>
   
 </body>

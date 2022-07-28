@@ -1,0 +1,52 @@
+{% load static %}
+<div class="modal fade" id="homeworkModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-pop">
+        <div class="modal-header">
+          <h5 class="modal-title">Create Assignment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" action="#">
+            {% csrf_token %}
+            <div class="form-group mb-5">
+              <label>Assignment Title</label>
+              <input type="text" class="custom-field log-input" placeholder="Enter Assignment Title" name="assignment-title" id="assignment-title" />
+            </div>
+            <div class="form-group mb-5">
+              <label>Assignment Description</label>
+              <input type="text" class="custom-field log-input" placeholder="Enter Assignment Description" name="assignment-description" id="assignment-description" />
+            </div>
+            <div class="form-group mb-5">
+              <label>Marks</label>
+              <input type="number" class="custom-field log-input" placeholder="Enter Assignment Marks" name="assignment-marks" id="assignment-marks" />
+            </div>
+            <div class="form-group mb-5">
+              <label>Course</label>
+              <select name="" id="assignment" class="custom-field log-input assignment">
+                <option value="null">Select Courses</option>
+                {% for course in courses %}
+                <option value="{{course.id}}">{{course.name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div id="msg"></div>'
+            <label>Assignment file</label>
+            <div class="form-group mb-5">
+              <input type="file" id="upload-assignment-file"  />
+            </div>
+            <div class="form-group mb-5">
+              <label>Assignment Deadline</label>
+              <input type="date" class="custom-field log-input" name="assignment-deadline" id="assignment-deadline" />
+            </div>
+            
+            <div class="form-group mb-5">
+              <button type="submit" id="assignment-create" class="apply-submitBtn">
+                Create Assignment
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

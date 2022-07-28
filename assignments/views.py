@@ -19,3 +19,25 @@ def AssignmentSubmissionView(request):
             return JsonResponse({'msg':'<span style="color: green;">Assignment successfully uploaded</span>'})
         else:
             return JsonResponse({'msg':'<span style="color: red;">Error</span>'})
+        
+def AssignmentCreationView(request):
+    title = request.POST.get('assignment-title', None)
+    description = request.POST.get('assignment-description', None) 
+    marks = request.POST.get('assignment-marks', None) 
+    deadline = request.POST.get('assignment-deadline', None) 
+    course = request.POST.get('course', None) 
+    file = request.FILES.get('files[]', None)
+
+    if title and course:
+        assignment = Assignments()
+        assignment.title = title
+        assignment.description = description
+        assignment.full_marks = marks
+        assignment.deadline = deadline
+        assignment.course = Courses.objects.get(id=course)
+        assignment.file = file
+        assignment.save()
+        return JsonResponse({'msg':'<span style="color: green;">Assignment successfully Created</span>'})
+    else:
+            return JsonResponse({'msg':'<span style="color: red;">Error</span>'})
+        

@@ -260,51 +260,20 @@
                           <thead>
                             <tr>
                               <th>Assignments</th>
-                              <th>Category</th>
                               <th>Tutor</th>
                               <th>Status</th>
                               <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr class="checked">
-                              <td>
-                                <h3>Flyer Desing</h3>
-                              </td>
-                              <td>UI/UX</td>
-                              <td>Sonu Mittal</td>
-                              <td>
-                                <div class="badge badge-success">Checked</div>
-                              </td>
-                              <td>
-                                <div class="action-btn">
-                                  <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                </div>
-                              </td>
-                            </tr>
+                          {% for assignment in assignments %}
                             <tr>
                               <td>
-                                <h3>Simple App</h3>
+                                <h3>{{assignment.title}}</h3>
                               </td>
-                              <td>Android</td>
-                              <td>Sanjog Shrestha</td>
+                              <td>{{assignment.course.tutor.full_name}}</td>
                               <td>
-                                <div class="badge badge-danger">Rejected</div>
-                              </td>
-                              <td>
-                                <div class="action-btn">
-                                  <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr class="checked">
-                              <td>
-                                <h3>Mockup Desing</h3>
-                              </td>
-                              <td>UI/UX</td>
-                              <td>Nischal Rajbhandari </td>
-                              <td>
-                                <div class="badge badge-success">Checked</div>
+                                {{assignment.description}}
                               </td>
                               <td>
                                 <div class="action-btn">
@@ -312,36 +281,7 @@
                                 </div>
                               </td>
                             </tr>
-                            <tr>
-                              <td>
-                                <h3>Website Desing</h3>
-                              </td>
-                              <td>UI/UX</td>
-                              <td>Sanjog Shrestha</td>
-                              <td>
-                                <div class="badge badge-warning">Pending</div>
-                              </td>
-                              <td>
-                                <div class="action-btn">
-                                  <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <h3>Simple App</h3>
-                              </td>
-                              <td>Android</td>
-                              <td>Sanjog Shrestha</td>
-                              <td>
-                                <div class="badge badge-danger">Rejected</div>
-                              </td>
-                              <td>
-                                <div class="action-btn">
-                                  <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                </div>
-                              </td>
-                            </tr>
+                          {% endfor %}
                           </tbody>
                         </table>
                       </div>
@@ -349,63 +289,7 @@
                   </div>
               </div>
 
-              <!-- ebook-lib  -->
-              <div class="row">
-                <div class="col-md-12 mb-5">
-                  <div class="col-12">
-                    <div class="dashboard-title split">
-                      <h2>eBook Library</h2>
-                      <a href="#" class="view_link d-none d-sm-inline-block">View All</a>
-                    </div>
-                  </div>
-                  <div class="ebook-container">
-                    <div class="col-md-12">
-                      <div class="courses-slider owl-carousel">
-                        <div class="item dash-card">
-                          <div class="course-img">
-                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
-                          </div>
-                          <h3>SEO and Social Media....</h3>
-                          <div class="courseApply">
-                            <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link"
-                              data-bs-toggle="modal" data-bs-target="#applyModal">View Course</a>
-                          </div>
-                        </div>
-                        <div class="item dash-card">
-                          <div class="course-img">
-                            <img src="{% static 'assets/images/c2.jpg' %}" class="img-fluid" alt="course image">
-                          </div>
-                          <h3>DevOps</h3>
-                          <div class="courseApply">
-                            <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link"
-                              data-bs-toggle="modal" data-bs-target="#applyModal">View Course</a>
-                          </div>
-                        </div>
-                        <div class="item dash-card">
-                          <div class="course-img">
-                            <img src="{% static 'assets/images/c1.jpg' %}" class="img-fluid" alt="course image">
-                          </div>
-                          <h3>Cloud Computing</h3>
-                          <div class="courseApply">
-                            <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link"
-                              data-bs-toggle="modal" data-bs-target="#applyModal">View Course</a>
-                          </div>
-                        </div>
-                        <div class="item dash-card">
-                          <div class="course-img">
-                            <img src="{% static 'assets/images/c2.jpg' %}" class="img-fluid" alt="course image">
-                          </div>
-                          <h3>UI UX Development</h3>
-                          <div class="courseApply">
-                            <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link"
-                              data-bs-toggle="modal" data-bs-target="#applyModal">View Course</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {% include 'modal/ebook.html' %}
             </div>
 
             <div class="tab-pane fade" id="course-history" role="tabpanel" aria-labelledby="course-tab">
@@ -504,60 +388,6 @@
                                     <div class="badge badge-warning">Pending</div>
                                   </td>
                                   <td>0 out of 100</td>
-                                  <td>
-                                    <div class="action-btn">
-                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr class="checked">
-                                  <td>
-                                    <h3>Health Insaurance Website Desing</h3>
-                                    <span class="upload-date">24th Dec, 2021</span>
-                                  </td>
-                                  <td>UI/UX</td>
-                                  <td>Sanjog Shrestha</td>
-                                  <td>
-                                    <div class="badge badge-success">Checked</div>
-                                  </td>
-                                  <td>85 out of 100</td>
-                                  <td>
-                                    <div class="action-btn">
-                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr class="rejected">
-                                  <td>
-                                    <h3>Simple Mobile App</h3>
-                                    <span class="upload-date">24th Dec, 2021</span>
-                                  </td>
-                                  <td>Android</td>
-                                  <td>Sanjog Shrestha</td>
-                                  <td>
-                                    <div class="badge badge-danger">Rejected</div>
-                                  </td>
-                                  <td>0 out of 100</td>
-                                  <td>
-                                    <div class="action-btn">
-                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <h3>Health Insaurance Website Desing</h3>
-                                    <span class="upload-date">24th Dec, 2021</span>
-                                  </td>
-                                  <td>UI/UX</td>
-                                  <td>Sanjog Shrestha</td>
-                                  <td>
-                                    <div class="badge badge-warning">Pending</div>
-                                  </td>
-                                  <td>85 out of 100</td>
                                   <td>
                                     <div class="action-btn">
                                       <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
@@ -733,25 +563,6 @@
                                     </div>
                                   </td>
                                 </tr>
-
-                                <tr class="checked">
-                                  <td>
-                                    <h3>Health Insaurance Website Desing</h3>
-                                    <span class="upload-date">24th Dec, 2021</span>
-                                  </td>
-                                  <td>UI/UX</td>
-                                  <td>Sanjog Shrestha</td>
-                                  <td>
-                                    <div class="badge badge-success">Checked</div>
-                                  </td>
-                                  <td>85 out of 100</td>
-                                  <td>
-                                    <div class="action-btn">
-                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
-                                    </div>
-                                  </td>
-                                </tr>
                               </tbody>
                             </table>
                           </div>
@@ -830,50 +641,6 @@
                       <img src="{% static 'assets/images/android.png' %}" class="img-fluid" alt="course image" />
                     </div>
                     <h3>Android Training</h3>
-                    <div class="courseApply">
-                      <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link">View Course</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
-                  <div class="coursesBlock">
-                    <div class="course-img">
-                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
-                    </div>
-                    <h3>DevOps Training</h3>
-                    <div class="courseApply">
-                      <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link">View Course</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
-                  <div class="coursesBlock">
-                    <div class="course-img">
-                      <img src="{% static 'assets/images/android.png' %}" class="img-fluid" alt="course image" />
-                    </div>
-                    <h3>Android Training</h3>
-                    <div class="courseApply">
-                      <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link">View Course</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
-                  <div class="coursesBlock">
-                    <div class="course-img">
-                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
-                    </div>
-                    <h3>DevOps Training</h3>
-                    <div class="courseApply">
-                      <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link">View Course</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
-                  <div class="coursesBlock">
-                    <div class="course-img">
-                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
-                    </div>
-                    <h3>DevOps Training</h3>
                     <div class="courseApply">
                       <a href="https://www.youtube.com/watch?v=nWwpyclIEu4" class="iframe-link">View Course</a>
                     </div>
@@ -984,7 +751,7 @@
   <!-- End of copyright -->
 
   <!-- Homework Upload Pop Up -->
-  {% include 'modal/homework_upload.html'%}
+  {% include 'modal/homework_create.html'%}
   <!-- Download Certificates Pop Up -->
   <div class="modal fade" id="downloadModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -1085,7 +852,55 @@
   <!-- Custom Js -->
   <script src="{% static 'assets/js/socket.js' %}"></script>
 
-  <!-- Custom Js -->
+  <script>
+    $("select.assignment").change(function(){
+      window.course = $(this).children("option:selected").val();
+  });
+
+ $("#assignment-create").on("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var form_data = new FormData();
+    var file = document.getElementById('upload-assignment-file').files.length;
+    if(file!=0){
+      for (var x = 0; x < file; x++) {
+          form_data.append("files[]", document.getElementById('upload-assignment-file').files[x]);
+      }
+    };
+    csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+      
+    form_data.append("csrfmiddlewaretoken", csrf_token);
+    
+    form_data.append("assignment-title", $('#assignment-title').val());
+    form_data.append("assignment-description", $('#assignment-description').val());
+    form_data.append("assignment-marks", $('#assignment-marks').val());
+    form_data.append("assignment-deadline", $('#assignment-deadline').val());
+    form_data.append("course", course);
+    $.ajax({
+          type: "POST",
+          url :"/assignments/assignment-create",
+          dataType: 'json',
+          Cache: false,
+          contentType: false,
+      processData: false,
+          data: form_data,
+          success: function(response) {
+              $('#msg').html(response.msg);
+              location.reload();
+          },
+          error: function(response) {
+              $('#msg').html(response.message);
+          }
+      });
+  
+      
+      
+});
+
+
+
+  </script>
+
 </body>
 
 </html>

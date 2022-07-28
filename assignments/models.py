@@ -3,7 +3,8 @@ from courses.models import Courses
 # Create your models here.
 class Assignments(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
+    file = models.FileField(upload_to='assignment-question/', null=True, blank=True)
     full_marks = models.IntegerField()
     course = models.ForeignKey(Courses, on_delete=models.CASCADE, related_name='assignments_course')
     created_at = models.DateTimeField(auto_now_add=True)

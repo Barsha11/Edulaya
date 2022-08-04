@@ -93,11 +93,9 @@
                         <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signUpModal"><i class="fas fa-clipboard-list"></i> Sign Up</a></li>
                         {% else %}
                         <li><a href="#">Welcome {{user.full_name}}</a></li>
-                        <div class="dropdown">
-                            <div class="dropdown-content">
+                        
                               <li><a href="{% url 'authentication:logout' %}">Logout</a></li>
-                            </div>
-                          </div>
+                           
                         {% endif %}
                     </ul>
                 </div>
@@ -153,9 +151,6 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <span class="title-icon icon-yellow mb-5">
-                        <i class="fas fa-book-open"></i>
-                    </span>
                     <h2>Featured Courses</h2>
                 </div>
             </div>
@@ -178,11 +173,6 @@
                     {% endfor %}
                 </div>
             </div>
-            <!-- <div class="col-12">
-                <div class="apply-btn">
-                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Courses</a>
-                </div>
-            </div> -->
         </div>
     </div>
 </section>
@@ -207,9 +197,6 @@
             <div class="col-xxl-7 col-xl-7 col-lg-7 col-12 mt-5">
                 <div class="intro-text">
                     <div class="section-title mb-4">
-                        <span class="title-icon icon-blue mb-4">
-                            <i class="far fa-lightbulb"></i>
-                        </span>
                         <h2>About the Us</h2>
                     </div>
                     <p>Edulaya is a collaboration between learning institute and learners in order to provide the interested students with a platform to build a suitable career in the field of Information Technology. <br>
@@ -218,46 +205,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="row">
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-12 mt-4">
-                <div class="intro-card job-guranteed">
-                    <div class="split mb-4">
-                        <h3>Job Guranteed</h3>
-                        <span class="title-icon icon-yellow">
-                            <i class="fas fa-briefcase"></i>
-                        </span>
-                    </div>
-                    <p>Brolly off his nut A bit of how’s your father chancer in my flat chinwag bog skive. 
-                         your father chancer in my flat chinwag bog skive.</p>
-                </div>
-            </div>
-
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-12 mt-4">
-                <div class="intro-card lecturers">
-                    <div class="split mb-4">
-                        <h3>Skilled Lecturers</h3>
-                        <span class="title-icon icon-blue">
-                            <i class="fas fa-graduation-cap"></i>
-                        </span>
-                    </div>
-                    <p>Brolly off his nut A bit of how’s your father chancer in my flat chinwag bog skive. 
-                         your father chancer in my flat chinwag bog skive.</p>
-                </div>
-            </div>
-
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-12 mt-4">
-                <div class="intro-card money-back">
-                    <div class="split mb-4">
-                        <h3>Money Back</h3>
-                        <span class="title-icon icon-red">
-                            <i class="fas fa-hand-holding-usd"></i>
-                        </span>
-                    </div>
-                    <p>Brolly off his nut A bit of how’s your father chancer in my flat chinwag bog skive. 
-                         your father chancer in my flat chinwag bog skive.</p>
-                </div>
-            </div>
-        </div> -->
     </div>
 </section>
 <!-- End of intro wrap -->
@@ -267,9 +214,6 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <span class="title-icon icon-yellow mb-5">
-                        <i class="fas fa-star"></i>
-                    </span>
                     <h2>Lock your successful future</h2>
                 </div>
             </div>

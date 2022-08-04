@@ -230,7 +230,7 @@
                     </div>
                   </div>
                   <div class="dash-card">
-                    <div class="course-indicator">
+                    {% comment %} <div class="course-indicator">
                       <h4>Cloud Computing <span class="num">20%</span></h4>
                       <div class="progress mb-3">
                         <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20"
@@ -244,19 +244,20 @@
                         <div class="progress-bar bg-info" role="progressbar" style="width: 40%" aria-valuenow="40"
                           aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
-                    </div>
-
+                    </div> {% endcomment %}
+                    {% for course in courses %}
                     <div class="course-indicator">
                       <h4>
-                        SEO and Social Media <span class="num">60%</span>
+                        {{course.course.name}}<span class="num">60%</span>
                       </h4>
                       <div class="progress mb-3">
                         <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60"
                           aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                     </div>
+                    {% endfor %}
 
-                    <div class="course-indicator">
+                    {% comment %} <div class="course-indicator">
                       <h4>
                         UI UX Development
                         <span class="num">Complete!</span>
@@ -265,7 +266,7 @@
                         <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100"
                           aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
-                    </div>
+                    </div> {% endcomment %}
                   </div>
                 </div>
                 <!-- pie chart  -->
@@ -297,7 +298,7 @@
 
               <!-- invoice  -->
               <div class="row">
-                <div class="col-md-6 mb-5">
+                {% comment %} <div class="col-md-6 mb-5">
                   <div class="col-12">
                     <div class="dashboard-title split">
                       <h2>Invoice</h2>
@@ -330,41 +331,14 @@
                               </div>
                             </td>
                           </tr>
-                          <tr class="rejected">
-                            <td>
-                              <strong>37891</strong>
-                            </td>
-                            <td>December 22nd, 2021</td>
-                            <td>NPR 29,999</td>
-                            <td>Unpaid</td>
-                            <td>
-                              <div class="action-btn">
-                                <a href="#" title="View Invoice"><i class="fas fa-eye"></i></a>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <strong>37891</strong>
-                            </td>
-                            <td>December 22nd, 2021</td>
-                            <td>NPR 29,999</td>
-                            <td>Paid</td>
-                            <td>
-                              <div class="action-btn">
-                                <a href="#" title="View Invoice"><i class="fas fa-eye"></i></a>
-                              </div>
-                            </td>
-                          </tr>
-
                         </tbody>
                       </table>
                     </div>
                   </div>
-                </div>
+                </div> {% endcomment %}
 
                 <!-- assignment  -->
-                <div class="col-md-6 mb-5">
+                <div class="col-md-12 mb-5">
                   <div class="col-12">
                     <div class="dashboard-title split">
                       <h2>Assignments</h2>
@@ -496,70 +470,6 @@
                     </ul>
                   </div>
                 </div>
-                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
-                  <div class="coursesBlock">
-                    <div class="course-img">
-                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
-                    </div>
-                    <h3>DevOps Training</h3>
-                    <p>
-                      <strong>Course Status:</strong>
-                      <span class="completed">Completed</span>
-                    </p>
-                    <ul>
-                      <li>2 Months Course</li>
-                      <li>10am - 11am Classes</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
-                  <div class="coursesBlock">
-                    <div class="course-img">
-                      <img src="{% static 'assets/images/android.png' %}" class="img-fluid" alt="course image" />
-                    </div>
-                    <h3>Android Training</h3>
-                    <p>
-                      <strong>Course Status:</strong>
-                      <span class="completed">Completed</span>
-                    </p>
-                    <ul>
-                      <li>DevOps Training</li>
-                      <li>10am - 11am Classes</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
-                  <div class="coursesBlock">
-                    <div class="course-img">
-                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
-                    </div>
-                    <h3>DevOps Training</h3>
-                    <p>
-                      <strong>Course Status:</strong>
-                      <span class="completed">Completed</span>
-                    </p>
-                    <ul>
-                      <li>2 Months Course</li>
-                      <li>10am - 11am Classes</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-12 mb-5">
-                  <div class="coursesBlock">
-                    <div class="course-img">
-                      <img src="{% static 'assets/images/devops.png' %}" class="img-fluid" alt="course image" />
-                    </div>
-                    <h3>DevOps Training</h3>
-                    <p>
-                      <strong>Course Status:</strong>
-                      <span class="completed">Completed</span>
-                    </p>
-                    <ul>
-                      <li>DevOps Training</li>
-                      <li>10am - 11am Classes</li>
-                    </ul>
-                  </div>
-                </div>
               </div>
             </div>
             <div class="tab-pane fade" id="assignment" role="tabpanel" aria-labelledby="assignment-tab">
@@ -569,7 +479,7 @@
                     <h2>Assignment Center</h2>
                     <div class="upload-btn">
                       <a href="javscript:void(0)" data-bs-toggle="modal" data-bs-target="#homeworkModal">Upload
-                        Homework</a>
+                        Assignment</a>
                     </div>
                   </div>
                 </div>
@@ -585,8 +495,8 @@
                             aria-controls="assigned" aria-selected="false">Assigned</a>
                           <a class="nav-link" id="rejected-tab" data-toggle="pill" href="#rejected" role="tab"
                             aria-controls="rejected" aria-selected="false">Returned</a>
-                          <a class="nav-link" id="pending-tab" data-toggle="pill" href="#pending" role="tab"
-                            aria-controls="pending" aria-selected="false">Missing</a>
+                          {% comment %} <a class="nav-link" id="pending-tab" data-toggle="pill" href="#pending" role="tab"
+                            aria-controls="pending" aria-selected="false">Missing</a> {% endcomment %}
                         </div>
                       </div>
                     </div>
@@ -701,44 +611,6 @@
                                     </div>
                                   </td>
                                 </tr>
-                                <tr data-toggle="collapse" data-target="#assgn2" class="accordion-toggle">
-                                  <td class="assignment-card-title">
-                                    <h3>Write the test plan for website</h3>
-                                  </td>
-                                  <td><span class="assignment-detail">QA</span></td>
-                                  <td><span class="assignment-detail">24th Dec, 2021</span></td>
-                                  <td>Assigned</td>
-                                </tr>
-                                <tr>
-                                  <td colspan="6" class="hiddenRow">
-                                    <div id="assgn2" class="accordian-body collapse assignment-card">
-                                      <img src="{% static 'assets/images/clip.png' %}" class="img-fluid">
-                                      <span class="assignment-title">
-                                        Dilisha_Maharjan_Assignment1_Test_Plan
-                                      </span>
-                                      <span class="assignment-time">5 min ago</span>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr data-toggle="collapse" data-target="#assgn3" class="accordion-toggle">
-                                  <td class="assignment-card-title"> 
-                                    <h3>Develop mobile app from Flutter</h3>
-                                  </td>
-                                  <td><span class="assignment-detail">Android</span></td>
-                                  <td><span class="assignment-detail">24th Dec, 2021</span></td>
-                                  <td>Assigned</td>
-                                </tr>
-                                <tr>
-                                  <td colspan="6" class="hiddenRow">
-                                    <div id="assgn3" class="accordian-body collapse assignment-card">
-                                      <img src="{% static 'assets/images/clip.png' %}" class="img-fluid">
-                                      <span class="assignment-title">
-                                        Dilisha_Maharjan_Assignment1_Flutter_App
-                                      </span>
-                                      <span class="assignment-time">5 min ago</span>
-                                    </div>
-                                  </td>
-                                </tr>
                               </tbody>
                             </table>
                           </div>
@@ -794,30 +666,11 @@
                                     </div>
                                   </td>
                                 </tr>
-
-                                <tr class="checked">
-                                  <td>
-                                    <h3>Health Insaurance Website Desing</h3>
-                                    <span class="upload-date">24th Dec, 2021</span>
-                                  </td>
-                                  <td>UI/UX</td>
-                                  <td>Sanjog Shrestha</td>
-                                  <td>
-                                    <div class="badge badge-success">Checked</div>
-                                  </td>
-                                  <td>85 out of 100</td>
-                                  <td>
-                                    <div class="action-btn">
-                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
-                                    </div>
-                                  </td>
-                                </tr>
                               </tbody>
                             </table>
                           </div>
                         </div>
-                        <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+                        {% comment %} <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
                           <div class="table-responsive portal-table">
                             <table class="table">
                               <thead>
@@ -870,7 +723,7 @@
                               </tbody>
                             </table>
                           </div>
-                        </div>
+                        </div> {% endcomment %}
                       </div>
                     </div>
                   </div>

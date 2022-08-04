@@ -489,8 +489,9 @@
                     'email': email,
                     'password': password,
                 },
-                success:function(response){   
-                    if(response.role == 'Student') location.href = "{% url 'students:student_index' %}";
+                success:function(response){ 
+                    if(response.is_superuser==true) location.href = "{% url 'authentication:administrator' %}";
+                    else if(response.role == 'Student') location.href = "{% url 'students:student_index' %}";
                     else if(response.role == 'Teacher') location.href = "{% url 'teacher:teacher_index' %}";
                 else location.href = "{% url 'authentication:homepage' %}";
                     {% comment %} location.reload(); {% endcomment %}

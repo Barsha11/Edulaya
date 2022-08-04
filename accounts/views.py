@@ -9,6 +9,7 @@ from django.http.response import JsonResponse
 from rest_framework import status
 import requests
 from courses.models import *
+from library.models import Ebook
 
 def homepage(request):
     courses = Courses.objects.all()
@@ -60,6 +61,7 @@ def login_request(request):
             context['status'] = 'Success!'
             context['code'] = status.HTTP_200_OK
             context['role'] = user.role
+            context['is_superuser'] = user.is_superadmin
             messages.success(request, 'You are now logged in.')
             url = request.META.get('HTTP_REFERER')
             try:
@@ -82,3 +84,19 @@ def logout_request(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
     return redirect("authentication:homepage")
+
+
+def administrator(request):
+    courses = Courses.objects.all()
+    course_count = courses.count()
+    students_count = Account.objects.filter(role='Student').count()
+    teachers_count = Account.objects.filter(role='Teacher').count()
+    ebook_count = Ebook.objects.all().count()
+    context = {
+        'courses': courses,
+        'course_count': course_count,
+        'ebook_count':ebook_count,
+        "students_count":students_count,
+        "teachers_count":teachers_count
+    }
+    return render(request, template_name="admin2/index.html", context=context)

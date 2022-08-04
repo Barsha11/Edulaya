@@ -72,10 +72,11 @@
             <ul>
               <li>
               {% if user.is_authenticated %}
-                <a href="javascript:void(0)"><i class="fas fa-user"></i>  {{user.full_name}}</a><br>
-                <a href="{% url 'authentication:logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a>
-              {% endif %}
+                <a href="javascript:void(0)"><i class="fas fa-user"></i>  {{user.full_name}}</a> </li>
+                <li><a href="{% url 'authentication:logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            
               </li>
+              {% endif %}
             </ul>
           </div>
         </div>

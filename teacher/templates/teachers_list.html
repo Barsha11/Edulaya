@@ -5,9 +5,9 @@
       <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <p class="card-title">Ebooks List</p>
-            <a href="{% url 'ebooks:ebook_add' %}" class="add-link">
-              <p class="add-text"><i class="fa fa-plus">&nbsp;</i> Add Ebook</p>
+            <p class="card-title">Teachers List</p>
+            <a href="{% url 'teacher:teacher_add' %}" class="add-link">
+              <p class="add-text"><i class="fa fa-plus">&nbsp;</i> Add Teacher</p>
             </a>
             <div class="row">
               <div class="col-12">
@@ -16,26 +16,25 @@
                     <thead>
                       <tr>
                         <th>S.No</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Image</th>
-                        <th>URL</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Joined Date</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {% for ebook in ebooks %}
+                      {% for teacher in teachers %}
                       <tr>
-                        <td>{{forloop.counter}}</td>
-                        <td>{{ebook.title}}</td>
-                        <td>{{ebook.description}}</td>
-                        <td><a href="{{ ebook.image.url }}" target="_blank"><img src={{ ebook.image.url }}
-                          height="40px"></a></td>
-                        <td><a href="{{ ebook.url }}" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/160/160205.png" height="40px"></a></td>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{teacher.full_name}}</td>
+                        <td>{{teacher.email}}</td>
+                        <td>{{teacher.phone_number}}</td>
+                        <td>{{teacher.date_joined}}</td>
                         <td>
-                          <a href="{% url 'ebooks:ebook_edit' ebook.id %}" class="btn btn-dark btn-icon-text">Edit
+                          <a href="{% url 'teacher:teacher_edit' teacher.id %}" class="btn btn-dark btn-icon-text">Edit
                           </a>
-                          <a href="{% url 'ebooks:ebook_delete' ebook.id %}" class="btn btn-danger">Delete
+                          <a href="{% url 'teacher:teacher_delete' teacher.id %}" class="btn btn-danger">Delete
                           </a>
                         </td>
                       </tr>

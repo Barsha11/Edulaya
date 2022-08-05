@@ -558,3 +558,304 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+
+.contact-from {
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 5px;
+}
+
+/* breadcrumb */
+
+.breadcrumb{
+  margin: 0;
+  background: none;
+  padding: 0;
+}
+.breadcrumb .breadcrumb-item {
+color: #ffc600;
+font-size: 14px;
+font-weight: 600;
+margin-bottom: 2px;
+}
+.breadcrumb .breadcrumb-item a{
+  color: #fff;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+color: #fff;
+content: "/";
+  font-size: 14px;
+}
+
+/* course */
+
+.overview-description{
+  padding: 25px 30px;
+}
+.overview-description .singel-description {
+
+}
+
+.overview-description .singel-description h6{
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #000;
+  padding-bottom: 10px;
+}
+
+.course-features{
+  background-color: #fff;
+  padding: 30px 35px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.course-features h4{
+  font-size: 24px;
+  color: #07294d;
+  padding-bottom: 15px;
+}
+.course-features ul{}
+.course-features ul li{
+  font-size: 15px;
+  color: #8a8a8a;
+  overflow: hidden;
+  line-height: 45px;
+  border-bottom: 1px solid #d2d2d2;
+}
+.course-features ul li:last-child{
+  border-bottom: 0;
+}
+
+.course-features ul li i{
+  color: #ffc600;
+  margin-right: 8px;
+}
+.course-features ul li span{
+  float: right;
+}
+
+.course-singel-left{
+  padding: 45px 50px;
+  background-color: #fff;
+}
+
+.course-singel-left .title{}
+.course-singel-left .title h3{
+  font-size: 30px;
+  color: #000;
+  font-weight: 600;
+  padding-bottom: 25px;
+}
+
+.course-singel-left .course-terms{}
+.course-singel-left .course-terms > ul > li{
+  display: inline-block;
+  margin-right: 60px;
+}
+.course-singel-left .course-terms > ul li:last-child{
+  margin-right: 0;
+}
+
+.course-singel-left .course-terms ul li .teacher-name{
+  position: relative;
+}
+.course-singel-left .course-terms ul li .teacher-name .thum{
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 0;
+}
+.course-singel-left .course-terms ul li .teacher-name .thum img{
+  border-radius: 50%;
+}
+.course-singel-left .course-terms ul li .teacher-name .name{
+  padding-left: 60px;
+}
+
+.course-singel-left .course-terms ul li,
+.course-singel-left .course-terms ul li .teacher-name .name span,
+.course-singel-left .course-terms ul li {
+  color: #8a8a8a;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.course-singel-left .course-terms ul li .teacher-name .name h6,
+.course-singel-left .course-terms ul li {
+  font-size: 16px;
+  color: #24486e;
+  font-weight: 700;
+}
+
+.course-singel-left .course-terms ul li{}
+.course-singel-left .course-terms ul li {
+  display: inline-block;
+}
+.course-singel-left .course-terms ul li {
+  font-size: 14px;
+  color: #ffc600;
+}
+.course-singel-left .course-terms ul li {
+  font-size: 14px;
+  color: #000;
+  font-weight: 600;
+  margin-left: 13px;
+}
+
+.course-singel-image{}
+.course-singel-image img{
+    width: 100%;
+}
+video {
+  width: 100%;
+  height: auto;
+}
+
+.course-tab{
+  border: 1px solid #edf0f2;
+  border-radius: 5px;
+}
+
+.course-tab .nav{}
+.course-tab .nav .nav-item{}
+.course-tab .nav .nav-item a {
+font-size: 16px;
+color: #24486e;
+font-weight: 600;
+font-family: 'Montserrat', sans-serif;
+padding: 20px 0;
+display: block;
+  background-color: #edf0f2;
+}
+.course-tab .nav .nav-item a.active {
+  background-color: #fff;
+}
+
+ /* curriculum */
+
+ .curriculum-cont{
+  padding: 25px 30px;
+}
+.curriculum-cont .title h6{
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #000;
+  padding-bottom: 30px;
+}
+
+.curriculum-cont .accordion{
+  border: 0;
+}
+.curriculum-cont .accordion .card{
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #cecece !important;
+}
+.curriculum-cont .accordion .card:last-child{
+  border-bottom: 0 !important;
+}
+
+.curriculum-cont .accordion .card .card-header {
+  padding: 0;
+  border-bottom: 0;
+}
+
+.curriculum-cont .accordion .card .card-header a {
+overflow: hidden;
+display: block;
+  padding: 15px 15px;
+  background-color: #edf0f2;
+}
+.curriculum-cont .accordion .card .card-header a.collapsed{
+  background-color: #fff;
+  border: none;
+}
+
+.curriculum-cont .accordion .card .card-header a::before,
+.curriculum-cont .accordion .card .card-header a.collapsed::before {
+content: "\f107";
+font-family: "FontAwesome";
+font-size: 18px;
+color: #8a8a8a;
+position: absolute;
+top: 15px;
+right: 15px;
+-webkit-transform: rotate(180deg);
+transform: rotate(180deg);
+-webkit-transition: all 0.2s linear;
+transition: all 0.2s linear;
+}
+.curriculum-cont .accordion .card .card-header a.collapsed:before{
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.curriculum-cont .accordion .card .card-header a ul li{
+  display: inline-block;
+}
+.curriculum-cont .accordion .card .card-header a ul li:last-child{
+  float: right;
+}
+
+.curriculum-cont .accordion .card .card-header a ul li > i{
+  color: #ffc600;
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.curriculum-cont .accordion .card .card-body {
+background-color: #edf0f2;
+padding: 0 25px 20px;
+}
+
+.instructor-cont{
+  padding: 30px 30px 25px;
+}
+
+.instructor-cont .instructor-author{
+  overflow: hidden;
+}
+.instructor-cont .instructor-author .author-thum{
+  float: left;
+  margin-right: 30px;
+}
+.instructor-cont .instructor-author .author-name{
+  float: left;
+}
+.instructor-cont .instructor-author .author-name a{
+  display: block;
+}
+.instructor-cont .instructor-author .author-name a h5{
+  font-size: 18px;
+  color: 30px;
+  font-weight: 600;
+}
+.instructor-cont .instructor-author .author-name span{
+  font-size: 15px;
+  color: #8a8a8a;
+}
+.instructor-cont .instructor-author .author-name .social{
+  
+}
+.instructor-cont .instructor-author .author-name .social li{
+  display: inline-block;
+  margin-right: 8px;
+}
+.instructor-cont .instructor-author .author-name .social li a{
+  font-size: 16px;
+  width: 35px;
+  height: 35px;
+  line-height: 33px;
+  color: #24486e;
+  text-align: center;
+  -webkit-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+}
+.instructor-cont .instructor-author .author-name .social li a:hover{
+  background-color: #fff;
+  color: #24486e;
+}

@@ -26,7 +26,7 @@
                     <tbody>
                       {% for course in courses %}
                       <tr>
-                        <td>{{course.id}}</td>
+                        <td>{{forloop.counter}}</td>
                         <td>{{course.name}}</td>
                         <td>{{course.description}}</td>
                         <td>{{course.tutor.full_name}}</td>

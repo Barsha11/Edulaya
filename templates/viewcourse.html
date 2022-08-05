@@ -1,0 +1,419 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Edulaya</title>
+  <meta charset="UTF-8" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Bootstrap Css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}" />
+  <!-- Bootstrap Css -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}" />
+  <!-- Main Css -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" />
+  <!-- Overview Page Css -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/responsive.css' %}" />
+  <!-- Responsive css -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/aos.css' %}" />
+  <!-- Animation Css -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/magnific-popup.css' %}" />
+  <!-- Magnific Popup -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/owl.carousel.css' %}" />
+  <!-- Banner carousel -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/pushy.css' %}" />
+  <!-- Mobile Side Bar -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/magnific-popup.css' %}" />
+  <!-- Magnific pop up -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    .hide{
+      display: none;
+    }
+    .is_active{
+      display: block !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-5 col-6">
+          <div class="logo">
+            <img src="{% static 'assets/images/whitelogo.png' %}" class="img-fluid" alt="" />
+          </div>
+        </div>
+        <div class="col-xxl-7 col-xl-7 col-lg-7 mob-hide v-center"></div>
+        <div class="
+              col-xxl-3 col-xl-3 col-lg-3 col-md-8 col-sm-7 col-6
+              mob-bar
+              v-center
+            ">
+          <div class="nav-action text-end">
+            <ul>
+              <li>
+              {% if user.is_authenticated %}
+                <a href="javascript:void(0)"><i class="fas fa-user"></i>  {{user.full_name}}</a></li>
+              <li><a href="{% url 'authentication:logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="inner-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 innerBanner-text">
+            <h1>Learn basic javascript</h1>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item"><a href="#">Courses</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Learn basic javasript</li>
+              </ol>
+          </nav>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <section id="course-singel" class="pt-90 pb-120 gray-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="course-singel-left mt-30">
+                        <div class="title">
+                            <h3>Learn basis javascirpt from start for beginner</h3>
+                        </div> <!-- title -->
+                         <!-- course terms -->
+                       
+                        
+                        <div class="course-tab mt-30">
+                            <ul class="nav nav-justified" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a id="curriculum-tab" data-toggle="tab" href="#curriculum" role="tab" aria-controls="curriculum" aria-selected="false">Curriculum</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a id="instructor-tab" data-toggle="tab" href="#instructor" role="tab" aria-controls="instructor" aria-selected="false">Instructor</a>
+                                </li>
+                            </ul>
+                            
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                                    <div class="overview-description">
+                                        <div class="singel-description pt-40">
+                                            <h6>Course Summary</h6>
+                                            <p>JavaScript is a dynamic computer programming language. It is lightweight and most commonly used as a part of web pages, whose implementations allow client-side script to interact with the user and make dynamic pages. It is an interpreted programming language with object-oriented capabilities.</p>
+                                        </div>
+                                        <div class="singel-description pt-40">
+                                            <h6>Requirments</h6>
+                                            <p>To learn JavaScript, you must know the basics of HTML and CSS, both of which are extremely easy to learn. For a working knowledge of JavaScript and most web-based projects, this knowledge will be sufficient.</p>
+                                        </div>
+                                    </div> <!-- overview description -->
+                                </div>
+                                <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
+                                    <div class="curriculum-cont">
+                                        <div class="title">
+                                            <h6>Learn basis javascirpt Lecture Started</h6>
+                                        </div>
+                                        <div class="accordion" id="accordionExample">
+                                            <div class="card">
+                                                <div class="card-header" id="headingOne">
+                                                  <video width="400" controls>
+                                                    <source src="https://youtu.be/LBpvSTZbIYo" type="video/mp4">
+                                                    <source src="mov_bbb.ogg" type="video/ogg">
+                                                  </video>
+                                                </div>
+                                                <!-- accordion -->
+                                                <div class="accordion-item">
+                                                  <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                                      Accordion Item #1
+                                                    </button>
+                                                  </h2>
+                                                  <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                                                    <div class="accordion-body">
+                                                      <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                    </div>
+                                                  </div>
+                                                </div>
+  
+                                                <div class="accordion-item">
+                                                  <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                                      Accordion Item #2
+                                                    </button>
+                                                  </h2>
+                                                  <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                                                    <div class="accordion-body">
+                                                      <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                    </div>
+                                                  </div>
+                                                </div>
+  
+                                                <div class="accordion-item">
+                                                  <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                                      Accordion Item #3
+                                                    </button>
+                                                  </h2>
+                                                  <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                                                    <div class="accordion-body">
+                                                      <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                
+                                                <!-- accordion end -->
+                                            </div>
+                                        </div>
+                                    </div> <!-- curriculum cont -->
+                                </div>
+                                <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
+                                    <div class="instructor-cont">
+                                        <div class="instructor-author">
+                                            <div class="author-name col-6">
+                                                <a href="#"><h3>Sumon Hasan</h3></a>
+                                                <span>Senior WordPress Developer</span>
+                                                <ul class="social mb-3 justify-content-md-end">
+                                                    <span> Message tutor <li><a href="#"><i class="fa fa-comments" aria-hidden="true"></i></a></li> </span>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="instructor-description pt-25">
+                                            <p>I have 10 years of industry experience along with Training the people. Have trained more than 5K+ students for cracking the MNC's Interviews and in organizations to excel their skills and helped 3K+ students in their assignments and Projects.</p>
+                                        </div>
+                                    </div> <!-- instructor cont -->
+                                </div>
+                            </div> <!-- tab content -->
+                        </div>
+                    </div> <!-- course singel left -->
+                    
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-6">
+                            <div class="course-features mt-30">
+                               <h4>Course Features </h4>
+                                <ul>
+                                    <li>Duaration : <span>10 Hrs</span></li>
+                                    <li>Leactures : <span>09</span></li>
+                                    <li>Assignments :  <span>05</span></li>
+                                    <li>Students :  <span>20</span></li>
+                                </ul>
+                            </div> <!-- course features -->
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+  </div>
+
+  <footer class="inner-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6">
+          <div class="footer-widget">
+            <div class="foot-logo mb-5">
+              <img src="{% static 'assets/images/colorlogo.png' %}" class="img-fluid" alt="" />
+            </div>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been
+            </p>
+          </div>
+        </div>
+        <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-sm-6">
+          <div class="footer-widget">
+            <h2>Courses</h2>
+            <ul>
+              <li><a href="#">Mobile App Development</a></li>
+              <li><a href="#">SEO</a></li>
+              <li><a href="#">Web Development</a></li>
+              <li><a href="#">UI UX & Web Design</a></li>
+              <li><a href="#">DevOps</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-sm-6">
+          <div class="footer-widget">
+            <h2>Quick Links</h2>
+            <ul>
+              <li><a href="#intro">Introduction</a></li>
+              <li><a href="#">Login</a></li>
+              <li><a href="#">Register</a></li>
+              <li><a href="#course">Courses</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6">
+          <div class="footer-widget">
+            <h2>Contact</h2>
+            <ul>
+              <li>
+                <a href="mailto:email@domainname.com">email@domainname.com</a>
+              </li>
+              <li>
+                <a href="tel:+977-98123456789">+977-9808312485</a>
+                <a href="tel:+977-98123456789">+977-9808312485</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End of footer -->
+
+  <div class="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+          <ul>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+          <p>
+            Copyright &copy; 2021 |
+            <span class="brand-color">Edulaya : Learning Management System</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of copyright -->
+
+  <!-- Homework Upload Pop Up -->
+  {% include 'modal/homework_create.html'%}
+  <!-- Download Certificates Pop Up -->
+  <div class="modal fade" id="downloadModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-pop">
+        <div class="modal-header">
+          <h5 class="modal-title">Download Your Certificate</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th style="border-bottom-style: none;">Courses</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>UI & UX Development</td>
+                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
+                </tr>
+                <tr>
+                  <td>SEO and Social Media</td>
+                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
+                </tr>
+                <tr>
+                  <td>DevOps</td>
+                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
+                </tr>
+                <tr>
+                  <td>Android Development</td>
+                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
+                </tr>
+                <tr>
+                  <td>Cloud Computing</td>
+                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    function toggle_div_fun(id) {
+      var divelement = document.getElementById(id);
+      if (divelement.style.display == 'none')
+        divelement.style.display = 'block';
+      else
+        divelement.style.display = 'none';
+    }
+
+
+  </script>
+
+  <script type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>
+  <!-- jQuery -->
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- Bootstrap Js -->
+
+  <script type="text/javascript" src="{% static 'assets/js/plugins.js' %}"></script>
+  <!-- Banner Carousel -->
+
+  <script type="text/javascript" src="{% static 'assets/js/popper.min.js' %}"></script>
+  <!-- Popper JS -->
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+  <script type="text/javascript" src="{% static 'assets/js/aos.js' %}"></script>
+  <!-- Animation Js -->
+
+  <script type="text/javascript" src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+  <!-- Magnific Popup -->
+
+  <script type="text/javascript" src="{% static 'assets/js/jquery.nav.js' %}"></script>
+  <!-- One page scroll -->
+
+  <script type="text/javascript" src="{% static 'assets/js/pushy.min.js' %}"></script>
+  <!-- Mobile Side bar -->
+
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+    integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+    crossorigin="anonymous"></script>
+  <!-- Font Awesome Icon -->
+
+  <script src="{% static 'assets/chart/chart.js/Chart.min.js' %}"></script>
+  <script src="{% static 'assets/js/chart-pie.js' %}"></script>
+  <!-- Chart js -->
+
+  <script type="text/javascript" src="{% static 'assets/js/custom.js' %}"></script>
+  <!-- Custom Js -->
+  <script src="{% static 'assets/js/socket.js' %}"></script>
+</body>
+
+</html>

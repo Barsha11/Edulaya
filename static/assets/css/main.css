@@ -562,14 +562,16 @@ header.stickytop .logo{
     min-height: calc(100vh - 275px);
     position: relative;
 }
-.page-wrapper::before{
+
+/* .page-wrapper::before{
     content: '';
     background: url(../images/action_bg.png);
     position: absolute;
     width: 100%;
     height: 80px;
     bottom: -80px;
-}
+} */
+
 .userportal-tab .nav-tabs{
     justify-content: flex-end;
     border: 0;

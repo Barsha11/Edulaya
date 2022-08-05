@@ -1,0 +1,390 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Edulaya</title>
+  <meta charset="UTF-8" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Bootstrap Css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}" />
+  <!-- Bootstrap Css -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}" />
+  <!-- Main Css -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}" />
+  <!-- Overview Page Css -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/responsive.css' %}" />
+  <!-- Responsive css -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/aos.css' %}" />
+  <!-- Animation Css -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/magnific-popup.css' %}" />
+  <!-- Magnific Popup -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/owl.carousel.css' %}" />
+  <!-- Banner carousel -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/pushy.css' %}" />
+  <!-- Mobile Side Bar -->
+
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/magnific-popup.css' %}" />
+  <!-- Magnific pop up -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    .hide{
+      display: none;
+    }
+    .is_active{
+      display: block !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-5 col-6">
+          <div class="logo">
+            <img src="{% static 'assets/images/whitelogo.png' %}" class="img-fluid" alt="" />
+          </div>
+        </div>
+        <div class="col-xxl-7 col-xl-7 col-lg-7 mob-hide v-center"></div>
+        <div class="
+              col-xxl-3 col-xl-3 col-lg-3 col-md-8 col-sm-7 col-6
+              mob-bar
+              v-center
+            ">
+          <div class="nav-action text-end">
+            <ul>
+              <li>
+              {% if user.is_authenticated %}
+                <a href="javascript:void(0)"><i class="fas fa-user"></i>  {{user.full_name}}</a></li>
+              <li><a href="{% url 'authentication:logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="inner-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 innerBanner-text">
+          <h1>Welcome {{user.full_name}}</h1>
+          <p>To teacher dashboard, you can check your everything at here</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="contact-from">
+                    <div class="section-title">
+                        <h5>Edit Assignment</h5>
+                    </div> <!-- section title -->
+                    <form class="row g-3 mt-4">
+                        <div class="col-12">
+                            <label for="inputTitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="inputTitle" placeholder="">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="inputClass" class="form-label">Class</label>
+                            <select id="inputClass" class="form-select">
+                              <option selected>Select Class</option>
+                              <option>Agile</option>
+                            </select>
+                          </div>
+                        <div class="col-md-6">
+                          <label for="inputCourse" class="form-label">Course</label>
+                          <select id="inputCourse" class="form-select">
+                            <option selected>Select Course</option>
+                            <option>Agile</option>
+                          </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputMarks" class="form-label">Marks</label>
+                            <input type="text" class="form-control" id="inputMarks">
+                          </div>
+                        <div class="col-md-6">
+                          <label for="inputTime" class="form-label">Due Time</label>
+                          <input type="time" class="form-control" id="inpuTime">
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="inputDate" class="form-label">Deadline</label>
+                            <input type="date" class="form-control" id="inputDate"><br>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="gridCheck">
+                              <label class="form-check-label" for="gridCheck">
+                              Schedule 
+                              </label>
+                            </div>
+                          </div>
+                        <div class="col-md-6">
+                            <label for="inputDescription" class="form-label">Description</label>
+                            <textarea class="form-control" aria-label="With textarea"></textarea>
+                        </div>
+                      
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <button class="btn btn-secondary" type="button">Discard</button>
+                            <button class="btn btn-primary me-md-2" type="button">Update</button>
+                          </div>
+                        
+                      </form>
+                     <!-- main form -->
+                </div> <!--  contact from -->
+            </div>
+        </div> <!-- row -->
+    </div> 
+  </div>
+
+  <footer class="inner-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6">
+          <div class="footer-widget">
+            <div class="foot-logo mb-5">
+              <img src="{% static 'assets/images/colorlogo.png' %}" class="img-fluid" alt="" />
+            </div>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been
+            </p>
+          </div>
+        </div>
+        <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-sm-6">
+          <div class="footer-widget">
+            <h2>Courses</h2>
+            <ul>
+              <li><a href="#">Mobile App Development</a></li>
+              <li><a href="#">SEO</a></li>
+              <li><a href="#">Web Development</a></li>
+              <li><a href="#">UI UX & Web Design</a></li>
+              <li><a href="#">DevOps</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-sm-6">
+          <div class="footer-widget">
+            <h2>Quick Links</h2>
+            <ul>
+              <li><a href="#intro">Introduction</a></li>
+              <li><a href="#">Login</a></li>
+              <li><a href="#">Register</a></li>
+              <li><a href="#course">Courses</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-6">
+          <div class="footer-widget">
+            <h2>Contact</h2>
+            <ul>
+              <li>
+                <a href="mailto:email@domainname.com">email@domainname.com</a>
+              </li>
+              <li>
+                <a href="tel:+977-98123456789">+977-9808312485</a>
+                <a href="tel:+977-98123456789">+977-9808312485</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End of footer -->
+
+  <div class="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+          <ul>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-12">
+          <p>
+            Copyright &copy; 2021 |
+            <span class="brand-color">Edulaya : Learning Management System</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of copyright -->
+
+  <!-- Homework Upload Pop Up -->
+  {% include 'modal/homework_create.html'%}
+  <!-- Download Certificates Pop Up -->
+  <div class="modal fade" id="downloadModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content custom-pop">
+        <div class="modal-header">
+          <h5 class="modal-title">Download Your Certificate</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th style="border-bottom-style: none;">Courses</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>UI & UX Development</td>
+                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
+                </tr>
+                <tr>
+                  <td>SEO and Social Media</td>
+                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
+                </tr>
+                <tr>
+                  <td>DevOps</td>
+                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
+                </tr>
+                <tr>
+                  <td>Android Development</td>
+                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
+                </tr>
+                <tr>
+                  <td>Cloud Computing</td>
+                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    function toggle_div_fun(id) {
+      var divelement = document.getElementById(id);
+      if (divelement.style.display == 'none')
+        divelement.style.display = 'block';
+      else
+        divelement.style.display = 'none';
+    }
+
+
+  </script>
+
+  <script type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>
+  <!-- jQuery -->
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- Bootstrap Js -->
+
+  <script type="text/javascript" src="{% static 'assets/js/plugins.js' %}"></script>
+  <!-- Banner Carousel -->
+
+  <script type="text/javascript" src="{% static 'assets/js/popper.min.js' %}"></script>
+  <!-- Popper JS -->
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+  <script type="text/javascript" src="{% static 'assets/js/aos.js' %}"></script>
+  <!-- Animation Js -->
+
+  <script type="text/javascript" src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+  <!-- Magnific Popup -->
+
+  <script type="text/javascript" src="{% static 'assets/js/jquery.nav.js' %}"></script>
+  <!-- One page scroll -->
+
+  <script type="text/javascript" src="{% static 'assets/js/pushy.min.js' %}"></script>
+  <!-- Mobile Side bar -->
+
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+    integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+    crossorigin="anonymous"></script>
+  <!-- Font Awesome Icon -->
+
+  <script src="{% static 'assets/chart/chart.js/Chart.min.js' %}"></script>
+  <script src="{% static 'assets/js/chart-pie.js' %}"></script>
+  <!-- Chart js -->
+
+  <script type="text/javascript" src="{% static 'assets/js/custom.js' %}"></script>
+  <!-- Custom Js -->
+  <script src="{% static 'assets/js/socket.js' %}"></script>
+
+  <script>
+    $("select.assignment").change(function(){
+      window.course = $(this).children("option:selected").val();
+  });
+
+ $("#assignment-create").on("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var form_data = new FormData();
+    var file = document.getElementById('upload-assignment-file').files.length;
+    if(file!=0){
+      for (var x = 0; x < file; x++) {
+          form_data.append("files[]", document.getElementById('upload-assignment-file').files[x]);
+      }
+    };
+    csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+      
+    form_data.append("csrfmiddlewaretoken", csrf_token);
+    
+    form_data.append("assignment-title", $('#assignment-title').val());
+    form_data.append("assignment-description", $('#assignment-description').val());
+    form_data.append("assignment-marks", $('#assignment-marks').val());
+    form_data.append("assignment-deadline", $('#assignment-deadline').val());
+    form_data.append("course", course);
+    $.ajax({
+          type: "POST",
+          url :"/assignments/assignment-create",
+          dataType: 'json',
+          Cache: false,
+          contentType: false,
+      processData: false,
+          data: form_data,
+          success: function(response) {
+              $('#msg').html(response.msg);
+              location.reload();
+          },
+          error: function(response) {
+              $('#msg').html(response.message);
+          }
+      });
+  
+      
+      
+});
+
+
+
+  </script>
+
+</body>
+
+</html>

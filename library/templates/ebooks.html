@@ -1,0 +1,53 @@
+{% extends 'admin2/admin-base.html' %} {% load static %} {% block content %}
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title">Ebooks List</p>
+            <a href="{% url 'ebooks:ebook_add' %}" class="add-link">
+              <p class="add-text"><i class="fa fa-plus">&nbsp;</i> Add Ebook</p>
+            </a>
+            <div class="row">
+              <div class="col-12">
+                <div class="table-responsive">
+                  <table id="examplee" class="display expandable-table" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>S.No</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>URL</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for ebook in ebooks %}
+                      <tr>
+                        <td>{{ebook.id}}</td>
+                        <td>{{ebook.title}}</td>
+                        <td>{{ebook.description}}</td>
+                        <td><a href="{{ ebook.image.url }}" target="_blank"><img src={{ ebook.image.url }}
+                          height="40px"></a></td>
+                        <td><a href="{{ ebook.url }}" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/160/160205.png" height="40px"></a></td>
+                        <td>
+                          <a href="{% url 'ebooks:ebook_edit' ebook.id %}" class="btn btn-dark btn-icon-text">Edit
+                          </a>
+                          <a href="{% url 'ebooks:ebook_delete' ebook.id %}" class="btn btn-danger">Delete
+                          </a>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+{% endblock %}

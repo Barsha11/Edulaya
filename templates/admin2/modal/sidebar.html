@@ -2,15 +2,21 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{% url 'authentication:administrator' %}">
           <i class="icon-grid menu-icon"></i>
           <span class="menu-title">Dashboard</span>
         </a>
       </li>         
-      <li class="nav-item">
+      <li class="nav-item {% if title == 'courses' %}active{% endif %}">
         <a class="nav-link" href="{% url 'courses:courses_admin_list' %}">
           <i class="icon-paper menu-icon"></i>
           <span class="menu-title">Courses</span>
+        </a>
+      </li>
+      <li class="nav-item {% if title == 'Ebooks' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'ebooks:ebook_admin_list' %}">
+          <i class="icon-paper menu-icon"></i>
+          <span class="menu-title">E-books</span>
         </a>
       </li>
     </ul>

@@ -20,15 +20,27 @@
         </a>
       </li>
       <li class="nav-item {% if title == 'teacher' or title == 'Assign Courses' %}active{% endif %}">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" data-toggle="collapse" href="#teachers" aria-expanded="false" aria-controls="teachers">
           <i class="icon-layout menu-icon"></i>
           <span class="menu-title">Teachers</span>
           <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="ui-basic">
+        <div class="collapse" id="teachers">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{% url 'teacher:teachers_admin_list' %}">All teachers</a></li>
             <li class="nav-item"> <a class="nav-link" href="{% url 'courses:assign_course' %}">Assign Courses</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item {% if title == 'Student' %}active{% endif %}">
+        <a class="nav-link" data-toggle="collapse" href="#students" aria-expanded="false" aria-controls="students">
+          <i class="icon-layout menu-icon"></i>
+          <span class="menu-title">Students</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="students">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{% url 'students:students_admin_list' %}">All Students</a></li>
           </ul>
         </div>
       </li>

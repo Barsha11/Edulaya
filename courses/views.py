@@ -97,7 +97,7 @@ class coursesDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     
 def coursesTeacherAssign(request):
     courses = Courses.objects.all()
-    return render(request, "course_teacher_assign.html", {"courses": courses, 'title': 'courses'})
+    return render(request, "course_teacher_assign.html", {"courses": courses, 'title': 'Assign Courses'})
 
 class TeacherAssigncoursesUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Courses

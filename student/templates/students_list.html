@@ -1,0 +1,52 @@
+{% extends 'admin2/admin-base.html' %} {% load static %} {% block content %}
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title">Students List</p>
+            <a href="{% url 'students:student_add' %}" class="add-link">
+              <p class="add-text"><i class="fa fa-plus">&nbsp;</i> Add Student</p>
+            </a>
+            <div class="row">
+              <div class="col-12">
+                <div class="table-responsive">
+                  <table id="examplee" class="display expandable-table" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>S.No</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Joined Date</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for student in students %}
+                      <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{student.full_name}}</td>
+                        <td>{{student.email}}</td>
+                        <td>{{student.phone_number}}</td>
+                        <td>{{student.date_joined}}</td>
+                        <td>
+                          <a href="{% url 'students:student_edit' student.id %}" class="btn btn-dark btn-icon-text">Edit
+                          </a>
+                          <a href="{% url 'students:student_delete' student.id %}" class="btn btn-danger">Delete
+                          </a>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+{% endblock %}

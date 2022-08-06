@@ -4,6 +4,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, render
+from accounts.models import Account
 from courses.forms import CoursesForm
 from .models import *
 # Create your views here.
@@ -25,6 +26,7 @@ class coursesAdd(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         data = super(coursesAdd, self).get_context_data(**kwargs)
+        data['form'].fields['tutor'].queryset = Account.objects.filter(role="Teacher")
         if self.request.POST:
             data['items'] = CoursesForm(self.request.POST)
         else:
@@ -57,11 +59,13 @@ class coursesUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     
     def get_context_data(self, **kwargs):
         data = super(coursesUpdate, self).get_context_data(**kwargs)
+        data['form'].fields['tutor'].queryset = Account.objects.filter(role="Teacher")
         if self.request.POST:
             data['items'] = CoursesForm(self.request.POST)
         else:
             data['items'] = CoursesForm()
             data['title'] = 'courses'
+            data['name'] = 'Update Course'
         return data
 
 class coursesDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
@@ -73,3 +77,49 @@ class coursesDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         data = super(coursesDelete, self).get_context_data(**kwargs)
         data['title'] = 'courses'
         return data
+
+# class coursesTeacherAssign(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+#     model = Courses
+#     template_name = 'courses_edit.html'
+#     fields = ['name','tutor']
+#     success_url = reverse_lazy('courses:courses_admin_list')
+#     success_message = "Updated Successfully"
+    
+#     def get_context_data(self, **kwargs):
+#         data = super(coursesUpdate, self).get_context_data(**kwargs)
+#         data['form'].fields['tutor'].queryset = Account.objects.filter(role="Teacher")
+#         if self.request.POST:
+#             data['items'] = CoursesForm(self.request.POST)
+#         else:
+#             data['items'] = CoursesForm()
+#             data['title'] = 'courses'
+#         return data
+    
+def coursesTeacherAssign(request):
+    courses = Courses.objects.all()
+    return render(request, "course_teacher_assign.html", {"courses": courses, 'title': 'courses'})
+
+class TeacherAssigncoursesUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Courses
+    template_name = 'courses_edit.html'
+    fields = ['name', 'tutor']
+    success_url = reverse_lazy('courses:assign_course')
+    success_message = "Updated Successfully"
+    
+    def get_context_data(self, **kwargs):
+        data = super(TeacherAssigncoursesUpdate, self).get_context_data(**kwargs)
+        data['form'].fields['tutor'].queryset = Account.objects.filter(role="Teacher")
+
+        if self.request.POST:
+            data['items'] = CoursesForm(self.request.POST)
+        else:
+            data['items'] = CoursesForm()
+            data['title'] = 'Assign Courses'
+            data['name'] = 'Assign Course'
+            
+        return data
+    
+    def get_form(self, form_class=None):
+        form = super(TeacherAssigncoursesUpdate, self).get_form(form_class)
+        form.fields["name"].disabled = True
+        return form

@@ -7,7 +7,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <strong class="card-title">Update Course</strong>
+                <strong class="card-title">{{name}}</strong>
             </div>
             <div class="card-body">
                 <!-- Credit Card -->
@@ -19,7 +19,7 @@
                             {{ form|crispy }}
                             <div>
                                 <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                                    <span id="payment-button-amount">Update Courses</span>
+                                    <span id="payment-button-amount">{{name}}</span>
                                 </button>
                             </div>
                         </form>

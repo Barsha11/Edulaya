@@ -4,7 +4,7 @@ from django.db import models
 class Courses(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     description=models.TextField(blank=True)
-    tutor = models.ForeignKey('accounts.Account', on_delete=models.CASCADE, related_name='tutor_courses')
+    tutor = models.ForeignKey('accounts.Account', on_delete=models.CASCADE, related_name='tutor_courses', null=True, blank=True)
     image = models.ImageField(upload_to='courses-images', blank=True)
     time_to_complete=models.FloatField(default=0)
     

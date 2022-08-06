@@ -1,0 +1,43 @@
+{% extends 'admin2/admin-base.html' %} {% load static %} {% block content %}
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title">Courses List</p>
+            <div class="row">
+              <div class="col-12">
+                <div class="table-responsive">
+                  <table id="examplee" class="display expandable-table" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>Tutor</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for course in courses %}
+                      <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{course.name}}</td>
+                        <td>{{course.tutor.full_name}}</td>
+                        <td>
+                          <a href="{% url 'courses:assigned_courses_edit' course.id %}" class="btn btn-dark btn-icon-text">Edit
+                          </a>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+{% endblock %}

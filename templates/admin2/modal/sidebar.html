@@ -44,5 +44,11 @@
           </ul>
         </div>
       </li>
+      <li class="nav-item {% if title == 'enroll-request' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'students:student_course_request' %}">
+          <i class="icon-paper menu-icon"></i>
+          <span class="menu-title">Student Enroll Request</span>
+        </a>
+      </li>
     </ul>
   </nav>

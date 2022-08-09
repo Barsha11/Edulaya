@@ -341,30 +341,38 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="form-group mb-4">
-            <label>Full Name</label>
-            <input type="text" class="custom-field" placeholder="Enter Full Name" name="" id="">
-          </div>
-          <div class="form-group mb-4">
-            <label>Email Address</label>
-            <input type="text" class="custom-field" name="" id="" placeholder="Enter Email Address">
-          </div>
-          <div class="form-group mb-4">
-            <label>Phone Number</label>
-            <input type="text" class="custom-field" name="" id="" placeholder="Enter Phone Number">
-          </div>
-          <div class="form-group mb-4">
-            <label>Select Course</label>
-            <select name="" id="" class="custom-field">
-                {% for course in courses %}
-                <option value="">Select Course to Apply</option>
-                <option value="">{{course}}</option>
-            {% endfor %}
-            </select>
-          </div>
-          <div class="form-group">
-              <button type="submit" class="apply-submitBtn">Apply</button>
-          </div>
+            <div id="msg"></div>
+            <form id="student_course_request" method="POST" action="#">
+                {% csrf_token %}
+                <div class="form-group mb-4">
+                    <label>Full Name</label>
+                    <input type="text" class="custom-field" placeholder="Enter Full Name" name="full_name" id="full_name">
+                </div>
+                <div class="form-group mb-4">
+                    <label>Email Address</label>
+                    <input type="text" class="custom-field" name="email" id="email" placeholder="Enter Email Address">
+                </div>
+                <div class="form-group mb-4">
+                    <label>Phone Number</label>
+                    <input type="number" class="custom-field" name="phone" id="phone" placeholder="Enter Phone Number">
+                </div>
+                <div class="form-group mb-4">
+                    <label>Address</label>
+                    <input type="text" class="custom-field" name="address" id="address" placeholder="Enter Address">
+                </div>
+                <div class="form-group mb-4">
+                    <label>Select Course</label>
+                    <select name="" id="selected-course" class="custom-field selected-course">
+                        <option value="null">Select Course to Apply</option>
+                        {% for course in courses %}
+                        <option value="{{course.id}}">{{course}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="student_course" class="apply-submitBtn">Apply</button>
+                </div>
+            </form>
         </div>
         
       </div>
@@ -440,6 +448,45 @@
                 else location.href = "{% url 'authentication:homepage' %}";
                     {% comment %} location.reload(); {% endcomment %}
                 }
+    
+            });
+    
+        });
+
+        $("select.selected-course").change(function(){
+            window.selected_course = $(this).children("option:selected").val();
+        });
+
+        $('#student_course_request').submit(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var full_name = $.trim($('#full_name').val());
+            var email = $.trim($('#email').val());
+            var phone = $.trim($('#phone').val());
+            var address = $.trim($('#address').val());
+            var course = selected_course;
+            const csrftoken = getCookie('csrftoken');
+    
+            $.ajax({
+                type: "POST",
+                url: "{% url 'students:student_course_appplication' %}",
+                data: {
+                    'csrfmiddlewaretoken': csrftoken,
+                    'full_name': full_name,
+                    'email': email,
+                    'phone': phone,
+                    'address': address,
+                    'course': course,
+    
+                },
+                success: function(response) {
+                    $('#msg').html(response.msg);
+                    location.reload();
+                },
+                error: function(response) {
+                    $('#msg').html(response.message);
+                }
+                
     
             });
     

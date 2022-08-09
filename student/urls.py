@@ -10,4 +10,10 @@ urlpatterns = [
     path('edit/<id>/',student_update,name='student_edit'),
     path('edit/<id>/password/',student_change_password,name="change_password"),
     path('delete/<int:pk>',StudentDelete.as_view(),name='student_delete'),
+    path('course-application',StudentCourseRequestCreationView,name='student_course_appplication'),
+    path('course-application-list',StudentCourseRequestView,name='student_course_request'),
+    path('course-application-delete/<int:pk>',StudentCourseRequestDelete.as_view(),name='student_course_request_delete'),
+    path('course-application-approve/<id>',StudentCourseRequestApprove,name='student_course_request_approve'),
+    
+    
 ]

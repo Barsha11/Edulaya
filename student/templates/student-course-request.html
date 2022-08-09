@@ -1,0 +1,51 @@
+{% extends 'admin2/admin-base.html' %} {% load static %} {% block content %}
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title">Students List</p>
+            <div class="row">
+              <div class="col-12">
+                <div class="table-responsive">
+                  <table id="examplee" class="display expandable-table" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>S.No</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Applied Date</th>
+                        <th>Course</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for application in applications %}
+                      <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{application.full_name}}</td>
+                        <td>{{application.email}}</td>
+                        <td>{{application.phone_number}}</td>
+                        <td>{{application.appplied_date}}</td>
+                        <td>{{application.course.name}}</td>
+                        <td>
+                            <a href="{% url 'students:student_course_request_approve' application.id %}" class="btn btn-dark">Approve
+                            </a>
+                            <a href="{% url 'students:student_course_request_delete' application.id %}" class="btn btn-danger">Reject
+                            </a>
+                          </td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+{% endblock %}

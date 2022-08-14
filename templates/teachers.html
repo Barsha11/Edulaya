@@ -339,7 +339,7 @@
                   <div class="tab-title split">
                     <h2>Assignment Center</h2>
                     <div class="upload-btn">
-                      <a href="javscript:void(0)" data-bs-toggle="modal" data-bs-target="#homeworkModal">Create
+                      <a href="{% url 'assignments:assignment_create' %}">Create
                         Assignment</a>
                     </div>
                   </div>
@@ -369,32 +369,32 @@
                               <thead>
                                 <tr>
                                   <th>Assignments</th>
-                                  <th>Category</th>
-                                  <th>Student Name</th>
-                                  <th>Status</th>
+                                  <th>Created Date</th>
+                                  <th>Submission Count</th>
                                   <th>Marks</th>
                                   <th>Action</th>
                                 </tr>
                               </thead>
                               <tbody>
+                                {% for assignment in assignments %}
                                 <tr>
                                   <td>
-                                    <h3>Simple Mobile App</h3>
-                                    <span class="upload-date">24th Dec, 2021</span>
-                                  </td>
-                                  <td>Android</td>
-                                  <td>Sanjog Shrestha</td>
-                                  <td>
-                                    <div class="badge badge-warning">Pending</div>
+                                    <h3>{{assignment.title}}</h3>
+                                    <span class="upload-date">{{assignment.created_at}}</span>
                                   </td>
                                   <td>0 out of 100</td>
                                   <td>
+                                    <div class="badge badge-warning">Pending</div>
+                                  </td>
+                                  <td>{{assignment.full_marks}}</td>
+                                  <td>
                                     <div class="action-btn">
-                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
+                                      <a href="{% url 'assignments:assignment_edit' assignment.id %}" title="View Feedbacks"><i class="fas fa-edit"></i></a>
                                       <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
                                     </div>
                                   </td>
                                 </tr>
+                                {% endfor %}
                               </tbody>
                             </table>
                           </div>

@@ -7,6 +7,8 @@ class Assignments(models.Model):
     file = models.FileField(upload_to='assignment-question/', null=True, blank=True)
     full_marks = models.IntegerField()
     course = models.ForeignKey(Courses, on_delete=models.CASCADE, related_name='assignments_course')
+    is_scheduled = models.BooleanField(default=False)
+    scheduled_time = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     deadline = models.DateTimeField()
     

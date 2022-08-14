@@ -4,6 +4,8 @@ from assignments.models import AssignmentSubmission, Assignments
 from django.db.models import Subquery, OuterRef
 from django.db import transaction
 from django.http.response import JsonResponse
+import string
+import random
 from chat.models import Thread
 from courses.models import CourseEnrollment,Courses
 from library.models import Ebook
@@ -52,7 +54,7 @@ def student_index(request):
     }
     return render(request, 'student-dashboard.html', context)
 
-
+@login_required(login_url='/')
 def students_list(request):
     students = Account.objects.filter(role='Student')
     context = {
@@ -60,7 +62,7 @@ def students_list(request):
     }
     return render(request, 'students_list.html', context)
 
-
+@login_required(login_url='/')
 def studentAdd(request):
     user_form = CreateUserForm()
     if request.method == "POST":
@@ -76,7 +78,7 @@ def studentAdd(request):
     context = {"form": user_form, "title": "Student"}
     return render(request, "students_add.html", context)
 
-
+@login_required(login_url='/')
 def student_update(request, id):
     user = Account.objects.get(id=id)
     form = UserUpdateForm(instance=user)
@@ -96,6 +98,7 @@ def student_update(request, id):
     context = {"form": form, "title": "Student"}
     return render(request, "students_edit.html", context)
 
+@login_required(login_url='/')
 def student_change_password(request, id):
     if request.user.is_superadmin:
         user = get_object_or_404(Account, id=id)
@@ -121,6 +124,7 @@ class StudentDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         data['title'] = 'Student'
         return data
 
+@login_required(login_url='/')
 def StudentCourseRequestCreationView(request):
     full_name = request.POST.get('full_name', None)
     email = request.POST.get('email', None) 
@@ -143,7 +147,7 @@ def StudentCourseRequestCreationView(request):
     else:
             return JsonResponse({'msg':'<span style="color: red;">Error</span>'})
         
-        
+@login_required(login_url='/')  
 def StudentCourseRequestView(request):
     applications = StudentCourseApplication.objects.all().order_by('appplied_date')
     context = {
@@ -162,15 +166,13 @@ class StudentCourseRequestDelete(LoginRequiredMixin, SuccessMessageMixin, Delete
         data['title'] = 'enroll-request'
         return data
     
-import string
-import random
-
 
 def generate_code(request):
     letters = string.ascii_lowercase
     result_str = "".join(random.choice(letters) for i in range(10))
     return result_str
 
+@login_required(login_url='/')
 def StudentCourseRequestApprove(request, id):
     student_data = StudentCourseApplication.objects.get(id=id)
     try:

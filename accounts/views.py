@@ -4,6 +4,7 @@ from .forms import NewUserForm, CustomAuthForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http.response import JsonResponse
 from rest_framework import status
@@ -80,12 +81,13 @@ def login_request(request):
             return JsonResponse(context, status=400)
     return JsonResponse({'action':'Not allowed'}, status=400)
 
+@login_required(login_url='/')
 def logout_request(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
     return redirect("authentication:homepage")
 
-
+@login_required(login_url='/')
 def administrator(request):
     courses = Courses.objects.all()
     course_count = courses.count()

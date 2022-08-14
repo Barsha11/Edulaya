@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html>
 
@@ -102,59 +103,37 @@
                     <div class="section-title split">
                         <h5>Create Assignment</h5>
                     </div> <!-- section title -->
-                    <form class="row g-3 mt-4">
-                        <div class="col-12">
-                            <label for="inputTitle" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="inputTitle" placeholder="">
+                    <form method="post" enctype="multipart/form-data" class="row g-3 mt-4">
+                      {% csrf_token %}
+                      <div class="col-12">
+                        {{ form.title|as_crispy_field }}
+                      </div>
+                      <div class="col-md-6">
+                        {{ form.course|as_crispy_field }}
+                      </div>
+                      <div class="col-md-6">
+                        {{ form.full_marks|as_crispy_field }}
+                      </div>
+                      <div class="col-md-6">
+                        {{ form.file|as_crispy_field }}
+                      </div>
+                      <div class="col-12 select-choice">
+                        {{ form.is_scheduled|as_crispy_field }}
+                      </div>
+                      <div class="col-md-4 select-field checkbox-scheduled-time">
+                        {{ form.scheduled_time|as_crispy_field }}
+                      </div>
+                      <div class="col-md-4">
+                        {{ form.deadline|as_crispy_field }}
+                      </div>
+                      <div class="col-md-12">
+                        {{ form.description|as_crispy_field }}
+                      </div>
+                    
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <a href="{% url 'teacher:teacher_index' %}" class="btn btn-secondary" type="button">Discard</a>
+                            <button class="btn btn-primary me-md-2" type="submit">Create</button>
                           </div>
-                          <div class="col-md-6">
-                            <label for="inputClass" class="form-label">Class</label>
-                            <select id="inputClass" class="form-select">
-                              <option selected>Select Class</option>
-                              <option>Agile</option>
-                            </select>
-                          </div>
-                        <div class="col-md-6">
-                          <label for="inputCourse" class="form-label">Course</label>
-                          <select id="inputCourse" class="form-select">
-                            <option selected>Select Course</option>
-                            <option>Agile</option>
-                          </select>
-                        </div>
-                         <div class="col-md-6">
-                            <label for="inputDate" class="form-label">Deadline</label>
-                            <input type="date" class="form-control" id="inputDate"><br>
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="gridCheck">
-                              <label class="form-check-label" for="gridCheck">
-                              Schedule 
-                              </label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputTime" class="form-label">Due Time</label>
-                            <input type="time" class="form-control" id="inpuTime">
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <label for="formFileMultiple" class="form-label">Attach multiple files</label>
-                            <input class="form-control" type="file" id="formFileMultiple" multiple>
-                        </div>
-                          
-                        <div class="col-md-6">
-                            <label for="inputMarks" class="form-label">Marks</label>
-                            <input type="text" class="form-control" id="inputMarks">
-                        </div>
-                        <div class="col-md-12">
-                            <label for="inputDescription" class="form-label">Description</label>
-                            <textarea class="form-control" aria-label="With textarea"></textarea>
-                        </div>
-                      
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-                                <button class="btn btn-secondary" type="button">Discard</button>
-                                <button class="btn btn-primary me-md-2" type="button">Create</button>
-                              </div>
-                        
                       </form>
                      <!-- main form -->
                 </div> <!--  contact from -->
@@ -239,64 +218,11 @@
     </div>
   </div>
   <!-- End of copyright -->
-
-  <!-- Homework Upload Pop Up -->
-  {% include 'modal/homework_create.html'%}
-  <!-- Download Certificates Pop Up -->
-  <div class="modal fade" id="downloadModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content custom-pop">
-        <div class="modal-header">
-          <h5 class="modal-title">Download Your Certificate</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form action="">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th style="border-bottom-style: none;">Courses</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>UI & UX Development</td>
-                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
-                </tr>
-                <tr>
-                  <td>SEO and Social Media</td>
-                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
-                </tr>
-                <tr>
-                  <td>DevOps</td>
-                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
-                </tr>
-                <tr>
-                  <td>Android Development</td>
-                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
-                </tr>
-                <tr>
-                  <td>Cloud Computing</td>
-                  <td><a href="#"> <i class="fas fa-download fa-sm text-primary"></i> </a></td>
-                </tr>
-              </tbody>
-            </table>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
   <script>
-    function toggle_div_fun(id) {
-      var divelement = document.getElementById(id);
-      if (divelement.style.display == 'none')
-        divelement.style.display = 'block';
-      else
-        divelement.style.display = 'none';
-    }
-
-
+    document.getElementById('id_deadline').type = "datetime-local";
+    document.getElementById('id_scheduled_time').type = "datetime-local";
   </script>
+
 
   <script type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>
   <!-- jQuery -->
@@ -343,52 +269,14 @@
   <script src="{% static 'assets/js/socket.js' %}"></script>
 
   <script>
-    $("select.assignment").change(function(){
-      window.course = $(this).children("option:selected").val();
-  });
-
- $("#assignment-create").on("click", function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    var form_data = new FormData();
-    var file = document.getElementById('upload-assignment-file').files.length;
-    if(file!=0){
-      for (var x = 0; x < file; x++) {
-          form_data.append("files[]", document.getElementById('upload-assignment-file').files[x]);
+    $(".checkbox-scheduled-time").hide();
+    $("#id_is_scheduled").click(function() {
+      if($(this).is(":checked")) {
+          $(".checkbox-scheduled-time").show();
+      } else {
+          $(".checkbox-scheduled-time").hide();
       }
-    };
-    csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
-      
-    form_data.append("csrfmiddlewaretoken", csrf_token);
-    
-    form_data.append("assignment-title", $('#assignment-title').val());
-    form_data.append("assignment-description", $('#assignment-description').val());
-    form_data.append("assignment-marks", $('#assignment-marks').val());
-    form_data.append("assignment-deadline", $('#assignment-deadline').val());
-    form_data.append("course", course);
-    $.ajax({
-          type: "POST",
-          url :"/assignments/assignment-create",
-          dataType: 'json',
-          Cache: false,
-          contentType: false,
-      processData: false,
-          data: form_data,
-          success: function(response) {
-              $('#msg').html(response.msg);
-              location.reload();
-          },
-          error: function(response) {
-              $('#msg').html(response.message);
-          }
-      });
-  
-      
-      
-});
-
-
-
+  });
   </script>
 
 </body>

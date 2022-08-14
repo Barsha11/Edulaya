@@ -30,6 +30,7 @@ def teacher_index(request):
     }
     return render(request, 'teachers.html', context)
 
+@login_required(login_url='/')
 def teachers_list(request):
     teachers = Account.objects.filter(role='Teacher')
     context = {

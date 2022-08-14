@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib.messages import constants as messages
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -135,9 +136,17 @@ EMAIL_HOST_USER = 'ffb1ff9f232890'
 EMAIL_HOST_PASSWORD = 'ea073b60597ac5'
 EMAIL_PORT = '2525'
 
+LOGIN_URL = '/'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles/')

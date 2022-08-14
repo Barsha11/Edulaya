@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, render
 from accounts.models import Account
@@ -95,6 +96,7 @@ class coursesDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
 #             data['title'] = 'courses'
 #         return data
     
+@login_required(login_url='/')
 def coursesTeacherAssign(request):
     courses = Courses.objects.all()
     return render(request, "course_teacher_assign.html", {"courses": courses, 'title': 'Assign Courses'})

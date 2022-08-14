@@ -20,8 +20,14 @@ from .models import StudentCourseApplication
 from teacher.forms import CreateUserForm, UserSetPasswordForm, UserUpdateForm
 from chat.models import Thread
 from django.core.mail import send_mail
+from django.contrib.auth.decorators import user_passes_test
+
+def user_check(user):
+    return user.role == 'Student'
+
 
 @login_required(login_url='/')
+@user_passes_test(user_check)
 def student_index(request):
     courses = CourseEnrollment.objects.filter(student=request.user)
     course_count = courses.count()

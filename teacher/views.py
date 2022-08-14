@@ -12,8 +12,14 @@ from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, render
 
 from teacher.forms import CreateUserForm, UserSetPasswordForm, UserUpdateForm
+from django.contrib.auth.decorators import user_passes_test
+
+def user_check(user):
+    return user.role == 'Teacher'
+
 
 @login_required(login_url='/')
+@user_passes_test(user_check)
 def teacher_index(request):
     courses = Courses.objects.filter(tutor=request.user)
     user = request.user

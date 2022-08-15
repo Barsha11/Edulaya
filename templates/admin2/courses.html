@@ -5,10 +5,18 @@
       <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
+            <div class="row pb-3">
+              <div class="col-10">
             <p class="card-title">Courses List</p>
+            </div>
+            <div class="col-2">
             <a href="{% url 'courses:courses_add' %}" class="add-link">
-              <p class="add-text"><i class="fa fa-plus">&nbsp;</i> Add Course</p>
+              <button class="btn btn-outline-primary" type="button" aria-haspopup="true" aria-expanded="true">
+                <i class="fa fa-plus">&nbsp;</i> Add Course
+               </button>
             </a>
+            </div>
+            </div>
             <div class="row">
               <div class="col-12">
                 <div class="table-responsive">
@@ -32,9 +40,9 @@
                         <td>{{course.tutor.full_name}}</td>
                         <td>{{course.time_to_complete}} hours</td>
                         <td>
-                          <a href="{% url 'courses:courses_edit' course.id %}" class="btn btn-info btn-icon-text">Edit
+                          <a href="{% url 'courses:courses_edit' course.id %}" class="btn border border-primary"> Edit
                           </a>
-                          <a href="{% url 'courses:courses_delete' course.id %}" class="btn btn-danger">Delete
+                          <a href="{% url 'courses:courses_delete' course.id %}" class="btn border border-danger mx-2">Delete
                           </a>
                         </td>
                       </tr>

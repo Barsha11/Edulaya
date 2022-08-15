@@ -5,10 +5,18 @@
       <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
+            <div class="row pb-3">
+              <div class="col-10">
             <p class="card-title">Ebooks List</p>
+            </div>
+            <div class="col-2">
             <a href="{% url 'ebooks:ebook_add' %}" class="add-link">
-              <p class="add-text"><i class="fa fa-plus">&nbsp;</i> Add Ebook</p>
+              <button class="btn btn-outline-primary" type="button" aria-haspopup="true" aria-expanded="true">
+                <i class="fa fa-plus">&nbsp;</i> Add Ebook
+               </button>
             </a>
+            </div>
+            </div>
             <div class="row">
               <div class="col-12">
                 <div class="table-responsive">
@@ -33,9 +41,9 @@
                           height="40px"></a></td>
                         <td><a href="{{ ebook.url }}" target="_blank"><img src="https://cdn-icons-png.flaticon.com/128/160/160205.png" height="40px"></a></td>
                         <td>
-                          <a href="{% url 'ebooks:ebook_edit' ebook.id %}" class="btn btn-info btn-icon-text">Edit
+                          <a href="{% url 'ebooks:ebook_edit' ebook.id %}" class="btn border border-primary">Edit
                           </a>
-                          <a href="{% url 'ebooks:ebook_delete' ebook.id %}" class="btn btn-danger">Delete
+                          <a href="{% url 'ebooks:ebook_delete' ebook.id %}" class="btn border border-danger mx-2">Delete
                           </a>
                         </td>
                       </tr>

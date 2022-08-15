@@ -4,11 +4,20 @@
     <div class="row">
       <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
-          <div class="card-body">
-            <p class="card-title">Students List</p>
-            <a href="{% url 'students:student_add' %}" class="add-link">
-              <p class="add-text"><i class="fa fa-plus">&nbsp;</i> Add Student</p>
-            </a>
+          <div class="card-body"> 
+            <div class="row pb-3">
+            <div class="col-9">
+          <p class="card-title">Students List</p>
+          </div>
+          <div class="col-3">
+          <a href="{% url 'students:student_add' %}" class="add-link">
+            <button class="btn btn-outline-primary" type="button" id="dropdownMenuDate2" aria-haspopup="true" aria-expanded="true">
+              <i class="fa fa-plus">&nbsp;</i> Add Student
+             </button>
+          </a>
+          </div>
+          </div>
+            
             <div class="row">
               <div class="col-12">
                 <div class="table-responsive">
@@ -32,9 +41,9 @@
                         <td>{{student.phone_number}}</td>
                         <td>{{student.date_joined}}</td>
                         <td>
-                          <a href="{% url 'students:student_edit' student.id %}" class="btn btn-info btn-icon-text">Edit
+                          <a href="{% url 'students:student_edit' student.id %}" class="btn border border-primary">Edit
                           </a>
-                          <a href="{% url 'students:student_delete' student.id %}" class="btn btn-danger">Delete
+                          <a href="{% url 'students:student_delete' student.id %}" class="btn border border-danger mx-2">Delete
                           </a>
                         </td>
                       </tr>

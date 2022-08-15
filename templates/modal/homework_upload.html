@@ -11,9 +11,9 @@
             {% csrf_token %}
             <div class="form-group mb-5">
               <label>Assignments</label>
-              <select name="" id="assignment" class="custom-field log-input assignment">
+              <select name="" id="dropdownassignment" class="custom-field log-input dropdown-assignment">
                 <option value="null">Select Assignment</option>
-                {% for assignment in assignments%}
+                {% for assignment in assignments_dropdown %}
                 <option value="{{assignment.id}}">{{assignment.title}}</option>
                 {% endfor %}
               </select>

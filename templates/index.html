@@ -57,7 +57,15 @@
         <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signInModal"><i class="fas fa-user"></i> Sign In</a></li>
         <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signUpModal"><i class="fas fa-clipboard-list"></i> Sign Up</a></li>
         {% else %}
-        Welcome  <a href="#"> <span>{{user.full_name}}</span> <i class="fas fa-chevron-circle-down"></i></a>
+        Welcome  <a href="
+        {% if user.role == 'Student' %}
+            {% url 'students:student_index' %}
+        {% elif user.role == 'Teacher' %}
+            {% url 'teacher:teacher_index' %}
+        {% elif user.is_admin  %}
+            {% url 'authentication:administrator' %}
+        {% endif %}
+        "> <span>{{user.full_name}}</span> <i class="fas fa-chevron-circle-down"></i></a>
         {% endif %}
     </ul>
 </div>
@@ -92,7 +100,15 @@
                         <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signInModal"><i class="fas fa-user"></i> Sign In</a></li>
                         <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#signUpModal"><i class="fas fa-clipboard-list"></i> Sign Up</a></li>
                         {% else %}
-                        <li><a href="#">Welcome {{user.full_name}}</a></li>
+                        <li><a href="
+                            {% if user.role == 'Student' %}
+                                {% url 'students:student_index' %}
+                            {% elif user.role == 'Teacher' %}
+                                {% url 'teacher:teacher_index' %}
+                            {% elif user.is_admin  %}
+                                {% url 'authentication:administrator' %}
+                            {% endif %}
+                            ">Welcome {{user.full_name}}</a></li>
                         
                               <li><a href="{% url 'authentication:logout' %}">Logout</a></li>
                            

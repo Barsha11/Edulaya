@@ -72,7 +72,7 @@
             <ul>
               <li>
               {% if user.is_authenticated %}
-                <a href="javascript:void(0)"><i class="fas fa-user"></i>  {{user.full_name}}</a> </li>
+                <a href="{% url 'authentication:homepage' %}"><i class="fas fa-user"></i>  {{user.full_name}}</a> </li>
                 <li><a href="{% url 'authentication:logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a>
             
               </li>
@@ -514,6 +514,8 @@
                                   <th>Status</th>
                                   <th>Marks</th>
                                   <th>Action</th>
+
+                                  
                                 </tr>
                               </thead>
                               <tbody>
@@ -951,8 +953,7 @@
   <script src="{% static 'assets/js/socket.js' %}"></script>
 
   <script>
-    $("select.assignment").change(function(){
-      alert("doe");
+    $("select.dropdown-assignment").change(function(){
       window.assignment = $(this).children("option:selected").val();
   });
     $("#assignment-submit").on("click", function (e) {
@@ -964,7 +965,12 @@
       if(file == 0) {
           $('#msg').html('<span style="color:red">Select at least one file</span>');
           return;
-      }
+      };
+      var card = document.getElementById("dropdownassignment");
+      if(card.selectedIndex == 0) {
+        $('#msg').html('<span style="color:red">Select an Assignment</span>');
+        return;
+    }
       for (var x = 0; x < file; x++) {
           form_data.append("files[]", document.getElementById('upload-file').files[x]);
       }
@@ -972,7 +978,6 @@
       csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
       
       form_data.append("csrfmiddlewaretoken", csrf_token);
-      console.log(assignment);
       
       form_data.append("title", $('#title').val());
       form_data.append("assignment", assignment);

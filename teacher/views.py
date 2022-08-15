@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from accounts.models import Account
-from assignments.models import Assignments
+from assignments.models import AssignmentSubmission, Assignments
 from courses.models import Courses
 from library.models import Ebook
 from chat.models import Thread
@@ -26,11 +26,14 @@ def teacher_index(request):
     threads = Thread.objects.by_user(user=request.user).prefetch_related('chatmessage_thread').order_by('timestamp')
     assignments = Assignments.objects.filter(course__in=courses)
     ebook_courses = Ebook.objects.all()
+    assignment_submission = AssignmentSubmission.objects.filter(assignment__in=assignments).values_list('assignment', flat=True)
+    submitted_assignments = Assignments.objects.filter(course__in=courses ,id__in=assignment_submission)
     context = {
         'Threads': threads,
         'user':user,
         'courses': courses,
         'assignments': assignments,
+        'submitted_assignments': submitted_assignments,
         'ebook_courses':ebook_courses,
         
     }
@@ -104,3 +107,12 @@ class TeacherDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         data = super(TeacherDelete, self).get_context_data(**kwargs)
         data['title'] = 'teacher'
         return data
+
+def assignment_submitted_list(request, id):
+    assignment = Assignments.objects.get(id=id)
+    submissions = AssignmentSubmission.objects.filter(assignment=assignment)
+    context = {
+        'submissions': submissions,
+        'assignment': assignment,
+    }
+    return render(request, 'assignmentlist.html', context)

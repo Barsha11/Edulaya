@@ -103,7 +103,7 @@
                 <div class="contact-form">
                     <div class="col-12">
                         <div class="section-title split">
-                          <h5>Assignment Name Here</h5>
+                          <h5>{{assignment.title}}</h5>
                           <a href="#" class="view_link d-none d-sm-inline-block"> < Back</a>
                         </div>
                       </div><br>
@@ -113,53 +113,28 @@
                           <tr>
                             <th>Student name</th>
                             <th>Status</th>
+                            <th>File</th>
                             <th>Marks</th>
-                            <th>Feedbacks</th>
+                            <th>Feedback</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
+                          {% for submission in submissions %}
+                          <tr onclick="review_assignment(`{{submission.submitted_by.full_name}}`,`{{submission.submitted_by.id}}`)" id={{submission.submitted_by.id}}>
                             <td>
-                              Kritik Shrestha
-                            </td>
-                            <td>
-                              <div class="badge badge-success">Submitted</div>
-                            </td>
-                            <td>20</td>
-                            <td>Write more topic  centric answer</td>
-                          </tr>
-                          <tr class="">
-                            <td>
-                              Sanjit Thakuri
+                              {{submission.submitted_by.full_name}}
                             </td>
                             <td>
                               <div class="badge badge-success">Submitted</div>
                             </td>
-                            <td>45</td>
-                            <td>Clear and simple will be better</td>
+                            <td>
+                              <a href="{{submission.file.url}}" target="_blank">
+                                <i class="fas fa-download"></i>
+                              </a>
+                            <td>{{submission.marks}}</td>
+                            <td>{{submission.remarks}}</td>
                           </tr>
-                          <tr class="">
-                            <td>
-                              Kapil Aryal
-                            </td>
-                            <td>
-                              <div class="badge badge-danger">Overdue</div>
-                            </td>
-                            <td>28</td>
-                            <td>Attempt all</td>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                            Chadani Khatri
-                            </td>
-                            <td>
-                              <div class="badge badge-success">Submitted</div>
-                            </td>
-                            <td>35</td>
-                            <td>Submit by deadline</td>
-                            </td>
-                          </tr>
+                          {% endfor %}
                         </tbody>
                       </table>
                    </div>
@@ -169,38 +144,26 @@
             <div class="col-lg-4">
                 <div class="contact-from p-2">
                     <div class="section-title split px-4 pt-4">
-                        <h5>Grade Assignment</h5>
+                        <h5>Review Assignment</h5>
                     </div> <!-- section title -->
                     <form class="p-4">
                         <div class="form-group pb-3">
                             <label class="pb-1">Student Name</label>
-                            <select name="" id="sudents" class="custom-field students">
-                              <option value="null">Select student</option>
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                              <option>5</option>
-                             
-                            </select>
+                            <input type="hidden" id="student_id" class="form-control" disabled>
+                            <input type="text" id="students" class="form-control" placeholder="Select a row" disabled>
                           </div>
 
                           <div class="form-group pb-3">
-                            <label class="pb-1">Assignments</label>
-                            <select name="" id="assignment" class="custom-field assignment">
-                              <option value="null">Select Assignment</option>
-                              {% for assignment in assignments%}
-                              <option value="{{assignment.id}}">{{assignment.title}}</option>
-                              {% endfor %}
-                            </select>
+                            <label class="pb-1">Assignment</label>
+                            <input type="text" class="form-control" value="{{assignment.title}}" disabled>
                           </div>
 
                         <div class="form-group pb-3">
                           <label for="marks" class="pb-1">Marks</label>
-                          <input type="text" class="form-control" id="marks" placeholder="0/100">
+                          <input type="text" class="form-control" id="marks" placeholder="0/{{assignment.full_marks}}">
                         </div>
                         <div class="form-group">
-                            <label for="feedback" class="pb-1">Feedbacks</label>
+                            <label for="feedback" class="pb-1">Feedback</label>
                             <textarea class="form-control" id="feedback" rows="3"></textarea>
                           </div>
                         <button type="submit" class="btn btn-primary p-2 mt-3">Return</button>
@@ -331,6 +294,16 @@
   <script type="text/javascript" src="{% static 'assets/js/custom.js' %}"></script>
   <!-- Custom Js -->
   <script src="{% static 'assets/js/socket.js' %}"></script>
+
+  <script>
+    function review_assignment(full_name, id){
+      var options = document.getElementById("students");
+      var options_id = document.getElementById("student_id");
+      options.value = full_name;
+      options_id.value = id;
+      
+    };
+  </script>
 
 </body>
 

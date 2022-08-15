@@ -10,4 +10,5 @@ urlpatterns = [
     path('edit/<id>/',teacher_update,name='teacher_edit'),
     path('edit/<id>/password/',teacher_change_password,name="change_password"),
     path('delete/<int:pk>',TeacherDelete.as_view(),name='teacher_delete'),
+    path('assignment-check/<id>',assignment_submitted_list,name="assignment_check"),
 ]

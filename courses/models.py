@@ -22,6 +22,6 @@ class Course_documents(models.Model):
     
 class CourseEnrollment(models.Model):
     student = models.ForeignKey('accounts.Account', on_delete=models.CASCADE, related_name='student_courses')
-    course = models.ForeignKey(Courses, on_delete=models.CASCADE)
+    course = models.ForeignKey(Courses, on_delete=models.CASCADE, related_name='enrolled_courses')
     
     

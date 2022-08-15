@@ -6,6 +6,7 @@ from django.db import transaction
 from django.http.response import JsonResponse
 import string
 import random
+from datetime import datetime
 from chat.models import Thread
 from courses.models import CourseEnrollment,Courses
 from library.models import Ebook
@@ -32,17 +33,16 @@ def student_index(request):
     courses = CourseEnrollment.objects.filter(student=request.user)
     course_count = courses.count()
     student_courses = courses.values_list('course', flat=True)
-    assignments = Assignments.objects.filter(course__in=student_courses).annotate(
-        # assignment_status = Value('s', output_field=CharField()),
+    submitted_assignments = AssignmentSubmission.objects.filter(submitted_by=request.user).values_list('assignment', flat=True)
+    
+    scheduled_assignments = Assignments.objects.filter(course__in=student_courses, is_scheduled=True, scheduled_time__lte=datetime.now())
+    assignments = Assignments.objects.filter(course__in=student_courses, is_scheduled=False)
+    assignments = scheduled_assignments | assignments
+    assignments = assignments.annotate(
         assignment_status = Subquery(
-            # Case(
-            #     When(
-                    AssignmentSubmission.objects.filter(assignment=OuterRef("id")).values_list('status', flat=True)
-                    # [0] == 'None', 
-                    # then='Submission Pending')
-            # )
-        )
-    )
+            AssignmentSubmission.objects.filter(assignment=OuterRef("id")).values_list('status', flat=True)
+        ))
+    assignments_dropdown = Assignments.objects.filter(course__in=student_courses).exclude(id__in=submitted_assignments)
     assignment_count = assignments.count()
     asignment_checked_count = AssignmentSubmission.objects.filter(submitted_by=request.user, status='Checked').count()
     ebook_courses = Ebook.objects.all()
@@ -53,7 +53,9 @@ def student_index(request):
         'assignments': assignments,
         'course_count': course_count,
         'assignment_count': assignment_count,
+        'assignments_dropdown': assignments_dropdown,
         'asignment_checked_count': asignment_checked_count,
+        'submitted_assignments': submitted_assignments,
         'ebook_courses':ebook_courses,
         'Threads': threads,
         'user':user

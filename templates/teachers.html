@@ -138,11 +138,6 @@
                 <div class="col-12">
                   <div class="dashboard-title split">
                     <h2>Overview</h2>
-                    <div class="download-btn">
-                      <a href="javscript:void(0)" data-bs-toggle="modal" data-bs-target="#downloadModal">
-                        <i class="fas fa-download fa-sm text-white-50"></i>
-                        Download Certificate</a>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -354,8 +349,6 @@
                             aria-controls="all" aria-selected="true">All</a>
                           <a class="nav-link" id="assigned-tab" data-toggle="pill" href="#assigned" role="tab"
                             aria-controls="assigned" aria-selected="false">Submitted</a>
-                          <a class="nav-link" id="rejected-tab" data-toggle="pill" href="#rejected" role="tab"
-                            aria-controls="rejected" aria-selected="false">Checked</a>
                         </div>
                       </div>
                     </div>
@@ -418,61 +411,6 @@
                                   <td><a href="{% url 'teacher:assignment_check' assignment.id %}">View Assignments</a></td>
                                 </tr>
                                {% endfor %}
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                        <div class="tab-pane fade" id="rejected" role="tabpanel" aria-labelledby="rejected-tab">
-                          <div class="table-responsive portal-table">
-                            <table class="table">
-                              <thead>
-                                <tr>
-                                  <th>Assignments</th>
-                                  <th>Category</th>
-                                  <th>Assigned Tutor</th>
-                                  <th>Status</th>
-                                  <th>Marks</th>
-                                  <th>Action</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr class="rejected">
-                                  <td>
-                                    <h3>Simple Mobile App</h3>
-                                    <span class="upload-date">24th Dec, 2021</span>
-                                  </td>
-                                  <td>Android</td>
-                                  <td>Sanjog Shrestha</td>
-                                  <td>
-                                    <div class="badge badge-danger">Rejected</div>
-                                  </td>
-                                  <td>0 out of 100</td>
-                                  <td>
-                                    <div class="action-btn">
-                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
-                                    </div>
-                                  </td>
-                                </tr>
-
-                                <tr class="checked">
-                                  <td>
-                                    <h3>Health Insaurance Website Desing</h3>
-                                    <span class="upload-date">24th Dec, 2021</span>
-                                  </td>
-                                  <td>UI/UX</td>
-                                  <td>Sanjog Shrestha</td>
-                                  <td>
-                                    <div class="badge badge-success">Checked</div>
-                                  </td>
-                                  <td>85 out of 100</td>
-                                  <td>
-                                    <div class="action-btn">
-                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
-                                    </div>
-                                  </td>
-                                </tr>
                               </tbody>
                             </table>
                           </div>

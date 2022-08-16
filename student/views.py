@@ -41,10 +41,22 @@ def student_index(request):
     assignments = assignments.annotate(
         assignment_status = Subquery(
             AssignmentSubmission.objects.filter(assignment=OuterRef("id")).values_list('status', flat=True)
-        ))
+        ),
+        assignment_remarks = Subquery(
+            AssignmentSubmission.objects.filter(assignment=OuterRef("id")).values_list('remarks', flat=True)
+        ),
+        assignment_marks = Subquery(
+            AssignmentSubmission.objects.filter(assignment=OuterRef("id")).values_list('marks', flat=True)
+        ),
+        )
     assignments_dropdown = Assignments.objects.filter(course__in=student_courses).exclude(id__in=submitted_assignments)
     assignment_count = assignments.count()
     asignment_checked_count = AssignmentSubmission.objects.filter(submitted_by=request.user, status='Checked').count()
+    
+    ongoing_assignments = scheduled_assignments.filter(deadline__gte=datetime.now())
+    ongoing_assignments_second = Assignments.objects.filter(course__in=student_courses, is_scheduled=False, created_at__lte=datetime.now(), deadline__gte=datetime.now())
+    
+    current_assignments  = ongoing_assignments | ongoing_assignments_second
     ebook_courses = Ebook.objects.all()
     user = request.user
     threads = Thread.objects.by_user(user=request.user).prefetch_related('chatmessage_thread').order_by('timestamp')
@@ -56,6 +68,7 @@ def student_index(request):
         'assignments_dropdown': assignments_dropdown,
         'asignment_checked_count': asignment_checked_count,
         'submitted_assignments': submitted_assignments,
+        'current_assignments': current_assignments,
         'ebook_courses':ebook_courses,
         'Threads': threads,
         'user':user

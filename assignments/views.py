@@ -89,3 +89,27 @@ class AssignmentUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         else:
             data['items'] = AssignmentsForm()
         return data
+    
+@login_required(login_url='/')
+def AssignmentReviewView(request):
+    if request.method == 'POST':
+        assignment_id = request.POST.get('assignment_id', None) 
+        student_id = request.POST.get('student_id', None) 
+        feedback = request.POST.get('feedback', None) 
+        marks = request.POST.get('marks', None) 
+        reject = request.POST.get('rejection_status', None) 
+        if assignment_id and student_id and (feedback or marks):
+            try:
+                submission=AssignmentSubmission.objects.get(assignment_id=assignment_id, submitted_by=student_id)
+                submission.remarks = feedback
+                submission.marks = marks if marks else 0
+                if reject=='true':
+                    submission.status = 'Rejected'
+                else:
+                    submission.status = 'Checked'
+                submission.save()
+                return JsonResponse({'msg':'<span style="color: green;">Feedback successfully submitted</span>'})
+            except submission.DoesNotExist:
+                return JsonResponse({'msg':'<span style="color: red;">Error</span>'})
+        return JsonResponse({'msg':'<span style="color: red;">Error</span>'})
+        

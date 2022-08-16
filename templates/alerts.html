@@ -1,24 +1,20 @@
 {% if messages %}
 {% for message in messages %}
 {% if message.tags == 'error' %}
-<div id="message" class="container">
-  <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %} role="alert">
-    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
-      {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error: {% endif %}
-      {{ message }}
-  </div>
+  <div class="alert alert-{{ message.tags }}" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error: {% endif %}</strong>{{message}}
   </div>
 {% endif %}
 
 {% if message.tags == 'success' %}
-<div id="message" class="container">
-  <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %} role="alert">
-    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
-      {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error: {% endif %}
-      {{ message }}
-  </div>
+  <div class="alert alert-{{ message.tags }}" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <strong>{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error: {% endif %}</strong>{{message}}
   </div>
 {% endif %}
 {% endfor %}
 {% endif %}
+
+
 

@@ -104,9 +104,10 @@
                     <div class="col-12">
                         <div class="section-title split">
                           <h5>{{assignment.title}}</h5>
-                          <a href="#" class="view_link d-none d-sm-inline-block"> < Back</a>
+                          <a href="{% url 'teacher:teacher_index' %}" class="view_link d-none d-sm-inline-block"> < Back</a>
                         </div>
                       </div><br>
+                  <div id="msg"></div>
                    <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -120,12 +121,18 @@
                         </thead>
                         <tbody>
                           {% for submission in submissions %}
-                          <tr onclick="review_assignment(`{{submission.submitted_by.full_name}}`,`{{submission.submitted_by.id}}`)" id={{submission.submitted_by.id}}>
+                          <tr onclick="review_assignment(`{{submission.submitted_by.full_name}}`,`{{submission.submitted_by.id}}`,`{{submission.marks}}`, `{{submission.remarks}}`)" id={{submission.submitted_by.id}}>
                             <td>
                               {{submission.submitted_by.full_name}}
                             </td>
                             <td>
-                              <div class="badge badge-success">Submitted</div>
+                              {% if submission.status == 'Rejected' %}
+                              <div class="badge badge-danger">{{submission.status}}</div>
+                              {% elif submission.status == 'Review Pending' %}
+                              <div class="badge badge-warning">{{submission.status}}</div>
+                              {% elif submission.status == 'Checked' %}
+                              <div class="badge badge-success">{{submission.status}}</div>
+                              {% endif %}
                             </td>
                             <td>
                               <a href="{{submission.file.url}}" target="_blank">
@@ -146,7 +153,8 @@
                     <div class="section-title split px-4 pt-4">
                         <h5>Review Assignment</h5>
                     </div> <!-- section title -->
-                    <form class="p-4">
+                    <form id="assignment_review" method="post" class="p-4">
+                      {% csrf_token %}
                         <div class="form-group pb-3">
                             <label class="pb-1">Student Name</label>
                             <input type="hidden" id="student_id" class="form-control" disabled>
@@ -155,8 +163,15 @@
 
                           <div class="form-group pb-3">
                             <label class="pb-1">Assignment</label>
+                            <input type="hidden" id="assignment_id" value="{{assignment.id}}">
                             <input type="text" class="form-control" value="{{assignment.title}}" disabled>
                           </div>
+
+                        <div class="form-group pb-3">
+                          <label for="marks" class="pb-1">Assignment Status</label><br>
+                          <input type="checkbox" id="reject" value="Rejected">
+                          <label for="reject">Rejected</label><br>
+                        </div>
 
                         <div class="form-group pb-3">
                           <label for="marks" class="pb-1">Marks</label>
@@ -167,7 +182,7 @@
                             <textarea class="form-control" id="feedback" rows="3"></textarea>
                           </div>
                         <button type="submit" class="btn btn-primary p-2 mt-3">Return</button>
-                      </form>
+                    </form>
                      <!-- main form -->
                 </div> 
                 </div>
@@ -296,13 +311,44 @@
   <script src="{% static 'assets/js/socket.js' %}"></script>
 
   <script>
-    function review_assignment(full_name, id){
+    function review_assignment(full_name, id, marks, remarks){
       var options = document.getElementById("students");
       var options_id = document.getElementById("student_id");
+      var feedback = document.getElementById("feedback");
+      feedback.value = remarks;
+      var marking = document.getElementById("marks");
       options.value = full_name;
       options_id.value = id;
+      marking.value = marks;
       
     };
+    $('#assignment_review').on('submit', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var form_data = new FormData();
+        csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+        form_data.append("csrfmiddlewaretoken", csrf_token);
+        form_data.append("assignment_id",$('#assignment_id').val());
+        form_data.append("student_id",$('#student_id').val());
+        form_data.append("feedback",$('#feedback').val());
+        form_data.append("marks",$('#marks').val());
+        if ($('#reject').is(":checked")){
+          form_data.append("rejection_status",true);
+        };
+
+        $.ajax({
+          url: "{% url 'assignments:assignment_review' %}",
+          type: "POST",
+          data: form_data,
+          contentType: false,
+          cache: false,
+          processData: false,
+          success: function(data){
+            $('#msg').html(data.msg);
+            window.location.reload();
+          }
+        });
+      });
   </script>
 
 </body>

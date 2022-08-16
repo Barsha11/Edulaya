@@ -365,9 +365,23 @@
                             </td>
                             <td>{{assignment.course.tutor.full_name}}</td>
                             <td>
+                              {% if assignment.assignment_status == 'Checked' %}
+                              <div class="badge badge-success" id="assignment-status">
+                                {{assignment.assignment_status}}
+                              </div>
+                              {% elif assignment.assignment_status == 'Review Pending' %}
+                              <div class="badge badge-success" id="assignment-status">
+                                {{assignment.assignment_status}}
+                              </div>
+                              {% elif assignment.assignment_status == 'Rejected' %}
                               <div class="badge badge-danger" id="assignment-status">
                                 {{assignment.assignment_status}}
                               </div>
+                              {% else %}
+                              <div class="badge badge-warning" id="assignment-status">
+                                Submission Pending
+                              </div>
+                              {% endif %}
                             </td>
                             <td>
                               <div class="action-btn">
@@ -496,8 +510,6 @@
                             aria-controls="assigned" aria-selected="false">Assigned</a>
                           <a class="nav-link" id="rejected-tab" data-toggle="pill" href="#rejected" role="tab"
                             aria-controls="rejected" aria-selected="false">Returned</a>
-                          {% comment %} <a class="nav-link" id="pending-tab" data-toggle="pill" href="#pending" role="tab"
-                            aria-controls="pending" aria-selected="false">Missing</a> {% endcomment %}
                         </div>
                       </div>
                     </div>
@@ -509,11 +521,10 @@
                               <thead>
                                 <tr>
                                   <th>Assignments</th>
-                                  {% comment %} <th>Category</th> {% endcomment %}
                                   <th>Assigned Tutor</th>
                                   <th>Status</th>
                                   <th>Marks</th>
-                                  <th>Action</th>
+                                  <th>Remarks</th>
 
                                   
                                 </tr>
@@ -528,14 +539,38 @@
                                   </td>
                                   <td>{{assignment.course.tutor.full_name}}</td>
                                   <td>
-                                    <div class="badge badge-warning">{{assignment.assignment_status}}</div>
-                                  </td>
-                                  <td>0 out of 100</td>
-                                  <td>
-                                    <div class="action-btn">
-                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                      {% comment %} <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a> {% endcomment %}
+                                    {% if assignment.assignment_status == 'Checked' %}
+                                    <div class="badge badge-success" id="assignment-status">
+                                      {{assignment.assignment_status}}
                                     </div>
+                                    {% elif assignment.assignment_status == 'Review Pending' %}
+                                    <div class="badge badge-success" id="assignment-status">
+                                      {{assignment.assignment_status}}
+                                    </div>
+                                    {% elif assignment.assignment_status == 'Rejected' %}
+                                    <div class="badge badge-danger" id="assignment-status">
+                                      {{assignment.assignment_status}}
+                                    </div>
+                                    {% else %}
+                                    <div class="badge badge-warning" id="assignment-status">
+                                      Submission Pending
+                                    </div>
+                                    {% endif %}
+                                  </td>
+                                  <td>
+                                    {% if assignment.assignment_marks %}
+                                      {{assignment.assignment_marks}} 
+                                    {% else %}
+                                      0
+                                    {% endif %}
+
+                                    out of {{assignment.full_marks}}</td>
+                                  <td>
+                                    {% if assignment.assignment_remarks %}
+                                      {{assignment.assignment_remarks}} 
+                                    {% else %}
+                                      -
+                                    {% endif %}
                                   </td>
                                 </tr>
                           {% endfor %}
@@ -545,75 +580,38 @@
                           </div>
                         </div>
                         <div class="tab-pane fade" id="assigned" role="tabpanel" aria-labelledby="assigned-tab">
-                          <!-- <div class=row>
-                                          <div class="assignment-card">
-                                            <img src="{% static 'assets/images/avatar.png' %}" class="img-fluid">
-                                            <div class="assignment-card-title">
-                                                <span class="assignment-title">
-                                                    Simple Website Design
-                                                </span>
-                                                <span class="assignment-date">Due date: 24th Dec, 2021</span>
-                                                
-                                              </div>
-                                        </div>
-                                        <div class="assignment-card">
-                                          <img src="{% static 'assets/images/avatar.png' %}" class="img-fluid">
-                                          <div class="assignment-card-title">
-                                              <span class="assignment-title">
-                                                Email Flyer
-                                              </span>
-                                              <span class="assignment-date">Due date: 28th Dec, 2021</span>
-                                            </div>
-                                      </div>
-                                      
-                                     </div> -->
-
-
                           <div class="table-responsive portal-table">
 
                             <table class="table">
                               <thead>
                                 <tr>
                                   <th>Assignments</th>
-                                  <th>Category</th>
+                                  <th>Course</th>
                                   <th>Due Date</th>
                                 </tr>
                               </thead>
                               <tbody>
-                                <!-- <tr>
-                                              <div>
-
-                                                <td  onclick="toggle_div_fun('show__pdf');">
-                                                  <h3>Simple Mobile App  
-                                                  </h3>                                                 
-                                                </td>
-                                                <td><span class="assignment-detail">Android</span></td>
-                                                <td><span class="assignment-detail">24th Dec, 2021</span></td>
-                                                <td>Assigned</td>       
-                                              </div>
-                                                <td id="show__pdf">
-                                                  <i class="fas fa-paperclip"></i>  Assignment Attachment
-                                                </td>
-                                            </tr> -->
-                                <tr data-toggle="collapse" data-target="#assgn1" class="accordion-toggle">
+                                {% for currentassignment in current_assignments  %}
+                                
+                                <tr data-toggle="collapse" data-target="#{{forloop.counter}}" class="accordion-toggle">
                                   <td class="assignment-card-title">
-                                    <h3>Email Flyer</h3>
+                                    <h3>{{currentassignment.title}}</h3>
                                   </td>
-                                  <td><span class="assignment-detail">UI UX</span></td>
-                                  <td><span class="assignment-detail">24th Dec, 2021</span></td>
+                                  <td><span class="assignment-detail">{{currentassignment.course.name}}</span></td>
+                                  <td><span class="assignment-detail">{{currentassignment.deadline}}</span></td>
                                   <td>Assigned</td>
                                 </tr>
                                 <tr>
                                   <td colspan="6" class="hiddenRow">
-                                    <div id="assgn1" class="accordian-body collapse assignment-card">
-                                      <img src="{% static 'assets/images/clip.png' %}" class="img-fluid">
+                                    <div id="{{forloop.counter}}" class="accordian-body collapse assignment-card">
+                                      <img src="{{currentassignment.file.url}}" class="img-fluid">
                                       <span class="assignment-title">
-                                        Dilisha_Maharjan_Assignment1_Email Flyer
+                                        {{currentassignment.file}}
                                       </span>
-                                      <span class="assignment-time">5 min ago</span>
                                     </div>
                                   </td>
                                 </tr>
+                                {% endfor %}
                               </tbody>
                             </table>
                           </div>
@@ -624,109 +622,78 @@
                               <thead>
                                 <tr>
                                   <th>Assignments</th>
-                                  <th>Category</th>
                                   <th>Assigned Tutor</th>
                                   <th>Status</th>
                                   <th>Marks</th>
-                                  <th>Action</th>
+                                  <th>Remarks</th>
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr class="rejected">
-                                  <td>
-                                    <h3>Simple Mobile App</h3>
-                                    <span class="upload-date">24th Dec, 2021</span>
-                                  </td>
-                                  <td>Android</td>
-                                  <td>Sanjog Shrestha</td>
-                                  <td>
-                                    <div class="badge badge-danger">Rejected</div>
-                                  </td>
-                                  <td>0 out of 100</td>
-                                  <td>
-                                    <div class="action-btn">
-                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
-                                    </div>
-                                  </td>
-                                </tr>
-
+                                {% for assignment in assignments  %}
+                                {% if assignment.assignment_status == 'Checked' %}
                                 <tr class="checked">
                                   <td>
-                                    <h3>Health Insaurance Website Desing</h3>
-                                    <span class="upload-date">24th Dec, 2021</span>
+                                    <h3>{{assignment.title}}</h3>
+                                    <span class="upload-date">{{assignment.created_at}}</span>
                                   </td>
-                                  <td>UI/UX</td>
-                                  <td>Sanjog Shrestha</td>
+                                  <td>{{assignment.course.tutor.full_name}}</td>
                                   <td>
-                                    <div class="badge badge-success">Checked</div>
-                                  </td>
-                                  <td>85 out of 100</td>
-                                  <td>
-                                    <div class="action-btn">
-                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
+                                    <div class="badge badge-success" id="assignment-status">
+                                      {{assignment.assignment_status}}
                                     </div>
                                   </td>
+                                  <td>
+                                    {% if assignment.assignment_marks %}
+                                      {{assignment.assignment_marks}} 
+                                    {% else %}
+                                      0
+                                    {% endif %}
+
+                                    out of {{assignment.full_marks}}</td>
+                                  <td>
+                                    {% if assignment.assignment_remarks %}
+                                      {{assignment.assignment_remarks}} 
+                                    {% else %}
+                                      -
+                                    {% endif %}
+
+                                  </td>
                                 </tr>
+                                {% elif assignment.assignment_status == 'Rejected' %}
+                                <tr class="rejected">
+                                  <td>
+                                    <h3>{{assignment.title}}</h3>
+                                    <span class="upload-date">{{assignment.created_at}}</span>
+                                  </td>
+                                  <td>{{assignment.course.tutor.full_name}}</td>
+                                  <td>
+                                    <div class="badge badge-danger">{{assignment.assignment_status}}
+                                    </div>
+                                  </td>
+                                  <td>
+                                    {% if assignment.assignment_marks %}
+                                      {{assignment.assignment_marks}} 
+                                    {% else %}
+                                      0
+                                    {% endif %}
+
+                                    out of {{assignment.full_marks}}</td>
+                                  </td>
+                                  <td>
+                                    {% if assignment.assignment_remarks %}
+                                      {{assignment.assignment_remarks}} 
+                                    {% else %}
+                                      -
+                                    {% endif %}
+                                  </td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+
                               </tbody>
                             </table>
                           </div>
                         </div>
-                        {% comment %} <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
-                          <div class="table-responsive portal-table">
-                            <table class="table">
-                              <thead>
-                                <tr>
-                                  <th>Assignments</th>
-                                  <th>Category</th>
-                                  <th>Assigned Tutor</th>
-                                  <th>Status</th>
-                                  <th>Marks</th>
-                                  <th>Action</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>
-                                    <h3>Simple Mobile App</h3>
-                                    <span class="upload-date">24th Dec, 2021</span>
-                                  </td>
-                                  <td>Android</td>
-                                  <td>Sanjog Shrestha</td>
-                                  <td>
-                                    <div class="badge badge-warning">Pending</div>
-                                  </td>
-                                  <td>0 out of 100</td>
-                                  <td>
-                                    <div class="action-btn">
-                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
-                                    </div>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <h3>Email Flyer Design</h3>
-                                    <span class="upload-date">24th Dec, 2021</span>
-                                  </td>
-                                  <td>UI Design</td>
-                                  <td>Sanjog Shrestha</td>
-                                  <td>
-                                    <div class="badge badge-warning">Pending</div>
-                                  </td>
-                                  <td>0 out of 100</td>
-                                  <td>
-                                    <div class="action-btn">
-                                      <a href="#" title="View Feedbacks"><i class="fas fa-comment-alt"></i></a>
-                                      <a href="#" title="Delete Assignments"><i class="fas fa-trash"></i></a>
-                                    </div>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div> {% endcomment %}
                       </div>
                     </div>
                   </div>

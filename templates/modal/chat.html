@@ -101,11 +101,17 @@
                         </div>
                     </div>
                     {% endfor %}
-                    <div class="form-group mt-3 mb-0">
-                        <form id="send-message-form" class="position-relative w-100" style="display: flex;">
-                            <textarea id="chat-message-input" class="form-control" placeholder="Start typing for reply..." rows="1"></textarea>
-                            <button type="submit" id="chat-message-submit" class="btn send"><i class="material-icons">send</i></button>
-                        </form>
+                    <div class="row">
+                        <div class="col-4">
+                        </div>
+                        <div class="col-md-8 clearfix">
+                            <div class="form-group mt-3 mb-2">
+                                <form id="send-message-form" class="position-relative w-100" style="display: flex;">
+                                    <textarea id="chat-message-input" class="form-control" placeholder="Start typing for reply..." rows="1"></textarea>
+                                    <button type="submit" id="chat-message-submit" class="btn btn-primary btn-sm send"><i class="material-icons">Send</i></button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Row end -->

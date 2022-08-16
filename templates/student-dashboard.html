@@ -604,7 +604,8 @@
                                 <tr>
                                   <td colspan="6" class="hiddenRow">
                                     <div id="{{forloop.counter}}" class="accordian-body collapse assignment-card">
-                                      <img src="{{currentassignment.file.url}}" class="img-fluid">
+                                      <a href="{{currentassignment.file.url}}"><img src="{{currentassignment.file.url}}" class="img-fluid"></a>
+
                                       <span class="assignment-title">
                                         {{currentassignment.file}}
                                       </span>

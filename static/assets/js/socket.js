@@ -12,7 +12,6 @@ var socket = new WebSocket(endpoint);
 
 
 function newMessage(message, sent_by_id, thread_id) {
-  console.log(message, sent_by_id, thread_id);
   if ($.trim(message) === "") {
     return false;
   }

@@ -32,7 +32,9 @@ def teacher_index(request):
         'Threads': threads,
         'user':user,
         'courses': courses,
+        'courses_count': courses.count(),
         'assignments': assignments,
+        'assignments_count': assignments.count(),
         'submitted_assignments': submitted_assignments,
         'ebook_courses':ebook_courses,
         

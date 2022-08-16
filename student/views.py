@@ -145,7 +145,6 @@ class StudentDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
         data['title'] = 'Student'
         return data
 
-@login_required(login_url='/')
 def StudentCourseRequestCreationView(request):
     full_name = request.POST.get('full_name', None)
     email = request.POST.get('email', None) 

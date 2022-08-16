@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="{% static 'admin2/css/vertical-layout-light/style.css' %}">
   <!-- endinject -->
   <link rel="shortcut icon" href="{% static 'assets/images/minilogo.png' %}" />
+  {% block style %}
+  {% endblock style %}
 </head>
 <body>
   <div class="container-scroller">
@@ -65,6 +67,8 @@
   <script src="{% static 'admin2/js/dashboard.js' %}"></script>
   <script src="{% static 'admin2/js/Chart.roundedBarCharts.js' %}"></script>
   <!-- End custom js for this page-->
+  {% block script %}
+  {% endblock script %}
 </body>
 
 </html>

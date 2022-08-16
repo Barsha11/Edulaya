@@ -1,3 +1,4 @@
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
@@ -6,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, render
 from accounts.models import Account
+from chat.models import Thread
 from courses.forms import CoursesForm
 from .models import *
 # Create your views here.
@@ -101,6 +103,12 @@ def coursesTeacherAssign(request):
     courses = Courses.objects.all()
     return render(request, "course_teacher_assign.html", {"courses": courses, 'title': 'Assign Courses'})
 
+@login_required(login_url='/')
+def coursesStudentAssign(request):
+    students = Account.objects.filter(role="Student")
+    courses = Courses.objects.all()
+    return render(request, "course_student_assign.html", {"courses": courses, "students":students, 'title': 'Assign Courses'})
+
 class TeacherAssigncoursesUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Courses
     template_name = 'courses_edit.html'
@@ -125,3 +133,26 @@ class TeacherAssigncoursesUpdate(LoginRequiredMixin, SuccessMessageMixin, Update
         form = super(TeacherAssigncoursesUpdate, self).get_form(form_class)
         form.fields["name"].disabled = True
         return form
+    
+def StudentAssigncoursesUpdate(request, pk):
+    if request.method == 'POST':
+        student = request.POST.get('student')
+        courses = request.POST.getlist('courses')
+        student = get_object_or_404(Account, pk=student)
+        enrolled_courses = CourseEnrollment.objects.filter(student=student).values_list('course_id', flat=True)
+        for i in enrolled_courses:
+            courses.remove(str(i))
+        for i in courses:
+            CourseEnrollment.objects.create(student=student, course_id=i)
+            course = Courses.objects.get(id=i)
+            try:
+                Thread.objects.create(first_person=student, second_person=course.tutor)
+            except Thread.already_exists:
+                pass
+        return redirect('courses:student_assign_course')
+        
+    else:
+        student = get_object_or_404(Account, pk=pk)
+        enrolled_courses = CourseEnrollment.objects.filter(student=student)
+        courses = Courses.objects.exclude(id__in=enrolled_courses.values_list('course', flat=True))
+        return render(request, "student_course_assign_update.html", {"courses": courses,"enrolled_courses":enrolled_courses, "student":student, 'title': 'Student'})

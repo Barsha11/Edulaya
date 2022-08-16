@@ -9,7 +9,9 @@ urlpatterns = [
     path('add/',coursesAdd.as_view(),name='courses_add'),
     path('edit/<int:pk>',coursesUpdate.as_view(),name='courses_edit'),
     path('delete/<int:pk>',coursesDelete.as_view(),name='courses_delete'),
-    path('assign-course',coursesTeacherAssign, name='assign_course'),   
+    path('assign-course',coursesTeacherAssign, name='assign_course'),  
+    path('student-assign-course',coursesStudentAssign, name='student_assign_course'),    
     path('assigned-course-edit/<int:pk>',TeacherAssigncoursesUpdate.as_view(),name='assigned_courses_edit'),
-    
+    path('student-assigned-course-edit/<pk>',StudentAssigncoursesUpdate,name='student_assigned_courses_edit'),
+
 ]

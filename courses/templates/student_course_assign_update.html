@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Edulaya</title>
+      <!-- plugins:css -->
+      <link rel="stylesheet" href="{% static 'admin2/vendors/feather/feather.css' %}">
+      <link rel="stylesheet" href="{% static 'admin2/vendors/ti-icons/css/themify-icons.css' %}">
+      <link rel="stylesheet" href="{% static 'admin2/vendors/css/vendor.bundle.base.css' %}">
+      <!-- endinject -->
+      <!-- Plugin css for this page -->
+      <link rel="stylesheet" href="{% static 'admin2/vendors/datatables.net-bs4/dataTables.bootstrap4.css' %}">
+      <link rel="stylesheet" href="{% static 'admin2/vendors/ti-icons/css/themify-icons.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'admin2/js/select.dataTables.min.css' %}">
+      <!-- End plugin css for this page -->
+      <!-- inject:css -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css"
+         integrity="sha384-X8QTME3FCg1DLb58++lPvsjbQoCT9bp3MsUU3grbIny/3ZwUJkRNO8NPW6zqzuW9" crossorigin="anonymous">
+      <link rel="stylesheet" href="{% static 'admin2/css/vertical-layout-light/style.css' %}">
+      <!-- endinject -->
+      <link rel="shortcut icon" href="{% static 'assets/images/minilogo.png' %}" />
+      <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/thinline.css">
+      <link rel="stylesheet" href="{% static 'admin2/vendors/select2/select2.min.css' %}">
+      <link rel="stylesheet" href="{% static 'admin2/css/vertical-layout-light/style.css' %}">
+   </head>
+   <body>
+      <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      {% include 'admin2/modal/navbar.html' %}
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+         <!-- partial:partials/_sidebar.html -->
+         {% include 'admin2/modal/sidebar.html' %}
+         <!-- partial -->
+         <div class="main-panel">
+            <div class="content-wrapper">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="card">
+                        <div class="card-header">
+                           <strong class="card-title">Student</strong>
+                        </div>
+                        <form method="post">
+                          {% csrf_token %}
+                        <div class="col-12">
+                           <div class="card-body">
+                              <label for="name">Name</label>
+                              <input type="hidden" class="form-control" id="student_id" name="student" value={{student.id}}>
+                              <input readonly type="text" class="form-control" id="name" value={{student.full_name}}>
+                           </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="card-body">
+                            <h4 class="card-title">Courses</h4>
+                              <label>Select Courses</label>
+                              <select name="courses" class="js-example-basic-multiple w-100" multiple="multiple">
+                                  {%for course in courses %}
+                                  <option value="{{course.id}}">{{course.name}}</option>
+                                  {% endfor %}
+                                  {%for enrolcourse in enrolled_courses %}
+                                  <option selected value="{{enrolcourse.course.id}}">{{enrolcourse.course.name}}</option>
+                                  {% endfor %}
+                              </select>
+                           </div>
+                        </div>
+                        <div>
+                          <button id="payment-button" type="submit" class="btn btn-lg btn-info float-right">
+                              <span id="payment-button-amount">Submit</span>
+                          </button>
+                      </div>
+                      </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            {% include 'admin2/modal/footer.html' %}
+            <!-- main-panel ends -->
+         </div>
+         <!-- page-body-wrapper ends -->
+      </div>
+      <!-- container-scroller -->
+      <!-- plugins:js -->
+      <script src="{% static 'admin2/vendors/js/vendor.bundle.base.js' %}"></script>
+      <!-- endinject -->
+      <!-- Plugin js for this page -->
+      <script src="{% static 'admin2/vendors/chart.js/Chart.min.js' %}"></script>
+      <script src="{% static 'admin2/vendors/datatables.net/jquery.dataTables.js' %}"></script>
+      <script src="{% static 'admin2/vendors/datatables.net-bs4/dataTables.bootstrap4.js' %}"></script>
+      <script src="{% static 'admin2/js/dataTables.select.min.js' %}"></script>
+      <script src="{% static 'admin2/js/off-canvas.js' %}"></script>
+      <script src="{% static 'admin2/js/todolist.js' %}"></script>
+      <script src="{% static 'admin2/vendors/select2/select2.min.js' %}"></script>
+      <script src="{% static 'admin2/js/select2.js' %}"></script>
+   </body>
+</html>

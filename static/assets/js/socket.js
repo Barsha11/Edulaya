@@ -22,7 +22,7 @@ function newMessage(message, sent_by_id, thread_id) {
 
     <li class="chat-left">
     <div class="chat-avatar">
-        <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
+        <img src="https://i.postimg.cc/N0YyHSmm/female.png" alt="avatar">
     </div>
     <div class="chat-text">${message}</div>
 </li>
@@ -32,7 +32,7 @@ function newMessage(message, sent_by_id, thread_id) {
     <li class="chat-right">
     <div class="chat-text">${message}</div>
     <div class="chat-avatar">
-        <img src="https://www.bootdey.com/img/Content/avatar/avatar4.png" alt="Retail Admin">
+        <img src="https://i.postimg.cc/901b6y2N/male.png" alt="avatar">
     </div>
 </li>
         `;

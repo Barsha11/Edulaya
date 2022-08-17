@@ -48,7 +48,7 @@ class Account(AbstractBaseUser):
     username        = models.CharField(max_length=100, unique=True, null=True, blank=True)
     email           = models.EmailField(max_length=300, unique=True)
     phone_number    = models.CharField(max_length=50, null=True, blank=True)
-    role = models.CharField(max_length = 10, choices=user_roles)
+    role = models.CharField(max_length = 10, choices=user_roles, null=True, blank=True)
 # required
     date_joined     = models.DateTimeField(auto_now_add=True)
     last_login      = models.DateTimeField(auto_now_add=True)

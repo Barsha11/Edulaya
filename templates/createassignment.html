@@ -118,7 +118,7 @@
                         {{ form.file|as_crispy_field }}
                       </div>
                       <div class="col-12 select-choice">
-                        {{ form.is_scheduled|as_crispy_field }}
+                        {{ form.is_scheduled }}
                       </div>
                       <div class="col-md-4 select-field checkbox-scheduled-time">
                         {{ form.scheduled_time|as_crispy_field }}
@@ -219,8 +219,8 @@
   </div>
   <!-- End of copyright -->
   <script>
-    document.getElementById('id_deadline').type = "datetime-local";
-    document.getElementById('id_scheduled_time').type = "datetime-local";
+    document.getElementById('id_deadline').type;
+    document.getElementById('id_scheduled_time').type;
   </script>
 
 

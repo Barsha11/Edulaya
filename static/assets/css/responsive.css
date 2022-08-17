@@ -36,10 +36,14 @@
     .mob-bar.v-center{
         justify-content: flex-end;
     }
-    .girl-image{
+    .hero-image{
         right: 0;
         opacity: 0.7;
     }
+    .banner-text .item {
+        margin-top: 5rem;
+    }
+
 }
 @media(max-width: 768px){
     .copyright p{
@@ -68,9 +72,18 @@
     .custom-pop{
         padding: 1rem;
     }
+
+    .banner-text .item {
+        margin-top: 8rem;
+    }
+
 }
 @media(max-width: 475px){
     .intro-wrap::before{
         background-size: contain;
+    }
+
+    .banner-text .item {
+        margin-top: 5rem;
     }
 }
